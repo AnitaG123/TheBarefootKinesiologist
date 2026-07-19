@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sessions & Pricing · Barefoot Kinesiologist</title>
+<meta name="description" content="Explore EMK session options with Anita Gibbons — First Steps, the Rewild Package, and Steady Tides. 100% online, live or recorded, prices in AUD.">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Barefoot Kinesiologist">
+<meta property="og:title" content="Sessions & Pricing · Barefoot Kinesiologist">
+<meta property="og:description" content="Explore EMK session options with Anita Gibbons — First Steps, the Rewild Package, and Steady Tides. 100% online, live or recorded, prices in AUD.">
+<meta property="og:image" content="/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+:root{
+  --bone:#E8DDD0;--sand:#D4B896;
+  --terra:#B86B4C;--terra-l:#C8856A;
+  --glass:#6BA5A0;--glass-l:#9DCDC8;--glass-d:#4A8580;
+  --weed:#2E5D58;--dark:#1D3B38;--darker:#142C28;
+  --cream:#F2EDE5;--cream2:#EDE7DF;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',sans-serif;
+}
+body{font-family:var(--sans);background:var(--dark);color:var(--bone);overflow-x:hidden;}
+a{cursor:pointer;text-decoration:none;}
+
+/* === NAV === */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:26px 64px;display:flex;justify-content:space-between;align-items:center;
+  transition:background .45s,padding .35s,border-color .4s;
+  border-bottom:0.5px solid transparent;
+}
+nav.scrolled{
+  background:rgba(20,44,40,0.96);backdrop-filter:blur(16px);
+  padding:16px 64px;border-color:rgba(107,165,160,0.14);
+}
+.nav-logo{
+  font-family:var(--serif);font-size:15px;font-weight:300;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--bone);
+}
+.nav-links{display:flex;gap:38px;list-style:none;align-items:center;}
+.nav-links a{
+  font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(157,205,200,.75);transition:color .3s;
+}
+.nav-links a:hover{color:var(--bone);}
+.nav-cta{
+  padding:9px 22px !important;
+  border:0.5px solid rgba(107,165,160,.4) !important;
+  border-radius:2px;color:var(--bone) !important;
+  transition:background .3s,border-color .3s !important;
+}
+.nav-cta:hover{background:rgba(107,165,160,.12) !important;border-color:var(--glass) !important;}
+
+/* === HERO === */
+#hero{
+  min-height:75vh;background:var(--dark);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  position:relative;overflow:hidden;padding:0 64px 90px;
+}
+.hero-grain{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.011) 0,rgba(255,255,255,.011) 1px,transparent 1px,transparent 9px),
+    repeating-linear-gradient(-45deg,rgba(0,0,0,.03) 0,rgba(0,0,0,.03) 1px,transparent 1px,transparent 14px);
+}
+.hero-rings{position:absolute;right:-80px;top:50%;transform:translateY(-50%);pointer-events:none;}
+.hero-content{max-width:700px;position:relative;z-index:2;}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:16px;margin-bottom:28px;
+  opacity:0;animation:fadeUp .9s .2s forwards;
+}
+.hero-eyebrow-line{width:40px;height:0.5px;background:var(--terra);}
+.hero-eyebrow span{font-size:10px;letter-spacing:.38em;text-transform:uppercase;color:var(--terra);font-weight:300;}
+.hero-headline{
+  font-family:var(--serif);font-size:clamp(48px,6vw,78px);font-weight:300;
+  line-height:1.0;color:var(--bone);margin-bottom:28px;
+  opacity:0;animation:fadeUp .9s .35s forwards;
+}
+.hero-headline em{font-style:italic;color:var(--glass);}
+.hero-sub{
+  font-size:14px;font-weight:300;line-height:2;color:rgba(158,184,181,.8);
+  max-width:520px;letter-spacing:.025em;
+  opacity:0;animation:fadeUp .9s .5s forwards;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* === SHARED === */
+.btn-primary{
+  display:inline-block;padding:15px 42px;background:var(--glass);
+  color:var(--dark);font-family:var(--sans);font-size:10.5px;
+  letter-spacing:.28em;text-transform:uppercase;font-weight:500;
+  border-radius:2px;transition:background .3s,transform .2s;
+}
+.btn-primary:hover{background:var(--glass-l);transform:translateY(-2px);}
+.btn-ghost{
+  display:inline-block;padding:15px 42px;background:transparent;
+  color:var(--bone);font-family:var(--sans);font-size:10.5px;
+  letter-spacing:.28em;text-transform:uppercase;font-weight:300;
+  border-radius:2px;border:0.5px solid rgba(232,221,208,.28);
+  transition:border-color .3s,background .3s;
+}
+.btn-ghost:hover{border-color:rgba(232,221,208,.55);background:rgba(232,221,208,.04);}
+.section-eyebrow{
+  font-size:10px;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--terra);margin-bottom:24px;
+  display:flex;align-items:center;gap:16px;
+}
+.eyebrow-line{width:32px;height:0.5px;background:var(--terra);}
+.section-tag{
+  font-size:10px;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--terra);margin-bottom:16px;
+}
+.section-title{
+  font-family:var(--serif);font-size:clamp(36px,4vw,52px);
+  font-weight:300;color:var(--bone);line-height:1.15;
+}
+.section-title em{font-style:italic;color:var(--glass);}
+.section-subtitle{
+  margin-top:16px;font-size:14px;font-weight:300;line-height:1.8;
+  color:rgba(158,184,181,.7);max-width:520px;margin-left:auto;margin-right:auto;
+}
+.section-header{text-align:center;margin-bottom:72px;}
+
+/* === REASSURANCE BAND === */
+#reassurance{
+  background:var(--weed);padding:80px 64px;
+  position:relative;overflow:hidden;
+}
+#reassurance::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(-45deg,rgba(255,255,255,.013) 0,rgba(255,255,255,.013) 1px,transparent 1px,transparent 10px);
+}
+.reassurance-inner{
+  max-width:820px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;
+  align-items:center;position:relative;z-index:1;
+}
+.reassurance-left{}
+.reassurance-tag{
+  font-size:10px;letter-spacing:.35em;text-transform:uppercase;
+  color:rgba(157,205,200,.55);margin-bottom:20px;
+}
+.reassurance-h2{
+  font-family:var(--serif);font-size:clamp(28px,3vw,40px);
+  font-weight:300;color:var(--bone);line-height:1.2;margin-bottom:24px;
+}
+.reassurance-h2 em{font-style:italic;color:var(--glass-l);}
+.reassurance-body{
+  font-size:14px;font-weight:300;line-height:1.95;
+  color:rgba(232,221,208,.65);margin-bottom:18px;
+}
+.reassurance-right{}
+.reassurance-card{
+  background:rgba(255,255,255,.06);border:0.5px solid rgba(157,205,200,.2);
+  border-radius:4px;padding:36px;
+}
+.reassurance-card-eyebrow{
+  font-size:9px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--terra);margin-bottom:16px;
+}
+.reassurance-card-quote{
+  font-family:var(--serif);font-size:19px;font-style:italic;
+  font-weight:300;color:var(--bone);line-height:1.65;margin-bottom:20px;
+}
+.reassurance-card-attr{
+  font-size:11px;font-weight:300;color:rgba(157,205,200,.5);
+  letter-spacing:.04em;
+}
+
+/* === SESSIONS GRID === */
+#sessions{
+  background:var(--darker);padding:120px 64px;
+  position:relative;overflow:hidden;
+}
+#sessions::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.01) 0,rgba(255,255,255,.01) 1px,transparent 1px,transparent 9px);
+}
+.sessions-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:24px;max-width:900px;margin:0 auto 48px;position:relative;z-index:1;
+}
+.session-card{
+  background:rgba(255,255,255,.028);
+  border:0.5px solid rgba(107,165,160,.18);
+  border-radius:4px;padding:44px 40px;
+  transition:background .35s,border-color .35s,transform .35s;
+}
+.session-card:hover{
+  background:rgba(107,165,160,.07);
+  border-color:rgba(107,165,160,.38);
+  transform:translateY(-4px);
+}
+.session-card.featured{
+  background:rgba(107,165,160,.1);
+  border-color:rgba(107,165,160,.38);
+  grid-column:1/-1;
+}
+.session-card.full-width{
+  grid-column:1/-1;
+  background:rgba(184,107,76,.06);
+  border-color:rgba(184,107,76,.22);
+}
+.session-card.full-width:hover{
+  background:rgba(184,107,76,.1);
+  border-color:rgba(184,107,76,.38);
+}
+.featured-badge{
+  display:inline-block;padding:4px 14px;
+  background:var(--terra);color:var(--cream);
+  border-radius:40px;font-size:9.5px;letter-spacing:.18em;
+  text-transform:uppercase;margin-bottom:18px;
+}
+.session-type-row{
+  font-size:10px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--terra);margin-bottom:20px;
+  display:flex;align-items:center;gap:10px;
+}
+.s-dot{width:4px;height:4px;border-radius:50%;background:var(--terra);flex-shrink:0;}
+.session-name{
+  font-family:var(--serif);font-size:32px;font-weight:300;font-style:italic;
+  color:var(--bone);line-height:1.1;margin-bottom:6px;
+}
+.session-subtitle{
+  font-family:var(--serif);font-style:italic;
+  font-size:13px;color:rgba(107,165,160,.7);margin-bottom:20px;
+}
+.session-price{
+  font-family:var(--serif);font-size:36px;font-weight:300;
+  color:var(--bone);letter-spacing:-.01em;margin-bottom:4px;
+}
+.session-saving{
+  display:inline-block;background:rgba(107,165,160,.15);
+  color:var(--glass-l);font-size:10px;letter-spacing:.15em;
+  text-transform:uppercase;padding:3px 12px;border-radius:40px;
+  margin-left:12px;vertical-align:middle;
+}
+.session-price-note{
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(107,165,160,.55);margin-bottom:24px;
+}
+.session-rule{width:28px;height:0.5px;background:rgba(107,165,160,.35);margin-bottom:24px;}
+.session-desc{
+  font-size:13.5px;font-weight:300;line-height:1.9;
+  color:rgba(158,184,181,.8);margin-bottom:28px;
+}
+.session-list{list-style:none;margin-bottom:36px;}
+.session-list li{
+  font-size:12.5px;font-weight:300;color:var(--glass-l);
+  padding:7px 0;display:flex;align-items:center;gap:12px;
+  border-bottom:0.5px solid rgba(107,165,160,.08);
+}
+.session-list li:last-child{border-bottom:none;}
+.session-list li::before{
+  content:'';width:4px;height:4px;border-radius:50%;
+  background:var(--glass);flex-shrink:0;
+}
+.session-link{
+  display:inline-block;font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--glass);
+  border-bottom:0.5px solid rgba(107,165,160,.5);padding-bottom:3px;
+  transition:color .3s,border-color .3s;
+}
+.session-link:hover{color:var(--glass-l);border-color:var(--glass-l);}
+.session-card.featured .session-link{
+  display:inline-block;padding:14px 36px;
+  background:var(--glass);color:var(--dark);
+  border:none;border-radius:2px;font-weight:500;
+  transition:background .3s,transform .2s;
+}
+.session-card.featured .session-link:hover{background:var(--glass-l);transform:translateY(-2px);}
+.waitlist-note{
+  margin-top:20px;padding-top:18px;
+  border-top:0.5px solid rgba(107,165,160,.15);
+  font-size:11px;font-weight:300;line-height:1.75;
+  color:rgba(232,221,208,.42);letter-spacing:.02em;
+}
+.session-card.featured .waitlist-note{color:rgba(232,221,208,.55);}
+.featured-inner{
+  display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:start;
+}
+
+/* === WHICH PACKAGE === */
+#which{
+  background:var(--cream);padding:100px 64px;
+}
+.which-inner{max-width:860px;margin:0 auto;}
+.which-h2{
+  font-family:var(--serif);font-size:clamp(32px,3.5vw,46px);
+  font-weight:300;color:#1A2D2B;line-height:1.1;margin-bottom:16px;
+}
+.which-h2 em{font-style:italic;color:var(--weed);}
+.which-intro{
+  font-size:14px;font-weight:300;line-height:1.9;
+  color:#484840;margin-bottom:48px;max-width:580px;
+}
+.which-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.which-card{
+  padding:32px;border:0.5px solid rgba(46,93,88,.14);
+  border-radius:4px;background:#fff;
+}
+.which-card-name{
+  font-family:var(--serif);font-size:20px;font-style:italic;
+  font-weight:300;color:#1A2D2B;margin-bottom:14px;
+}
+.which-card-for{
+  font-size:12px;font-weight:300;line-height:1.85;
+  color:#686860;
+}
+.which-card-tag{
+  display:inline-block;margin-top:20px;
+  font-size:9px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--weed);border-bottom:0.5px solid rgba(46,93,88,.3);
+  padding-bottom:3px;
+}
+
+/* === BEFORE YOU BOOK === */
+#before{
+  background:var(--dark);padding:100px 64px;
+  position:relative;overflow:hidden;
+}
+#before::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.01) 0,rgba(255,255,255,.01) 1px,transparent 1px,transparent 9px);
+}
+.before-inner{
+  max-width:780px;margin:0 auto;
+  position:relative;z-index:1;
+}
+.before-h2{
+  font-family:var(--serif);font-size:clamp(32px,3.5vw,46px);
+  font-weight:300;color:var(--bone);line-height:1.1;margin-bottom:32px;
+}
+.before-h2 em{font-style:italic;color:var(--glass);}
+.before-body{
+  font-size:14px;font-weight:300;line-height:2;
+  color:rgba(232,221,208,.65);margin-bottom:20px;
+}
+.before-body em{font-style:italic;color:var(--glass-l);}
+.before-body strong{font-weight:400;color:var(--bone);}
+.before-highlight{
+  margin-top:40px;padding:32px 36px;
+  background:rgba(107,165,160,.08);
+  border:0.5px solid rgba(107,165,160,.2);
+  border-radius:4px;border-left:3px solid var(--glass);
+}
+.before-highlight-quote{
+  font-family:var(--serif);font-style:italic;font-size:19px;
+  color:var(--bone);line-height:1.65;margin-bottom:16px;
+}
+.before-highlight-attr{
+  font-size:11px;font-weight:300;color:rgba(107,165,160,.5);
+  letter-spacing:.04em;
+}
+
+/* === FAQ === */
+#faq{
+  background:var(--cream2);padding:120px 64px;
+}
+.faq-inner{max-width:820px;margin:0 auto;}
+.faq-header{margin-bottom:56px;}
+.faq-h2{
+  font-family:var(--serif);font-size:clamp(32px,3.5vw,46px);
+  font-weight:300;color:#1A2D2B;line-height:1.1;margin-bottom:16px;
+}
+.faq-h2 em{font-style:italic;color:var(--weed);}
+.faq-intro{
+  font-size:14px;font-weight:300;line-height:1.9;color:#686860;
+}
+.faq-item{
+  border-bottom:0.5px solid rgba(46,93,88,.15);
+  overflow:hidden;
+}
+.faq-question{
+  width:100%;background:none;border:none;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:28px 0;gap:24px;text-align:left;
+}
+.faq-q-text{
+  font-family:var(--serif);font-size:20px;font-weight:300;
+  color:#1A2D2B;line-height:1.3;
+}
+.faq-icon{
+  width:28px;height:28px;border-radius:50%;
+  border:0.5px solid rgba(46,93,88,.25);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:background .3s,border-color .3s;
+  font-size:16px;color:var(--weed);
+}
+.faq-item.open .faq-icon{
+  background:var(--weed);border-color:var(--weed);color:#fff;
+}
+.faq-answer{
+  max-height:0;overflow:hidden;
+  transition:max-height .5s ease,padding .4s ease;
+  padding:0;
+}
+.faq-item.open .faq-answer{
+  max-height:600px;padding-bottom:28px;
+}
+.faq-answer p{
+  font-size:13.5px;font-weight:300;line-height:1.95;
+  color:#484840;margin-bottom:14px;
+}
+.faq-answer p:last-child{margin-bottom:0;}
+.faq-answer em{font-style:italic;color:var(--weed);}
+.faq-answer strong{font-weight:400;color:#1A2D2B;}
+
+/* === CTA === */
+#cta{
+  background:var(--darker);padding:140px 64px;
+  text-align:center;position:relative;overflow:hidden;
+}
+.cta-rings{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.cta-inner{position:relative;z-index:1;}
+.cta-tag{
+  font-size:10px;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--terra);margin-bottom:24px;
+}
+.cta-headline{
+  font-family:var(--serif);font-size:clamp(38px,5vw,66px);
+  font-weight:300;color:var(--bone);line-height:1.05;margin-bottom:28px;
+}
+.cta-headline em{font-style:italic;color:var(--glass);}
+.cta-sub{
+  font-size:14px;font-weight:300;line-height:2;
+  color:rgba(157,205,200,.7);max-width:480px;margin:0 auto 48px;
+}
+.cta-buttons{display:flex;align-items:center;justify-content:center;gap:24px;}
+.cta-waitlist{
+  margin-top:24px;font-size:12px;font-weight:300;
+  color:rgba(157,205,200,.45);letter-spacing:.04em;
+}
+
+/* === FOOTER === */
+footer{background:var(--darker);padding:72px 64px 40px;border-top:0.5px solid rgba(107,165,160,.08);}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:48px;max-width:1060px;margin:0 auto 56px;
+}
+.footer-brand-logo{
+  font-family:var(--serif);font-size:14px;font-weight:300;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--bone);
+  display:block;margin-bottom:16px;
+}
+.footer-tagline{
+  font-size:12px;font-weight:300;line-height:1.85;
+  color:rgba(107,165,160,.5);max-width:260px;
+}
+.footer-col-head{
+  font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(107,165,160,.4);margin-bottom:20px;
+}
+.footer-list{list-style:none;}
+.footer-list li{margin-bottom:10px;}
+.footer-list a{
+  font-size:12px;font-weight:300;color:rgba(232,221,208,.5);
+  transition:color .3s;
+}
+.footer-list a:hover{color:var(--bone);}
+.footer-newsletter-note{
+  font-size:12px;font-weight:300;line-height:1.85;
+  color:rgba(107,165,160,.45);margin-bottom:16px;
+}
+.nl-row{display:flex;gap:0;}
+.nl-row input{
+  flex:1;background:rgba(107,165,160,.08);border:0.5px solid rgba(107,165,160,.2);
+  border-right:none;padding:10px 16px;color:var(--bone);
+  font-family:var(--sans);font-size:12px;outline:none;
+}
+.nl-row input::placeholder{color:rgba(107,165,160,.35);}
+.nl-row button{
+  background:var(--glass);color:var(--dark);border:none;
+  padding:10px 20px;font-family:var(--sans);font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;cursor:pointer;
+  transition:background .3s;
+}
+.nl-row button:hover{background:var(--glass-l);}
+.footer-bottom{
+  max-width:1060px;margin:0 auto;
+  border-top:0.5px solid rgba(107,165,160,.1);
+  padding-top:28px;display:flex;justify-content:space-between;align-items:center;
+}
+.footer-copy{font-size:11px;font-weight:300;color:rgba(107,165,160,.38);letter-spacing:.04em;}
+.footer-socials{display:flex;gap:22px;}
+.soc-link{
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(107,165,160,.42);transition:color .3s;
+}
+.soc-link:hover{color:var(--glass-l);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .75s ease,transform .75s ease;}
+.reveal.on{opacity:1;transform:translateY(0);}
+.reveal-l{opacity:0;transform:translateX(-30px);transition:opacity .75s ease,transform .75s ease;}
+.reveal-l.on{opacity:1;transform:translateX(0);}
+.reveal-r{opacity:0;transform:translateX(30px);transition:opacity .75s ease,transform .75s ease;}
+.reveal-r.on{opacity:1;transform:translateX(0);}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
+
+/* === WAITLIST MODAL === */
+.wl-backdrop{position:fixed;inset:0;z-index:9000;background:rgba(14,28,26,0.85);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .35s;}
+.wl-backdrop.open{opacity:1;pointer-events:all;}
+.wl-modal{background:var(--dark);width:100%;max-width:520px;border-radius:4px;border:0.5px solid rgba(107,165,160,.22);position:relative;overflow:hidden;transform:translateY(32px) scale(0.97);transition:transform .42s cubic-bezier(.22,1,.36,1);}
+.wl-backdrop.open .wl-modal{transform:translateY(0) scale(1);}
+.wl-accent{height:2px;background:linear-gradient(90deg,var(--terra) 0%,var(--glass) 100%);}
+.wl-close{position:absolute;top:16px;right:18px;background:none;border:none;cursor:pointer;color:rgba(107,165,160,.38);font-size:18px;line-height:1;transition:color .2s;padding:6px;}
+.wl-close:hover{color:rgba(107,165,160,.75);}
+.wl-body{padding:42px 46px 46px;}
+.wl-eyebrow{font-size:9.5px;letter-spacing:.38em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:14px;}
+.wl-eyebrow-line{width:28px;height:0.5px;background:var(--terra);}
+.wl-title{font-family:var(--serif);font-size:38px;font-weight:300;font-style:italic;color:var(--bone);line-height:1.08;margin-bottom:10px;}
+.wl-sub{font-size:13px;font-weight:300;line-height:1.85;color:rgba(157,205,200,.6);margin-bottom:30px;}
+.wl-session-label{display:block;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(157,205,200,.45);margin-bottom:10px;}
+.wl-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+.wl-pill{padding:9px 16px;border-radius:2px;cursor:pointer;font-family:var(--sans);font-size:10.5px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;border:0.5px solid rgba(107,165,160,.26);color:rgba(157,205,200,.6);background:transparent;transition:all .2s;}
+.wl-pill:hover{border-color:var(--glass);color:var(--glass-l);}
+.wl-pill.active{background:rgba(107,165,160,.13);border-color:var(--glass);color:var(--glass-l);}
+.wl-row{margin-bottom:15px;}
+.wl-row label{display:block;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(157,205,200,.45);margin-bottom:8px;}
+.wl-row input,.wl-row textarea{width:100%;padding:13px 16px;background:rgba(255,255,255,.04);border:0.5px solid rgba(107,165,160,.24);border-radius:2px;color:var(--bone);font-family:var(--sans);font-size:13px;font-weight:300;outline:none;transition:border-color .25s;resize:none;}
+.wl-row input::placeholder,.wl-row textarea::placeholder{color:rgba(107,165,160,.28);}
+.wl-row input:focus,.wl-row textarea:focus{border-color:rgba(107,165,160,.55);}
+.wl-row input.wl-error{border-color:rgba(184,107,76,.65);}
+.wl-submit{width:100%;margin-top:10px;padding:16px;background:var(--terra);border:none;border-radius:2px;color:var(--cream);font-family:var(--sans);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:background .3s,transform .2s;}
+.wl-submit:hover{background:var(--terra-l);transform:translateY(-2px);}
+.wl-note{font-size:11px;font-weight:300;color:rgba(107,165,160,.35);margin-top:14px;text-align:center;line-height:1.65;}
+.wl-success{display:none;text-align:center;padding:64px 46px;}
+.wl-success.show{display:block;}
+.wl-success-ring{width:52px;height:52px;border-radius:50%;border:0.5px solid rgba(107,165,160,.38);display:flex;align-items:center;justify-content:center;margin:0 auto 26px;color:var(--glass);font-size:22px;}
+.wl-success-title{font-family:var(--serif);font-size:34px;font-weight:300;font-style:italic;color:var(--bone);margin-bottom:12px;}
+.wl-success-body{font-size:13px;font-weight:300;line-height:1.85;color:rgba(157,205,200,.6);max-width:320px;margin:0 auto 34px;}
+</style>
+<link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile-menu" id="navMobileMenu" style="display:none;">
+  <button class="nav-mobile-close" id="navMobileClose" aria-label="Close menu">&#x2715;</button>
+  <ul>
+      <li><a href="kinesiology.html">Kinesiology</a></li>
+      <li><a href="sessions.html">Sessions</a></li>
+      <li><a href="about.html">Anita</a></li>
+      <li><a href="musings.html">Musings</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+    <li><a href="#" onclick="openWaitlist('');return false;" class="nav-mobile-cta">Join the Waitlist</a></li>
+  </ul>
+</div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">Barefoot Kinesiologist</a>
+  <ul class="nav-links">
+    <li><a href="kinesiology.html">Kinesiology</a></li>
+    <li><a href="sessions.html" style="color:var(--bone);">Sessions</a></li>
+    <li><a href="about.html">Anita</a></li>
+    <li><a href="musings.html">Musings</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
+    <li><a href="#" class="nav-cta" onclick="openWaitlist('');return false;">Join the Waitlist</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grain"></div>
+  <div class="hero-rings">
+    <svg aria-hidden="true" width="500" height="500" viewBox="0 0 500 500" fill="none">
+      <circle cx="250" cy="250" r="230" stroke="rgba(107,165,160,0.07)" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="170" stroke="rgba(107,165,160,0.1)" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="110" stroke="rgba(107,165,160,0.14)" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="50" stroke="rgba(107,165,160,0.12)" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="4" fill="rgba(107,165,160,0.3)"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>Sessions · Choose your path</span>
+    </div>
+    <h1 class="hero-headline">
+      The work of coming<br>home to <em>yourself</em>
+    </h1>
+    <p class="hero-sub">
+      All sessions are offered online — live or recorded — wherever you are in the world. You don't need to arrive prepared, rehearsed, or knowing where to start. The body does the navigating.
+    </p>
+  </div>
+</section>
+
+<!-- REASSURANCE BAND -->
+<section id="reassurance">
+  <div class="reassurance-inner">
+    <div class="reassurance-left reveal-l">
+      <div class="reassurance-tag">Before we begin</div>
+      <h2 class="reassurance-h2">
+        "Good luck with me" —<br>she said, <em>half joking.</em>
+      </h2>
+      <p class="reassurance-body">
+        Anita has heard this more times than she can count. The woman who arrives laughing about how much she has to work on. Who is half joking — and half genuinely afraid of what might come up.
+      </p>
+      <p class="reassurance-body">
+        Here is the truth that changes everything: <strong>your body will only ever bring up what you are ready to heal.</strong> Not the biggest thing. Not the most frightening thing. The thing that is actually ready to move, right now, in this moment.
+      </p>
+      <p class="reassurance-body">
+        The body is not only wise. It is kind. In Anita's experience, the work surfaces only what you are ready to hold, and it unfolds at exactly the pace that is right for you — and only you get to set that pace.
+      </p>
+    </div>
+    <div class="reassurance-right reveal-r">
+      <div class="reassurance-card">
+        <div class="reassurance-card-eyebrow">A real session story</div>
+        <p class="reassurance-card-quote">
+          "She arrived carrying years of loss, difficult family relationships, and the weight of things she had witnessed growing up. She was braced for the hardest things to surface first.
+          <br><br>
+          What came up was body image. How she felt in her own skin that week. The way she was doing everything right and still not feeling at home in herself. It was about self-love — and whether she believed she was worthy of it.
+          <br><br>
+          That was what her body was ready for. Not the avalanche. The thing that was actually ready to move."
+        </p>
+        <div class="reassurance-card-attr">— Anita, on a client session (shared with permission)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SESSIONS -->
+<section id="sessions">
+  <div class="section-header reveal">
+    <div class="section-tag">The offerings</div>
+    <h2 class="section-title">Choose your <em>path</em></h2>
+    <p class="section-subtitle">All sessions are live or recorded · 100% online · available worldwide. Anita works with a small number of women at any one time — each one held with her full attention.</p>
+    <p class="section-subtitle" style="margin-top:14px;font-size:12.5px;opacity:.85;">All prices in AUD. A <em>live</em> session happens with you on Zoom in real time. A <em>recorded</em> session is conducted by Anita on your behalf and sent to you to watch back in your own time — ideal for different time zones or unpredictable schedules.</p>
+  </div>
+
+  <div class="sessions-grid">
+
+    <!-- FIRST SESSION -->
+    <div class="session-card reveal d1" style="grid-column:1/-1;">
+      <div class="session-type-row"><span class="s-dot"></span>First Session</div>
+      <h3 class="session-name">First<br>Steps</h3>
+      <div class="session-price">$150</div>
+      <div class="session-price-note">75 minutes · live or recorded · online</div>
+      <div class="session-rule"></div>
+      <p class="session-desc">The beginning of the conversation — with Anita, and with yourself. Longer than a standard session to allow space for a full intake, intention setting, and your first experience of what EMK actually feels like in the body.</p>
+      <ul class="session-list">
+        <li>Full intake & intention setting</li>
+        <li>EMK muscle monitoring biofeedback</li>
+        <li>Emotional release & rebalancing</li>
+        <li>Post-session integration notes</li>
+      </ul>
+      <a href="#" class="session-link" onclick="openWaitlist('The First Step Session');return false;">Join the waitlist →</a>
+      <p class="waitlist-note">Spaces are limited. Join the waitlist and Anita will be in touch when availability opens.</p>
+    </div>
+
+    <!-- REWILD PACKAGE - FEATURED -->
+    <div class="session-card featured reveal d3">
+      <div class="featured-badge">The heart of the work</div>
+      <div class="featured-inner">
+        <div class="featured-left">
+          <div class="session-type-row"><span class="s-dot" style="background:var(--glass-l);"></span>Deep Immersion</div>
+          <h3 class="session-name">The Rewild<br>Package</h3>
+          <div class="session-subtitle">Your unbecoming, held.</div>
+          <div class="session-price">$699 <span class="session-saving">Save $101</span></div>
+          <div class="session-price-note">1 × 75 min + 5 × 60 min · 3 months · online</div>
+          <div class="session-rule" style="background:rgba(107,165,160,.5);"></div>
+          <p class="session-desc">A three-month container for women ready to stop living on autopilot and start choosing themselves. Six sessions that build on each other — shedding what was never yours, returning to what always was.</p>
+          <a href="#" class="session-link" onclick="openWaitlist('The Rewild Package');return false;">Join the waitlist</a>
+          <p class="waitlist-note">Anita works with a small number of Rewild clients at any one time. Join the waitlist to secure your place when a space opens.</p>
+        </div>
+        <div class="featured-right">
+          <ul class="session-list" style="margin-bottom:0;">
+            <li>1 × 75-minute first session</li>
+            <li>5 × 60-minute EMK sessions</li>
+            <li>Personalised integration practices</li>
+            <li>Personalised guided journaling</li>
+            <li>Session transcripts</li>
+            <li>Full value $800 — save $101</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEADY TIDES -->
+    <div class="session-card full-width reveal d4">
+      <div class="session-type-row"><span class="s-dot" style="background:var(--terra);"></span>Ongoing Support</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;" class="steady-tides-inner">
+        <div>
+          <h3 class="session-name">Steady<br>Tides</h3>
+          <div class="session-price">$130</div>
+          <div class="session-price-note">60 minutes · monthly · live or recorded · online</div>
+          <div class="session-rule" style="background:rgba(184,107,76,.35);"></div>
+          <p class="session-desc">A steady, monthly anchor as life keeps unfolding. For women ready to keep choosing themselves — season after season — with Anita holding the thread.</p>
+        </div>
+        <div>
+          <ul class="session-list">
+            <li>Monthly 60-minute EMK session</li>
+            <li>Seasonal check-ins & themes</li>
+            <li>Flexible pause & restart</li>
+            <li>Priority booking access</li>
+          </ul>
+          <a href="#" class="session-link" onclick="openWaitlist('Steady Tides');return false;">Join the waitlist →</a>
+          <p class="waitlist-note">Spaces are limited. Join the waitlist and Anita will be in touch when availability opens.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHICH PACKAGE IS RIGHT FOR ME -->
+<section id="which">
+  <div class="which-inner">
+    <div class="section-eyebrow reveal" style="color:var(--terra);">
+      <div class="eyebrow-line"></div>
+      Not sure where to start?
+    </div>
+    <h2 class="which-h2 reveal d1">Which path is <em>right for you</em></h2>
+    <p class="which-intro reveal d2">Every woman arrives differently. Here is a simple guide to help you find the right starting point — and remember, Anita is always happy to chat through what feels right before you commit to anything.</p>
+    <div class="which-grid">
+      <div class="which-card reveal d1">
+        <div class="which-card-name">First Steps</div>
+        <p class="which-card-for">You are curious about EMK but have never experienced it before. You want to feel it in your body before committing to a longer journey. You are in The Pull — you feel something calling, and you want to understand it.</p>
+        <span class="which-card-tag">Start here</span>
+      </div>
+      <div class="which-card reveal d2">
+        <div class="which-card-name">The Rewild Package</div>
+        <p class="which-card-for">You know something needs to shift. You are done circling the same patterns. You are ready to commit to real, sustained change — and you want to be properly held through it. This is The Turning.</p>
+        <span class="which-card-tag">The heart of the work</span>
+      </div>
+      <div class="which-card reveal d3">
+        <div class="which-card-name">Steady Tides</div>
+        <p class="which-card-for">You have done some of the work — with Anita or elsewhere — and you want a steady monthly anchor as life keeps unfolding. You are living from The Shore and you want to keep choosing yourself, season by season.</p>
+        <span class="which-card-tag">Ongoing support</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE YOU BOOK -->
+<section id="before">
+  <div class="before-inner">
+    <div class="section-eyebrow reveal" style="color:var(--terra);">
+      <div class="eyebrow-line"></div>
+      Before you book
+    </div>
+    <h2 class="before-h2 reveal d1">
+      You don't need to arrive<br><em>ready.</em> You just need to arrive.
+    </h2>
+    <p class="before-body reveal d2">
+      Anita has worked with women who came into their first session with years of therapy behind them and still felt afraid. Women who laughed nervously and said <em>"you're going to need more than one session for me."</em> Women who weren't sure they believed any of this would work.
+    </p>
+    <p class="before-body reveal d2">
+      All of them were welcome. All of them were met exactly where they were.
+    </p>
+    <p class="before-body reveal d2">
+      You don't need to know what is wrong. You don't need to have a tidy story prepared. You don't need to be ready to talk about the big things — because your body will decide what is ready to move, and it will begin there. <strong>Not with the hardest thing. With the thing that is actually ready.</strong>
+    </p>
+    <p class="before-body reveal d2">
+      You also don't need to feel embarrassed about what you are carrying. In every session Anita has held — through her certification training and beyond — nothing has been too much. The women who arrive convinced they are the most complicated case she has ever seen — they never are. They are just human. And that is more than enough to work with.
+    </p>
+    <div class="before-highlight reveal d3">
+      <p class="before-highlight-quote">
+        "The body is not a courtroom. It does not judge what you bring. It simply shows you what is ready — and then it shows you the way through."
+      </p>
+      <div class="before-highlight-attr">— Anita Gibbons · EMK Practitioner</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-inner">
+    <div class="faq-header reveal">
+      <div class="section-eyebrow" style="color:var(--terra);">
+        <div class="eyebrow-line"></div>
+        Questions
+      </div>
+      <h2 class="faq-h2">Everything you want<br>to know before <em>beginning</em></h2>
+      <p class="faq-intro">Honest answers to the questions Anita gets asked most often — including the ones women are sometimes too nervous to ask out loud.</p>
+    </div>
+
+    <div class="faq-item reveal d1">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-q-text">How do online sessions work?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>All sessions take place via Zoom or a similar video platform — live or recorded, depending on what works best for you. You will need a quiet space where you feel comfortable and won't be disturbed.</p>
+        <p>Within kinesiology, EMK is understood to work through the body's energy systems rather than physical touch, so distance is not a barrier to the practice. Anita uses surrogate muscle testing — a long-established approach in kinesiology — using her own body to tune into yours. In her experience, and in the experience of the women she works with, online sessions feel every bit as clear and meaningful as being in the same room.</p>
+        <p>Before your session Anita will send you everything you need to know so you can arrive feeling settled and prepared.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal d2">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-q-text">What is the difference between a live and recorded session?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>A live session takes place in real time via video call — you and Anita are present together, and you can ask questions, share what you are experiencing, and have a conversation about what comes up.</p>
+        <p>A recorded session is conducted by Anita on your behalf and recorded so you can watch it back in your own time. This option suits women in different time zones, those with unpredictable schedules, or anyone who finds it easier to receive the session privately rather than live.</p>
+        <p>Both are equally effective. The right choice is simply the one that works best for your life.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal d3">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-q-text">I have so much to work on. Where do we even start?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>This is the most common thing Anita hears — usually said half laughing, half genuinely worried. And it is one of the most important things to understand before your first session: <em>you do not get to choose where we start. Your body does.</em></p>
+        <p>The body's intelligence is extraordinary. It will not bring up something you are not ready to handle. It works on what is actually ready to move — and that is not always what you expect.</p>
+        <p>One client arrived carrying years of loss, difficult family relationships, and things she had witnessed growing up. She was braced for the hardest things to surface. What came up was body image — how she felt in her skin that particular week, the way she was doing all the right things but not feeling at home in herself. It was about self-love and whether she believed she was worthy of it. That was what was ready. The body knew.</p>
+        <p>Come with everything. Arrive with nothing prepared. The body will take it from there.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal d1">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-q-text">What actually happens in a session?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Each session begins with a conversation. Anita will ask what is present for you right now — what you are carrying, what you would like to work on, what feels most alive or most stuck. You don't need to have an answer. Even "I don't know, I just knew I needed this" is a perfect starting point.</p>
+        <p>From there, Anita uses muscle monitoring as a biofeedback tool — a way of asking your body directly what it needs and what it is holding. Emotions, beliefs, and patterns that are ready to shift rise to the surface and are released and rebalanced.</p>
+        <p>Sessions close with Anita bringing your energy back to the present and discussing any integration practices — simple things to support what has been opened — before you go.</p>
+        <p>Most women describe feeling lighter, clearer, or more settled after a session. Some feel emotional. Some feel surprisingly calm. There is no right way to feel — the body responds in whatever way is right for it.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal d2">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-q-text">Will big trauma come up? I'm worried about what might surface.</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>This is the fear underneath almost every "good luck with me" — and it is completely understandable.</p>
+        <p>The answer is: your body will only bring up what you are ready to heal. It will not ambush you with something you cannot hold. If you are carrying deep trauma, it does not surface before you are ready for it. The body is wise about this. It works in layers, in its own order, at its own pace.</p>
+        <p>EMK is not about forcing anything to the surface. It is about listening to what is already trying to move — and supporting it with care, in a container that feels safe.</p>
+        <p>You are always in control of the pace. Nothing happens without your body's own readiness.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal d3">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-q-text">Do I need to have done kinesiology before?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Not at all. Most women who come to Anita have never experienced kinesiology before. First Steps is designed specifically for this — it gives you more time, a full explanation of how EMK works, and space to settle before anything begins.</p>
+        <p>All you need to bring is an open mind and a willingness to be honest. Everything else Anita provides.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal d1">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-q-text">What if I'm sceptical? I'm not sure I believe in this.</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Scepticism is welcome. It does not interfere with the work — in fact, some of the most profound shifts Anita has witnessed have happened with women who came in convinced nothing would happen.</p>
+        <p>EMK works through the body's energy systems, not through belief. You don't need to believe in it for it to work any more than you need to believe in gravity for it to affect you.</p>
+        <p>If you are curious enough to be reading this page, that is enough to begin.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal d2">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-q-text">How many sessions will I need?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>This varies for every woman and depends on what you are working through, how long patterns have been in place, and how your body integrates the work between sessions.</p>
+        <p>Some women feel significant shifts after a single session. Others find that a longer container — like The Rewild Package — allows for deeper, more sustained change as sessions build on each other over time.</p>
+        <p>Anita will never push you toward more than you need. After your first session she will share her honest sense of what feels right for where you are.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal d3">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-q-text">How do I join the waitlist?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Simply click any of the waitlist buttons on this page and send Anita a message. Let her know which session or package you are interested in, and a little about where you are right now — even a sentence or two is enough.</p>
+        <p>Anita works with a small number of women at any one time so that each client receives her full attention. She will be in touch when a space opens, or to have a conversation if you are not sure which option is right for you.</p>
+        <p>There is no pressure and no obligation. The waitlist is simply a way of saying: <em>I am ready when the time is right.</em></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-rings">
+    <svg aria-hidden="true" width="700" height="700" viewBox="0 0 700 700" fill="none">
+      <circle cx="350" cy="350" r="320" stroke="rgba(107,165,160,0.06)" stroke-width="0.5"/>
+      <circle cx="350" cy="350" r="240" stroke="rgba(107,165,160,0.09)" stroke-width="0.5"/>
+      <circle cx="350" cy="350" r="160" stroke="rgba(107,165,160,0.12)" stroke-width="0.5"/>
+      <circle cx="350" cy="350" r="80" stroke="rgba(107,165,160,0.09)" stroke-width="0.5"/>
+    </svg>
+  </div>
+  <div class="cta-inner">
+    <div class="cta-tag reveal">The shore</div>
+    <h2 class="cta-headline reveal d1">
+      You have already<br>felt <em>the pull.</em>
+    </h2>
+    <p class="cta-sub reveal d2">
+      That persistent feeling that there is more — that is not restlessness. That is recognition. You don't need a plan. You just need the brave decision to begin.
+    </p>
+    <div class="cta-buttons reveal d3">
+      <a href="#" class="btn-primary" onclick="openWaitlist('');return false;">Join the waitlist</a>
+      <a href="about.html" class="btn-ghost">Meet Anita first</a>
+    </div>
+    <p class="cta-waitlist reveal d4">Anita works with a small number of women at any one time. Joining the waitlist reserves your place.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="footer-brand-logo">Barefoot Kinesiologist</a>
+      <p class="footer-tagline">Emotions &amp; Metaphysical Kinesiology for women ready to stop performing and start living. Online &mdash; live or recorded &mdash; available worldwide.</p>
+    </div>
+    <div>
+      <div class="footer-col-head">Navigate</div>
+      <ul class="footer-list">
+        <li><a href="kinesiology.html">What is Kinesiology</a></li>
+        <li><a href="sessions.html">Sessions &amp; Pricing</a></li>
+        <li><a href="about.html">About Anita</a></li>
+        <li><a href="musings.html">Musings</a></li>
+        <li><a href="journal-prompts.html">The Unbecoming Journal</a></li>
+        <li><a href="quiz.html">Take the Quiz</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-head">Connect</div>
+      <ul class="footer-list">
+        <li><a href="#" onclick="openWaitlist('');return false;">Join the Waitlist</a></li>
+        <li><a href="mailto:hello@thebarefootkinesiologist.com">Send an Enquiry</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="booking-terms.html">Booking Terms</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-head">Stay connected</div>
+      <p class="footer-newsletter-note">Slow words on kinesiology, the natural world, authentic living, and what it means to come home to yourself &mdash; sent with intention, never rushed.</p>
+      <form class="nl-row" name="newsletter" method="POST" data-netlify="true" action="thank-you.html">
+        <input type="hidden" name="form-name" value="newsletter">
+        <input type="email" name="email" required placeholder="Your email address" aria-label="Email address">
+        <button type="submit">Join</button>
+      </form>
+    </div>
+  </div>
+
+  <p class="footer-disclaimer" style="max-width:1060px;margin:0 auto 36px;font-size:11.5px;font-weight:300;line-height:1.8;color:rgba(158,184,181,.5);">
+    Kinesiology is a complementary wellbeing practice and is not a substitute for medical or mental-health care. Anita does not diagnose, treat, or cure any physical or psychological condition, and nothing on this site is medical advice. Please continue to work with your GP or a qualified mental-health professional for any health concern. If you need support now, in Australia you can call Lifeline on 13 11 14 &mdash; or 000 in an emergency. <a href="disclaimer.html" style="color:rgba(158,184,181,.75);border-bottom:0.5px solid rgba(158,184,181,.4);">Read the full disclaimer</a>.
+  </p>
+
+  <div class="footer-bottom">
+    <div class="footer-copy">&copy; 2026 Barefoot Kinesiologist &middot; Anita Gibbons &middot; Western Australia</div>
+    <div class="footer-socials"></div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('on');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+document.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach(el => observer.observe(el));
+
+// FAQ accordion
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => {
+    el.classList.remove('open');
+    el.querySelector('.faq-icon').textContent = '+';
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    btn.querySelector('.faq-icon').textContent = '×';
+  }
+}
+</script>
+
+<script>
+// === MOBILE NAV ===
+(function(){
+  var hamburger = document.getElementById('navHamburger');
+  var menu      = document.getElementById('navMobileMenu');
+  var closeBtn  = document.getElementById('navMobileClose');
+  if(!hamburger || !menu) return;
+
+  function openMenu(){
+    menu.style.display = 'flex';
+    setTimeout(function(){ menu.classList.add('open'); }, 10);
+    hamburger.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu(){
+    menu.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(function(){ menu.style.display = 'none'; }, 300);
+  }
+
+  hamburger.addEventListener('click', function(){
+    menu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  if(closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+  // close on link click
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+})();
+</script>
+
+<!-- WAITLIST MODAL -->
+<!-- Netlify form detection (hidden) -->
+<form name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name"><input type="email" name="email">
+  <input type="text" name="session"><textarea name="message"></textarea>
+  <input type="text" name="bot-field">
+</form>
+<div class="wl-backdrop" id="wlBackdrop">
+  <div class="wl-modal">
+    <div class="wl-accent"></div>
+    <button class="wl-close" onclick="closeWaitlist()" aria-label="Close">&#x2715;</button>
+    <div id="wlFormView">
+      <div class="wl-body">
+        <div class="wl-eyebrow"><div class="wl-eyebrow-line"></div>Reserve your place</div>
+        <h2 class="wl-title">Join the waitlist</h2>
+        <p class="wl-sub">Send Anita a note and she will be in touch personally when a space opens &mdash; or sooner, if you have questions.</p>
+        <span class="wl-session-label">I&rsquo;m interested in&hellip;</span>
+        <div class="wl-pills" id="wlPillGroup">
+          <button class="wl-pill" onclick="wlSelectPill(this)">The First Step Session</button>
+          <button class="wl-pill" onclick="wlSelectPill(this)">The Rewild Package</button>
+          <button class="wl-pill" onclick="wlSelectPill(this)">Steady Tides</button>
+          <button class="wl-pill" onclick="wlSelectPill(this)">Not sure yet</button>
+        </div>
+        <div class="wl-row">
+          <label for="wlName">Your first name</label>
+          <input type="text" id="wlName" placeholder="First name">
+        </div>
+        <div class="wl-row">
+          <label for="wlEmail">Your email address</label>
+          <input type="email" id="wlEmail" placeholder="Email address">
+        </div>
+        <div class="wl-row">
+          <label for="wlMsg">Where are you right now? <span style="opacity:.4;font-size:9px;letter-spacing:.05em;text-transform:none;">optional</span></label>
+          <textarea id="wlMsg" rows="3" placeholder="A little about what brought you here..."></textarea>
+        </div>
+        <button class="wl-submit" onclick="wlSubmit()">Send my details to Anita</button>
+        <p class="wl-note">No pressure, no obligation. Anita will be in touch personally.</p>
+      </div>
+    </div>
+    <div class="wl-success" id="wlSuccess">
+      <div class="wl-success-ring">&#x2713;</div>
+      <h3 class="wl-success-title">You are on the list.</h3>
+      <p class="wl-success-body">Anita will be in touch personally when a space opens &mdash; or sooner if you have questions. In the meantime, keep exploring.</p>
+      <button class="btn-ghost" onclick="closeWaitlist()">Continue reading</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var wlSession = '';
+function openWaitlist(session) {
+  wlSession = session || '';
+  document.querySelectorAll('.wl-pill').forEach(function(p){
+    p.classList.toggle('active', p.textContent.trim() === wlSession);
+  });
+  document.getElementById('wlBackdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeWaitlist() {
+  document.getElementById('wlBackdrop').classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(function(){
+    var fv = document.getElementById('wlFormView');
+    var sv = document.getElementById('wlSuccess');
+    if(fv) fv.style.display = '';
+    if(sv) sv.classList.remove('show');
+    var n = document.getElementById('wlName');
+    var e = document.getElementById('wlEmail');
+    var m = document.getElementById('wlMsg');
+    if(n){n.value='';n.classList.remove('wl-error');}
+    if(e){e.value='';e.classList.remove('wl-error');}
+    if(m) m.value='';
+    document.querySelectorAll('.wl-pill').forEach(function(p){p.classList.remove('active');});
+  }, 400);
+}
+function wlSelectPill(el) {
+  document.querySelectorAll('.wl-pill').forEach(function(p){p.classList.remove('active');});
+  el.classList.add('active');
+  wlSession = el.textContent.trim();
+}
+function wlSubmit() {
+  var nEl = document.getElementById('wlName');
+  var eEl = document.getElementById('wlEmail');
+  var name = nEl.value.trim();
+  var email = eEl.value.trim();
+  nEl.classList.toggle('wl-error', !name);
+  eEl.classList.toggle('wl-error', !email);
+  if (!name || !email) return;
+  var msg = document.getElementById('wlMsg') ? document.getElementById('wlMsg').value.trim() : '';
+  var payload = new URLSearchParams({
+    'form-name': 'waitlist',
+    'name': name,
+    'email': email,
+    'session': wlSession || 'General',
+    'message': msg
+  }).toString();
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: payload
+  }).catch(function (err) { console.error('Waitlist submit error:', err); });
+  document.getElementById('wlFormView').style.display = 'none';
+  document.getElementById('wlSuccess').classList.add('show');
+}
+document.addEventListener('DOMContentLoaded', function(){
+  var bd = document.getElementById('wlBackdrop');
+  if(bd) bd.addEventListener('click', function(e){ if(e.target===this) closeWaitlist(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeWaitlist(); });
+});
+</script>
+</body>
+</html>

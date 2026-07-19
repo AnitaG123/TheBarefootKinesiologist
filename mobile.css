@@ -1,0 +1,480 @@
+/* ============================================================
+   BAREFOOT KINESIOLOGIST — SHARED MOBILE STYLES
+   Add this file to every page:
+   <link rel="stylesheet" href="mobile.css">
+   ============================================================ */
+
+/* ============================================================
+   TABLET — max-width: 768px
+   Collapse 2-col and 3-col grids, reduce padding
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* --- NAV --- */
+  nav {
+    padding: 20px 24px !important;
+  }
+  nav.scrolled {
+    padding: 14px 24px !important;
+  }
+  .nav-links {
+    display: none;
+  }
+  .nav-hamburger {
+    display: flex;
+  }
+  .nav-mobile-menu {
+    display: flex;
+  }
+
+  /* --- HERO --- */
+  #hero, #page-hero {
+    padding: 0 24px 64px;
+    min-height: 85vh;
+  }
+  .hero-rings,
+  .page-hero-rings {
+    display: none;
+  }
+  .hero-photo-overlay {
+    background:
+      linear-gradient(180deg, rgba(19,44,40,.88) 0%, rgba(19,44,40,.78) 45%, rgba(19,44,40,.6) 75%, rgba(19,44,40,.5) 100%) !important;
+  }
+  .hero-photo-bg img {
+    object-position: 60% 18% !important;
+  }
+  .page-hero-inner {
+    grid-template-columns: 1fr !important;
+    padding-bottom: 0 !important;
+    gap: 36px !important;
+  }
+  .page-hero-photo-wrap {
+    order: -1;
+  }
+  .page-hero-photo {
+    max-width: 260px !important;
+  }
+
+  /* --- SECTION PADDING --- */
+  #reassurance,
+  #sessions,
+  #which,
+  #before,
+  #faq,
+  #cta,
+  #leadmagnet,
+  #preview,
+  #whyjournal,
+  #articles,
+  #process,
+  #forwho,
+  #anita,
+  #testimonials,
+  #journal,
+  #intro,
+  #philosophy,
+  #story,
+  #framework,
+  #values,
+  #session-explainer,
+  #misconceptions,
+  #beforebook,
+  footer {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  #reassurance   { padding-top: 64px; padding-bottom: 64px; }
+  #sessions      { padding-top: 80px; padding-bottom: 80px; }
+  #which         { padding-top: 64px; padding-bottom: 64px; }
+  #before        { padding-top: 64px; padding-bottom: 64px; }
+  #faq           { padding-top: 80px; padding-bottom: 80px; }
+  #cta           { padding-top: 80px; padding-bottom: 80px; }
+  #leadmagnet    { padding-top: 80px; padding-bottom: 80px; }
+  #preview       { padding-top: 80px; padding-bottom: 80px; }
+  #whyjournal    { padding-top: 64px; padding-bottom: 64px; }
+  #articles      { padding-top: 80px; padding-bottom: 80px; }
+  #process       { padding-top: 80px; padding-bottom: 80px; }
+  #forwho        { padding-top: 80px; padding-bottom: 80px; }
+  #anita         { padding-top: 80px; padding-bottom: 80px; }
+  #testimonials  { padding-top: 80px; padding-bottom: 80px; }
+  #journal       { padding-top: 80px; padding-bottom: 80px; }
+  #story         { padding-top: 80px; padding-bottom: 80px; }
+  #framework     { padding-top: 80px; padding-bottom: 80px; }
+  #values        { padding-top: 80px; padding-bottom: 80px; }
+  #beforebook    { padding-top: 64px; padding-bottom: 64px; }
+  #session-explainer { padding-top: 64px; padding-bottom: 64px; }
+  #misconceptions { padding-top: 64px; padding-bottom: 64px; }
+  footer         { padding-top: 60px !important; padding-bottom: 32px !important; }
+
+  /* --- 2-COLUMN GRIDS → SINGLE COLUMN --- */
+  .reassurance-inner,
+  .leadmagnet-inner,
+  .whyjournal-inner,
+  .forwho-inner,
+  .beforebook-grid,
+  .anita-inner {
+    grid-template-columns: 1fr !important;
+    gap: 48px !important;
+  }
+
+  /* --- 3-COLUMN GRIDS → SINGLE COLUMN --- */
+  .which-grid,
+  .prompts-grid,
+  .articles-grid,
+  .testi-grid,
+  .journal-grid,
+  .values-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* --- SESSIONS GRID → SINGLE COLUMN --- */
+  .sessions-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .session-card.featured {
+    grid-column: 1 !important;
+  }
+  .featured-inner {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  /* --- STEADY TIDES INLINE GRID (sessions.html line 656) --- */
+  .session-card.full-width > div[style*="grid"] {
+    display: block !important;
+  }
+
+  /* --- HOMEPAGE PROCESS ROW --- */
+  .process-row {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+  .process-connector-wrap {
+    display: none !important;
+  }
+
+  /* --- HOMEPAGE ANITA SECTION (460px fixed col) --- */
+  .anita-inner {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* --- ABOUT FRAMEWORK (5 col) --- */
+  .framework-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+  }
+  .fw-card:first-child { border-radius: 4px !important; }
+  .fw-card:last-child  { border-radius: 4px !important; }
+
+  /* --- KINESIOLOGY SESSION STEPS (80px 1fr) --- */
+  .session-step {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .step-marker-line {
+    display: none !important;
+  }
+
+  /* --- FOOTER --- */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 36px !important;
+  }
+
+  /* --- CTA BUTTONS --- */
+  .cta-buttons,
+  .hero-buttons {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 14px !important;
+  }
+  .btn-primary,
+  .btn-ghost {
+    width: 100% !important;
+    max-width: 320px !important;
+    text-align: center !important;
+  }
+
+  /* --- WAITLIST MODAL --- */
+  .wl-modal {
+    max-width: 100% !important;
+    margin: 0 !important;
+    border-radius: 4px !important;
+  }
+  .wl-body {
+    padding: 36px 28px 40px !important;
+  }
+  .wl-success {
+    padding: 48px 28px !important;
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE — max-width: 480px
+   Single column everything, hamburger nav, tighter spacing
+   ============================================================ */
+@media (max-width: 480px) {
+
+  /* --- HERO TYPOGRAPHY --- */
+  .hero-headline,
+  .page-headline {
+    font-size: clamp(38px, 10vw, 52px) !important;
+    margin-bottom: 20px !important;
+  }
+  .hero-sub,
+  .page-sub {
+    font-size: 13px !important;
+  }
+
+  /* --- SECTION HEADINGS --- */
+  .section-title,
+  .reassurance-h2,
+  .which-h2,
+  .before-h2,
+  .faq-h2,
+  .cta-headline,
+  .lm-h2,
+  .preview-h2,
+  .articles-h2,
+  .story-h2,
+  .values-h2,
+  .framework-h2 {
+    font-size: clamp(28px, 8vw, 40px) !important;
+  }
+
+  /* --- SECTION PADDING TIGHTER ON PHONE --- */
+  #reassurance,
+  #which,
+  #before,
+  #whyjournal,
+  #beforebook,
+  #session-explainer,
+  #misconceptions {
+    padding-top: 52px !important;
+    padding-bottom: 52px !important;
+  }
+  #sessions,
+  #faq,
+  #leadmagnet,
+  #preview,
+  #articles,
+  #process,
+  #forwho,
+  #anita,
+  #testimonials,
+  #journal,
+  #story,
+  #framework,
+  #values {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+  #cta {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+
+  /* --- ABOUT FRAMEWORK → SINGLE COLUMN --- */
+  .framework-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  /* --- ARTICLES / JOURNAL CARDS --- */
+  .articles-grid,
+  .journal-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* --- FOOTER → SINGLE COLUMN --- */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  /* --- BUTTONS FULL WIDTH --- */
+  .btn-primary,
+  .btn-ghost {
+    max-width: 100% !important;
+    padding: 15px 24px !important;
+  }
+
+  /* --- REASSURANCE CARD --- */
+  .reassurance-card {
+    padding: 28px 24px !important;
+  }
+
+  /* --- SESSION CARD PADDING --- */
+  .session-card {
+    padding: 32px 24px !important;
+  }
+
+  /* --- FAQ --- */
+  .faq-q-text {
+    font-size: 17px !important;
+  }
+
+  /* --- LEAD MAGNET FORM --- */
+  .lm-form {
+    padding: 32px 24px !important;
+  }
+
+  /* --- PROMPT CARDS --- */
+  .prompt-card {
+    padding: 32px 24px !important;
+  }
+
+  /* --- ARTICLES HEADER STACKS --- */
+  .articles-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+
+  /* --- BEFORE HIGHLIGHT BOX --- */
+  .before-highlight {
+    padding: 24px 20px !important;
+  }
+
+  /* --- WAITLIST MODAL PILLS WRAP BETTER --- */
+  .wl-pills {
+    gap: 6px !important;
+  }
+  .wl-pill {
+    font-size: 9.5px !important;
+    padding: 8px 12px !important;
+  }
+
+  /* --- WAITLIST MODAL BODY --- */
+  .wl-body {
+    padding: 28px 20px 32px !important;
+  }
+  .wl-title {
+    font-size: 30px !important;
+  }
+
+}
+
+
+/* ============================================================
+   HAMBURGER NAV — shared across all pages
+   Add this HTML just before </nav> on each page:
+
+   <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+     <span></span><span></span><span></span>
+   </button>
+
+   And add this div just after <body>:
+
+   <div class="nav-mobile-menu" id="navMobileMenu">
+     <button class="nav-mobile-close" id="navMobileClose" aria-label="Close menu">&#x2715;</button>
+     <ul>
+       <li><a href="kinesiology.html">Kinesiology</a></li>
+       <li><a href="sessions.html">Sessions</a></li>
+       <li><a href="about.html">Anita</a></li>
+       <li><a href="barefoot-kinesiologist-journal.html">Journal</a></li>
+       <li><a href="#">Quiz</a></li>
+       <li><a href="#" onclick="openWaitlist('');return false;" class="nav-mobile-cta">Join the Waitlist</a></li>
+     </ul>
+   </div>
+   ============================================================ */
+
+/* Hamburger button — hidden on desktop */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 300;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 0.5px;
+  background: var(--bone);
+  transition: transform 0.3s, opacity 0.3s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+/* Mobile slide-in menu */
+.nav-mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: var(--darker);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.nav-mobile-menu.open {
+  opacity: 1;
+}
+.nav-mobile-menu ul {
+  list-style: none;
+  text-align: center;
+}
+.nav-mobile-menu ul li {
+  margin-bottom: 28px;
+}
+.nav-mobile-menu ul a {
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--bone);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+.nav-mobile-menu ul a:hover {
+  color: var(--glass-l);
+}
+.nav-mobile-menu ul .nav-mobile-cta {
+  font-size: 11px;
+  font-family: var(--sans);
+  font-style: normal;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--glass);
+  border-bottom: 0.5px solid rgba(107,165,160,0.4);
+  padding-bottom: 3px;
+}
+.nav-mobile-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  background: none;
+  border: none;
+  color: rgba(107,165,160,0.5);
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.nav-mobile-close:hover {
+  color: var(--glass-l);
+}
+
+/* --- STEADY TIDES INLINE GRID (sessions.html) --- */
+@media (max-width: 768px) {
+  .steady-tides-inner {
+    display: block !important;
+  }
+  .steady-tides-inner > div:first-child {
+    margin-bottom: 32px;
+  }
+}

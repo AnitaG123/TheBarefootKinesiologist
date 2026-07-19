@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Anita · Barefoot Kinesiologist</title>
+<meta name="description" content="Meet Anita Gibbons — Emotions & Metaphysical Kinesiologist on the Western Australian coast, and the story of her own unbecoming.">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Barefoot Kinesiologist">
+<meta property="og:title" content="About Anita · Barefoot Kinesiologist">
+<meta property="og:description" content="Meet Anita Gibbons — Emotions & Metaphysical Kinesiologist on the Western Australian coast, and the story of her own unbecoming.">
+<meta property="og:image" content="/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+:root{
+  --bone:#E8DDD0;--sand:#D4B896;
+  --terra:#B86B4C;--terra-l:#C8856A;
+  --glass:#6BA5A0;--glass-l:#9DCDC8;--glass-d:#4A8580;
+  --weed:#2E5D58;--dark:#1D3B38;--darker:#142C28;
+  --cream:#F2EDE5;--cream2:#EDE7DF;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',sans-serif;
+}
+body{font-family:var(--sans);background:var(--dark);color:var(--bone);overflow-x:hidden;}
+a{cursor:pointer;}
+
+/* === NAV === */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:26px 64px;display:flex;justify-content:space-between;align-items:center;
+  transition:background .45s,padding .35s,border-color .4s;
+  border-bottom:0.5px solid transparent;
+}
+nav.scrolled{
+  background:rgba(20,44,40,0.96);backdrop-filter:blur(16px);
+  padding:16px 64px;border-color:rgba(107,165,160,0.14);
+}
+.nav-logo{
+  font-family:var(--serif);font-size:15px;font-weight:300;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--bone);text-decoration:none;
+}
+.nav-links{display:flex;gap:38px;list-style:none;align-items:center;}
+.nav-links a{
+  font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(157,205,200,.75);text-decoration:none;transition:color .3s;
+}
+.nav-links a:hover{color:var(--bone);}
+.nav-cta{
+  padding:9px 22px !important;
+  border:0.5px solid rgba(107,165,160,.4) !important;
+  border-radius:2px;color:var(--bone) !important;
+  transition:background .3s,border-color .3s !important;
+}
+.nav-cta:hover{background:rgba(107,165,160,.12) !important;border-color:var(--glass) !important;}
+
+/* === PAGE HERO === */
+#page-hero{
+  min-height:80vh;background:var(--dark);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  position:relative;overflow:hidden;padding:0 64px 80px;
+}
+.hero-grain{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.011) 0,rgba(255,255,255,.011) 1px,transparent 1px,transparent 9px),
+    repeating-linear-gradient(-45deg,rgba(0,0,0,.03) 0,rgba(0,0,0,.03) 1px,transparent 1px,transparent 14px);
+}
+.hero-rings{
+  position:absolute;right:-80px;top:50%;transform:translateY(-50%);
+  pointer-events:none;opacity:.6;
+}
+.hero-content{max-width:720px;position:relative;z-index:2;}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:16px;margin-bottom:28px;
+  opacity:0;animation:fadeUp .9s .2s forwards;
+}
+.hero-eyebrow-line{width:40px;height:0.5px;background:var(--terra);}
+.hero-eyebrow span{font-size:10px;letter-spacing:.38em;text-transform:uppercase;color:var(--terra);font-weight:300;}
+.hero-headline{
+  font-family:var(--serif);font-size:clamp(48px,6vw,78px);font-weight:300;
+  line-height:1.0;color:var(--bone);margin-bottom:28px;
+  opacity:0;animation:fadeUp .9s .35s forwards;
+}
+.hero-headline em{font-style:italic;color:var(--glass);}
+.hero-sub{
+  font-size:14px;font-weight:300;line-height:2;color:rgba(158,184,181,.8);
+  max-width:540px;letter-spacing:.025em;
+  opacity:0;animation:fadeUp .9s .5s forwards;
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* === SHARED === */
+.btn-primary{
+  display:inline-block;padding:15px 42px;background:var(--glass);
+  color:var(--dark);font-family:var(--sans);font-size:10.5px;
+  letter-spacing:.28em;text-transform:uppercase;font-weight:500;
+  text-decoration:none;border-radius:2px;transition:background .3s,transform .2s;
+}
+.btn-primary:hover{background:var(--glass-l);transform:translateY(-2px);}
+.btn-ghost{
+  display:inline-block;padding:15px 42px;background:transparent;
+  color:var(--bone);font-family:var(--sans);font-size:10.5px;
+  letter-spacing:.28em;text-transform:uppercase;font-weight:300;
+  text-decoration:none;border-radius:2px;
+  border:0.5px solid rgba(232,221,208,.28);transition:border-color .3s,background .3s;
+}
+.btn-ghost:hover{border-color:rgba(232,221,208,.55);background:rgba(232,221,208,.04);}
+.section-eyebrow{
+  font-size:10px;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--terra);margin-bottom:24px;
+  display:flex;align-items:center;gap:16px;
+}
+.eyebrow-line{width:32px;height:0.5px;background:var(--terra);}
+
+/* === INTRO SECTION === */
+#intro{
+  background:var(--cream);padding:120px 64px;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:100px;align-items:start;
+}
+.intro-left{}
+.intro-photo{
+  width:100%;max-width:420px;
+  height:540px;
+  border-radius:50% 50% 44% 44% / 58% 58% 42% 42%;
+  background:linear-gradient(160deg,#4D8D88 0%,#2E5D58 40%,#1D3B38 100%);
+  position:relative;display:flex;align-items:flex-end;justify-content:center;
+  padding-bottom:48px;
+}
+.intro-photo-text{
+  font-family:var(--serif);font-style:italic;font-size:15px;
+  color:rgba(232,221,208,.35);text-align:center;line-height:1.7;
+}
+.intro-photo-img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:50% 22%;
+}
+.intro-photo-ring{
+  position:absolute;inset:-18px;
+  border-radius:50% 50% 44% 44% / 58% 58% 42% 42%;
+  border:0.5px solid rgba(107,165,160,.22);pointer-events:none;
+}
+.intro-photo-ring-2{
+  position:absolute;inset:-36px;
+  border-radius:50% 50% 44% 44% / 58% 58% 42% 42%;
+  border:0.5px solid rgba(107,165,160,.1);pointer-events:none;
+}
+.intro-badge{
+  position:absolute;top:40px;right:-20px;
+  background:var(--terra);color:var(--cream);
+  padding:18px 22px;border-radius:4px;text-align:center;
+}
+.intro-badge-num{
+  font-family:var(--serif);font-size:38px;font-weight:300;
+  display:block;line-height:1;color:var(--cream);
+}
+.intro-badge-label{
+  font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  display:block;margin-top:5px;opacity:.8;
+}
+.intro-right{}
+.intro-h2{
+  font-family:var(--serif);font-size:clamp(38px,4vw,54px);
+  font-weight:300;line-height:1.08;color:#1A2D2B;margin-bottom:32px;
+}
+.intro-h2 em{font-style:italic;color:var(--weed);}
+.intro-body{
+  font-size:14px;font-weight:300;line-height:1.95;
+  color:#484840;margin-bottom:22px;
+}
+.cred-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px;}
+.cred-pill{
+  padding:7px 18px;border-radius:40px;
+  background:rgba(46,93,88,.1);
+  border:0.5px solid rgba(46,93,88,.25);
+  font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--weed);
+}
+
+/* === PHILOSOPHY BAND === */
+#philosophy{
+  background:var(--weed);padding:90px 64px;
+  text-align:center;position:relative;overflow:hidden;
+}
+#philosophy::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(-45deg,rgba(255,255,255,.013) 0,rgba(255,255,255,.013) 1px,transparent 1px,transparent 10px);
+}
+.philosophy-inner{max-width:780px;margin:0 auto;position:relative;z-index:1;}
+.philosophy-quote{
+  font-family:var(--serif);font-size:clamp(26px,3.5vw,42px);
+  font-style:italic;font-weight:300;color:var(--bone);
+  line-height:1.5;margin-bottom:24px;
+}
+.philosophy-quote em{font-style:normal;color:var(--glass-l);}
+.philosophy-attr{
+  font-size:10px;letter-spacing:.35em;text-transform:uppercase;
+  color:rgba(107,165,160,.5);
+}
+
+/* === STORY SECTION === */
+#story{
+  background:var(--darker);padding:120px 64px;
+  position:relative;overflow:hidden;
+}
+#story::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.011) 0,rgba(255,255,255,.011) 1px,transparent 1px,transparent 9px);
+}
+.story-inner{
+  max-width:780px;margin:0 auto;position:relative;z-index:1;
+}
+.story-header{margin-bottom:64px;}
+.story-h2{
+  font-family:var(--serif);font-size:clamp(36px,4vw,52px);
+  font-weight:300;color:var(--bone);line-height:1.1;margin-bottom:16px;
+}
+.story-h2 em{font-style:italic;color:var(--glass-l);}
+.story-intro{
+  font-size:14px;font-weight:300;line-height:1.95;
+  color:rgba(232,221,208,.6);max-width:560px;
+}
+.story-block{
+  margin-bottom:56px;padding-bottom:56px;
+  border-bottom:0.5px solid rgba(107,165,160,.12);
+}
+.story-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.story-stage{
+  font-size:9px;letter-spacing:.38em;text-transform:uppercase;
+  color:var(--terra);margin-bottom:16px;
+  display:flex;align-items:center;gap:14px;
+}
+.story-stage-line{width:24px;height:0.5px;background:var(--terra);}
+.story-title{
+  font-family:var(--serif);font-size:clamp(22px,2.5vw,30px);
+  font-weight:300;color:var(--bone);line-height:1.2;margin-bottom:24px;
+}
+.story-title em{font-style:italic;color:var(--glass-l);}
+.story-body{
+  font-size:14px;font-weight:300;line-height:2;
+  color:rgba(232,221,208,.72);margin-bottom:18px;
+}
+.story-body em{font-style:italic;color:var(--glass-l);}
+.story-photo{
+  margin:28px 0 4px;border-radius:4px;overflow:hidden;
+  max-width:340px;box-shadow:0 24px 60px rgba(0,0,0,.35);
+}
+.story-photo img{width:100%;display:block;}
+.story-photo-caption{
+  font-size:11px;letter-spacing:.1em;color:rgba(158,184,181,.55);
+  margin-top:12px;font-style:italic;
+}
+.story-closing{
+  font-family:var(--serif);font-style:italic;font-size:19px;
+  color:var(--glass-l);line-height:1.7;
+  padding:32px 0 0;
+  border-top:0.5px solid rgba(107,165,160,.2);
+  margin-top:32px;
+}
+
+/* === FRAMEWORK SECTION === */
+#framework{
+  background:var(--cream);padding:120px 64px;
+}
+.framework-header{
+  max-width:600px;margin:0 auto 72px;text-align:center;
+}
+.framework-tag{
+  font-size:10px;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--terra);margin-bottom:16px;
+}
+.framework-h2{
+  font-family:var(--serif);font-size:clamp(32px,3.5vw,48px);
+  font-weight:300;color:#1A2D2B;line-height:1.1;
+}
+.framework-h2 em{font-style:italic;color:var(--weed);}
+.framework-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:2px;max-width:1060px;margin:0 auto;
+}
+.fw-card{
+  padding:36px 24px;background:#fff;
+  border:0.5px solid rgba(46,93,88,.08);
+  position:relative;
+}
+.fw-card:first-child{border-radius:4px 0 0 4px;}
+.fw-card:last-child{border-radius:0 4px 4px 0;}
+.fw-num{
+  font-family:var(--serif);font-size:48px;font-weight:300;
+  color:rgba(46,93,88,.08);line-height:1;margin-bottom:16px;
+}
+.fw-stage{
+  font-size:9px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--terra);margin-bottom:10px;
+}
+.fw-name{
+  font-family:var(--serif);font-size:20px;font-weight:300;
+  color:#1A2D2B;line-height:1.2;margin-bottom:14px;font-style:italic;
+}
+.fw-desc{
+  font-size:12px;font-weight:300;line-height:1.8;
+  color:#686860;
+}
+
+/* === VALUES SECTION === */
+#values{
+  background:var(--darker);padding:120px 64px;
+  position:relative;overflow:hidden;
+}
+#values::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.01) 0,rgba(255,255,255,.01) 1px,transparent 1px,transparent 9px);
+}
+.values-inner{
+  max-width:1060px;margin:0 auto;position:relative;z-index:1;
+}
+.values-header{
+  max-width:500px;margin-bottom:64px;
+}
+.values-h2{
+  font-family:var(--serif);font-size:clamp(32px,3.5vw,46px);
+  font-weight:300;color:var(--bone);line-height:1.1;margin-bottom:0;
+}
+.values-h2 em{font-style:italic;color:var(--glass-l);}
+.values-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+}
+.value-card{
+  padding:36px;
+  border:0.5px solid rgba(107,165,160,.12);
+  border-radius:4px;
+}
+.value-num{
+  font-family:var(--serif);font-size:13px;font-style:italic;
+  color:rgba(107,165,160,.4);margin-bottom:20px;
+}
+.value-title{
+  font-family:var(--serif);font-size:22px;font-weight:300;
+  color:var(--bone);line-height:1.2;margin-bottom:16px;font-style:italic;
+}
+.value-body{
+  font-size:13px;font-weight:300;line-height:1.9;
+  color:rgba(232,221,208,.58);
+}
+
+/* === CTA === */
+#cta{
+  background:var(--dark);padding:140px 64px;
+  text-align:center;position:relative;overflow:hidden;
+}
+.cta-rings{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.cta-inner{position:relative;z-index:1;}
+.cta-tag{
+  font-size:10px;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--terra);margin-bottom:24px;
+}
+.cta-headline{
+  font-family:var(--serif);font-size:clamp(38px,5vw,66px);
+  font-weight:300;color:var(--bone);line-height:1.05;
+  margin-bottom:28px;
+}
+.cta-headline em{font-style:italic;color:var(--glass);}
+.cta-sub{
+  font-size:14px;font-weight:300;line-height:2;
+  color:rgba(157,205,200,.7);max-width:480px;margin:0 auto 48px;
+}
+.cta-buttons{display:flex;align-items:center;justify-content:center;gap:24px;}
+
+/* === FOOTER === */
+footer{background:var(--darker);padding:72px 64px 40px;}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:48px;max-width:1060px;margin:0 auto 56px;
+}
+.footer-brand-logo{
+  font-family:var(--serif);font-size:14px;font-weight:300;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--bone);
+  text-decoration:none;display:block;margin-bottom:16px;
+}
+.footer-tagline{
+  font-size:12px;font-weight:300;line-height:1.85;
+  color:rgba(107,165,160,.5);max-width:260px;
+}
+.footer-col-head{
+  font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(107,165,160,.4);margin-bottom:20px;
+}
+.footer-list{list-style:none;}
+.footer-list li{margin-bottom:10px;}
+.footer-list a{
+  font-size:12px;font-weight:300;color:rgba(232,221,208,.5);
+  text-decoration:none;transition:color .3s;
+}
+.footer-list a:hover{color:var(--bone);}
+.footer-newsletter-note{
+  font-size:12px;font-weight:300;line-height:1.85;
+  color:rgba(107,165,160,.45);margin-bottom:16px;
+}
+.nl-row{display:flex;gap:0;}
+.nl-row input{
+  flex:1;background:rgba(107,165,160,.08);border:0.5px solid rgba(107,165,160,.2);
+  border-right:none;padding:10px 16px;color:var(--bone);
+  font-family:var(--sans);font-size:12px;outline:none;
+}
+.nl-row input::placeholder{color:rgba(107,165,160,.35);}
+.nl-row button{
+  background:var(--glass);color:var(--dark);border:none;
+  padding:10px 20px;font-family:var(--sans);font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;cursor:pointer;
+  transition:background .3s;
+}
+.nl-row button:hover{background:var(--glass-l);}
+.footer-bottom{
+  max-width:1060px;margin:0 auto;
+  border-top:0.5px solid rgba(107,165,160,.1);
+  padding-top:28px;display:flex;justify-content:space-between;align-items:center;
+}
+.footer-copy{font-size:11px;font-weight:300;color:rgba(107,165,160,.38);letter-spacing:.04em;}
+.footer-socials{display:flex;gap:22px;}
+.soc-link{
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(107,165,160,.42);text-decoration:none;transition:color .3s;
+}
+.soc-link:hover{color:var(--glass-l);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .75s ease,transform .75s ease;}
+.reveal.on{opacity:1;transform:translateY(0);}
+.reveal-l{opacity:0;transform:translateX(-30px);transition:opacity .75s ease,transform .75s ease;}
+.reveal-l.on{opacity:1;transform:translateX(0);}
+.reveal-r{opacity:0;transform:translateX(30px);transition:opacity .75s ease,transform .75s ease;}
+.reveal-r.on{opacity:1;transform:translateX(0);}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
+
+/* === WAITLIST MODAL === */
+.wl-backdrop{position:fixed;inset:0;z-index:9000;background:rgba(14,28,26,0.85);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .35s;}
+.wl-backdrop.open{opacity:1;pointer-events:all;}
+.wl-modal{background:var(--dark);width:100%;max-width:520px;border-radius:4px;border:0.5px solid rgba(107,165,160,.22);position:relative;overflow:hidden;transform:translateY(32px) scale(0.97);transition:transform .42s cubic-bezier(.22,1,.36,1);}
+.wl-backdrop.open .wl-modal{transform:translateY(0) scale(1);}
+.wl-accent{height:2px;background:linear-gradient(90deg,var(--terra) 0%,var(--glass) 100%);}
+.wl-close{position:absolute;top:16px;right:18px;background:none;border:none;cursor:pointer;color:rgba(107,165,160,.38);font-size:18px;line-height:1;transition:color .2s;padding:6px;}
+.wl-close:hover{color:rgba(107,165,160,.75);}
+.wl-body{padding:42px 46px 46px;}
+.wl-eyebrow{font-size:9.5px;letter-spacing:.38em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:14px;}
+.wl-eyebrow-line{width:28px;height:0.5px;background:var(--terra);}
+.wl-title{font-family:var(--serif);font-size:38px;font-weight:300;font-style:italic;color:var(--bone);line-height:1.08;margin-bottom:10px;}
+.wl-sub{font-size:13px;font-weight:300;line-height:1.85;color:rgba(157,205,200,.6);margin-bottom:30px;}
+.wl-session-label{display:block;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(157,205,200,.45);margin-bottom:10px;}
+.wl-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+.wl-pill{padding:9px 16px;border-radius:2px;cursor:pointer;font-family:var(--sans);font-size:10.5px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;border:0.5px solid rgba(107,165,160,.26);color:rgba(157,205,200,.6);background:transparent;transition:all .2s;}
+.wl-pill:hover{border-color:var(--glass);color:var(--glass-l);}
+.wl-pill.active{background:rgba(107,165,160,.13);border-color:var(--glass);color:var(--glass-l);}
+.wl-row{margin-bottom:15px;}
+.wl-row label{display:block;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(157,205,200,.45);margin-bottom:8px;}
+.wl-row input,.wl-row textarea{width:100%;padding:13px 16px;background:rgba(255,255,255,.04);border:0.5px solid rgba(107,165,160,.24);border-radius:2px;color:var(--bone);font-family:var(--sans);font-size:13px;font-weight:300;outline:none;transition:border-color .25s;resize:none;}
+.wl-row input::placeholder,.wl-row textarea::placeholder{color:rgba(107,165,160,.28);}
+.wl-row input:focus,.wl-row textarea:focus{border-color:rgba(107,165,160,.55);}
+.wl-row input.wl-error{border-color:rgba(184,107,76,.65);}
+.wl-submit{width:100%;margin-top:10px;padding:16px;background:var(--terra);border:none;border-radius:2px;color:var(--cream);font-family:var(--sans);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:background .3s,transform .2s;}
+.wl-submit:hover{background:var(--terra-l);transform:translateY(-2px);}
+.wl-note{font-size:11px;font-weight:300;color:rgba(107,165,160,.35);margin-top:14px;text-align:center;line-height:1.65;}
+.wl-success{display:none;text-align:center;padding:64px 46px;}
+.wl-success.show{display:block;}
+.wl-success-ring{width:52px;height:52px;border-radius:50%;border:0.5px solid rgba(107,165,160,.38);display:flex;align-items:center;justify-content:center;margin:0 auto 26px;color:var(--glass);font-size:22px;}
+.wl-success-title{font-family:var(--serif);font-size:34px;font-weight:300;font-style:italic;color:var(--bone);margin-bottom:12px;}
+.wl-success-body{font-size:13px;font-weight:300;line-height:1.85;color:rgba(157,205,200,.6);max-width:320px;margin:0 auto 34px;}
+</style>
+<link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile-menu" id="navMobileMenu" style="display:none;">
+  <button class="nav-mobile-close" id="navMobileClose" aria-label="Close menu">&#x2715;</button>
+  <ul>
+      <li><a href="kinesiology.html">Kinesiology</a></li>
+      <li><a href="sessions.html">Sessions</a></li>
+      <li><a href="about.html">Anita</a></li>
+      <li><a href="musings.html">Musings</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+    <li><a href="#" onclick="openWaitlist('');return false;" class="nav-mobile-cta">Join the Waitlist</a></li>
+  </ul>
+</div>
+
+<!-- NAVIGATION -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">Barefoot Kinesiologist</a>
+  <ul class="nav-links">
+    <li><a href="kinesiology.html">Kinesiology</a></li>
+    <li><a href="sessions.html">Sessions</a></li>
+    <li><a href="about.html" style="color:var(--bone);">Anita</a></li>
+    <li><a href="musings.html">Musings</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
+    <li><a href="#" class="nav-cta" onclick="openWaitlist('');return false;">Join the Waitlist</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- PAGE HERO -->
+<section id="page-hero">
+  <div class="hero-grain"></div>
+  <div class="hero-rings">
+    <svg aria-hidden="true" width="500" height="500" viewBox="0 0 500 500" fill="none">
+      <circle cx="250" cy="250" r="230" stroke="rgba(107,165,160,0.09)" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="170" stroke="rgba(107,165,160,0.13)" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="110" stroke="rgba(107,165,160,0.18)" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="50" stroke="rgba(107,165,160,0.15)" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="4" fill="rgba(107,165,160,0.35)"/>
+      <line x1="250" y1="20" x2="250" y2="480" stroke="rgba(107,165,160,0.04)" stroke-width="0.5"/>
+      <line x1="20" y1="250" x2="480" y2="250" stroke="rgba(107,165,160,0.04)" stroke-width="0.5"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>Anita Gibbons · The woman behind the work</span>
+    </div>
+    <h1 class="hero-headline">
+      A guide who has<br>walked the same <em>shoreline</em>
+    </h1>
+    <p class="hero-sub">
+      She is not someone who found healing and then built a business. She is someone who needed it first — and found her way back to herself one question at a time.
+    </p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="intro-left reveal-l">
+    <div class="intro-photo">
+      <img class="intro-photo-img" src="images/anita-bench.jpg" alt="Anita Gibbons sitting on a bench, smiling, wearing a navy blazer">
+      <div class="intro-photo-ring"></div>
+      <div class="intro-photo-ring-2"></div>
+      <div class="intro-badge">
+        <span class="intro-badge-num">EMK</span>
+        <span class="intro-badge-label">Certified Practitioner</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="intro-right reveal-r">
+    <div class="section-eyebrow" style="color:var(--terra);">
+      <div class="eyebrow-line"></div>
+      Meet Anita
+    </div>
+    <h2 class="intro-h2">Emotions &amp; Metaphysical<br>Kinesiologist. Woman.<br><em>Perpetual student of the ocean.</em></h2>
+    <p class="intro-body">
+      Anita Gibbons is a Certified EMK Practitioner based on the Western Australian coast. She first experienced kinesiology nine years ago — it was the work that changed the direction of her life. Two years ago she discovered Emotions & Metaphysical Kinesiology and knew immediately it was the work she wanted to bring to other women. She completed her certification training before opening her practice. She comes to this work not as someone who arrived here easily, but as someone who needed it first.
+    </p>
+    <p class="intro-body">
+      Her approach is unhurried and deeply attuned. She believes that healing doesn't happen in a hurry — that like the tide, it has its own perfect rhythm. Her sessions are a safe, reverent space for women to stop performing and start simply being.
+    </p>
+    <p class="intro-body">
+      Every session she holds is shaped by her own experience of the work. She is not a guide who arrived here easily. She is one who needed to find her way back to herself first.
+    </p>
+    <div class="cred-row">
+      <span class="cred-pill">EMK Practitioner</span>
+      <span class="cred-pill">Emotions & Metaphysical Kinesiology</span>
+      <span class="cred-pill">Women's Wellbeing</span>
+      <span class="cred-pill">Coastal WA</span>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY BAND -->
+<section id="philosophy">
+  <div class="philosophy-inner reveal">
+    <p class="philosophy-quote">
+      "I am not a product of my past.<br>I am a product of my <em>choices</em> —<br>and I get to keep choosing."
+    </p>
+    <p class="philosophy-attr">— Anita Gibbons · The unbecoming</p>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="story-inner">
+    <div class="story-header reveal">
+      <h2 class="story-h2">Her own<br><em>unbecoming</em></h2>
+      <p class="story-intro">This is the story that is woven into every session Anita holds. Not as a script — as a living understanding of what it actually takes to come back to yourself.</p>
+    </div>
+
+    <div class="story-block reveal d1">
+      <div class="story-stage"><div class="story-stage-line"></div>The Still Water</div>
+      <h3 class="story-title">The life that looked fine<br>from the outside</h3>
+      <p class="story-body">
+        For a long time, Anita's life looked like a series of choices. What it actually was, was a pattern. Relationship after relationship with people who couldn't stay — because somewhere beneath the surface, a belief had taken hold: <em>everyone leaves anyway.</em> So she chose people who would prove it right, and called it fate.
+      </p>
+      <p class="story-body">
+        She had watched the women around her disappear into lives that felt inherited rather than chosen — dead end jobs, staying in bad relationships, living pay cheque to pay cheque — and she made a promise to herself that she would find another way. She always knew there was more. Not in a vague, hopeful way. In a deep, persistent, bodily way. A knowing that refused to be drowned out no matter how much life piled on top of it.
+      </p>
+    </div>
+
+    <div class="story-block reveal d2">
+      <div class="story-stage"><div class="story-stage-line"></div>The Pull</div>
+      <h3 class="story-title">The question that<br><em>changed everything</em></h3>
+      <p class="story-body">
+        The turning came through a conversation with a friend, and a name she hadn't heard before: kinesiology. In that first session, she was asked a question that stopped her completely.
+      </p>
+      <p class="story-body">
+        <em>What is the one common denominator in all of your relationships?</em>
+      </p>
+      <p class="story-body">
+        The answer, when it finally landed, was the beginning of everything. It was her. Not as a fault. As an invitation. She recognised that the only way forward was through — and that she had the power to change the pattern simply by choosing to see it.
+      </p>
+    </div>
+
+    <div class="story-block reveal d3">
+      <div class="story-stage"><div class="story-stage-line"></div>The Unbecoming</div>
+      <h3 class="story-title">What she put down<br>and what came in</h3>
+      <p class="story-body">
+        What she put down in that season was not small. She put down the belief that she did not deserve love. That happiness was for other people. That being left was inevitable. She stopped over-explaining herself. She stopped shrinking to fit. She stopped outsourcing her worth to people who couldn't hold it.
+      </p>
+      <p class="story-body">
+        And into the space that opened up — unexpectedly — came Macie. A rescue dog from Karratha who had no idea she was teaching Anita what unconditional love actually felt like for the first time. She rescued Macie. Macie rescued her right back.
+      </p>
+      <div class="story-photo">
+        <img src="images/anita-macie.jpg" alt="Anita Gibbons and her rescue dog Macie together in the car">
+      </div>
+      <p class="story-photo-caption">Macie — rescued from Karratha, and the one who did some rescuing of her own.</p>
+    </div>
+
+    <div class="story-block reveal d4">
+      <div class="story-stage"><div class="story-stage-line"></div>The Shore</div>
+      <h3 class="story-title">The woman she<br><em>came home to</em></h3>
+      <p class="story-body">
+        Now, Anita lives from a different centre. She understands, in her body and not just her mind, that she is not a product of her past. She is a product of her choices. And she gets to keep choosing — again and again — until the life she is living is genuinely, unmistakably hers.
+      </p>
+      <p class="story-body">
+        She swore she would not be with anyone unless they matched what she gave them — love, support, adoration, care. She has that now. Along with a family she chose and a life she is proud of. Not because it looks perfect. Because it is real.
+      </p>
+      <div class="story-closing">
+        That is what she holds space for in every session. Not a new version of you. The real one. The one that was always there, waiting beneath the performance.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE FRAMEWORK -->
+<section id="framework">
+  <div class="framework-header reveal">
+    <div class="framework-tag">The unbecoming framework</div>
+    <h2 class="framework-h2">Every woman's journey<br>moves through <em>five stages</em></h2>
+  </div>
+  <div class="framework-grid">
+    <div class="fw-card reveal d1">
+      <div class="fw-num">01</div>
+      <div class="fw-stage">Stage one</div>
+      <div class="fw-name">The Still Water</div>
+      <p class="fw-desc">Life on the surface looks calm. But still water has no direction of its own. It simply reflects what is above it. This is autopilot — the life that looks fine but feels inherited.</p>
+    </div>
+    <div class="fw-card reveal d2">
+      <div class="fw-num">02</div>
+      <div class="fw-stage">Stage two</div>
+      <div class="fw-name">The Pull</div>
+      <p class="fw-desc">That persistent, bodily sense that there is more. Like the tide feeling the moon before it moves. You don't know why yet. You just know something is calling you toward something truer.</p>
+    </div>
+    <div class="fw-card reveal d3">
+      <div class="fw-num">03</div>
+      <div class="fw-stage">Stage three</div>
+      <div class="fw-name">The Turning</div>
+      <p class="fw-desc">The moment of conscious choice. The tide doesn't resist its turning. It doesn't explain or apologise. It simply moves in the direction it was made to move in. This is that moment.</p>
+    </div>
+    <div class="fw-card reveal d4">
+      <div class="fw-num">04</div>
+      <div class="fw-stage">Stage four</div>
+      <div class="fw-name">The Unbecoming</div>
+      <p class="fw-desc">The shedding. Releasing what was never yours to carry — the beliefs, the patterns, the performances. The ocean always leaves something on the shore as it pulls back. What it leaves is what it no longer needs.</p>
+    </div>
+    <div class="fw-card reveal d4">
+      <div class="fw-num">05</div>
+      <div class="fw-stage">Stage five</div>
+      <div class="fw-name">The Shore</div>
+      <p class="fw-desc">Not an arrival at somewhere new. A return to solid ground that was always there, beneath the water. The real you. The one your body never once forgot.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section id="values">
+  <div class="values-inner">
+    <div class="values-header reveal">
+      <div class="section-eyebrow" style="color:var(--terra);">
+        <div class="eyebrow-line"></div>
+        How Anita works
+      </div>
+      <h2 class="values-h2">The beliefs that<br>shape every <em>session</em></h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal d1">
+        <div class="value-num">01</div>
+        <div class="value-title">You are not broken</div>
+        <p class="value-body">Every pattern, every symptom, every thing you have been calling a flaw — is information. Your body has been trying to reach you. Emotions & Metaphysical Kinesiology gives it a voice.</p>
+      </div>
+      <div class="value-card reveal d2">
+        <div class="value-num">02</div>
+        <div class="value-title">Healing has its own tide</div>
+        <p class="value-body">It doesn't happen in a hurry. There is no forcing, no pushing, no arriving before you are ready. Anita follows the body's lead entirely. You set the pace.</p>
+      </div>
+      <div class="value-card reveal d3">
+        <div class="value-num">03</div>
+        <div class="value-title">You are a product of your choices</div>
+        <p class="value-body">Not your past. Not your family. Not what you were told you were. At any point, you get to choose again. That is not a platitude. That is the lived experience behind this work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-rings">
+    <svg aria-hidden="true" width="700" height="700" viewBox="0 0 700 700" fill="none">
+      <circle cx="350" cy="350" r="320" stroke="rgba(107,165,160,0.06)" stroke-width="0.5"/>
+      <circle cx="350" cy="350" r="240" stroke="rgba(107,165,160,0.09)" stroke-width="0.5"/>
+      <circle cx="350" cy="350" r="160" stroke="rgba(107,165,160,0.12)" stroke-width="0.5"/>
+      <circle cx="350" cy="350" r="80" stroke="rgba(107,165,160,0.09)" stroke-width="0.5"/>
+    </svg>
+  </div>
+  <div class="cta-inner">
+    <div class="cta-tag reveal">The shore</div>
+    <h2 class="cta-headline reveal d1">
+      You have already<br>felt <em>the pull.</em>
+    </h2>
+    <p class="cta-sub reveal d2">
+      You don't need clarity or a plan. You just need the brave decision to stop living on autopilot and start choosing yourself. Anita holds space for exactly that.
+    </p>
+    <div class="cta-buttons reveal d3">
+      <a href="#" class="btn-primary" onclick="openWaitlist('');return false;">Join the waitlist</a>
+      <a href="kinesiology.html" class="btn-ghost">Learn about kinesiology</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="footer-brand-logo">Barefoot Kinesiologist</a>
+      <p class="footer-tagline">Emotions &amp; Metaphysical Kinesiology for women ready to stop performing and start living. Online &mdash; live or recorded &mdash; available worldwide.</p>
+    </div>
+    <div>
+      <div class="footer-col-head">Navigate</div>
+      <ul class="footer-list">
+        <li><a href="kinesiology.html">What is Kinesiology</a></li>
+        <li><a href="sessions.html">Sessions &amp; Pricing</a></li>
+        <li><a href="about.html">About Anita</a></li>
+        <li><a href="musings.html">Musings</a></li>
+        <li><a href="journal-prompts.html">The Unbecoming Journal</a></li>
+        <li><a href="quiz.html">Take the Quiz</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-head">Connect</div>
+      <ul class="footer-list">
+        <li><a href="#" onclick="openWaitlist('');return false;">Join the Waitlist</a></li>
+        <li><a href="mailto:hello@thebarefootkinesiologist.com">Send an Enquiry</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="booking-terms.html">Booking Terms</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-head">Stay connected</div>
+      <p class="footer-newsletter-note">Slow words on kinesiology, the natural world, authentic living, and what it means to come home to yourself &mdash; sent with intention, never rushed.</p>
+      <form class="nl-row" name="newsletter" method="POST" data-netlify="true" action="thank-you.html">
+        <input type="hidden" name="form-name" value="newsletter">
+        <input type="email" name="email" required placeholder="Your email address" aria-label="Email address">
+        <button type="submit">Join</button>
+      </form>
+    </div>
+  </div>
+
+  <p class="footer-disclaimer" style="max-width:1060px;margin:0 auto 36px;font-size:11.5px;font-weight:300;line-height:1.8;color:rgba(158,184,181,.5);">
+    Kinesiology is a complementary wellbeing practice and is not a substitute for medical or mental-health care. Anita does not diagnose, treat, or cure any physical or psychological condition, and nothing on this site is medical advice. Please continue to work with your GP or a qualified mental-health professional for any health concern. If you need support now, in Australia you can call Lifeline on 13 11 14 &mdash; or 000 in an emergency. <a href="disclaimer.html" style="color:rgba(158,184,181,.75);border-bottom:0.5px solid rgba(158,184,181,.4);">Read the full disclaimer</a>.
+  </p>
+
+  <div class="footer-bottom">
+    <div class="footer-copy">&copy; 2026 Barefoot Kinesiologist &middot; Anita Gibbons &middot; Western Australia</div>
+    <div class="footer-socials"></div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('on');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach(el => observer.observe(el));
+</script>
+
+<script>
+// === MOBILE NAV ===
+(function(){
+  var hamburger = document.getElementById('navHamburger');
+  var menu      = document.getElementById('navMobileMenu');
+  var closeBtn  = document.getElementById('navMobileClose');
+  if(!hamburger || !menu) return;
+
+  function openMenu(){
+    menu.style.display = 'flex';
+    setTimeout(function(){ menu.classList.add('open'); }, 10);
+    hamburger.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu(){
+    menu.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(function(){ menu.style.display = 'none'; }, 300);
+  }
+
+  hamburger.addEventListener('click', function(){
+    menu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  if(closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+  // close on link click
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+})();
+</script>
+
+<!-- WAITLIST MODAL -->
+<!-- Netlify form detection (hidden) -->
+<form name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name"><input type="email" name="email">
+  <input type="text" name="session"><textarea name="message"></textarea>
+  <input type="text" name="bot-field">
+</form>
+<div class="wl-backdrop" id="wlBackdrop">
+  <div class="wl-modal">
+    <div class="wl-accent"></div>
+    <button class="wl-close" onclick="closeWaitlist()" aria-label="Close">&#x2715;</button>
+    <div id="wlFormView">
+      <div class="wl-body">
+        <div class="wl-eyebrow"><div class="wl-eyebrow-line"></div>Reserve your place</div>
+        <h2 class="wl-title">Join the waitlist</h2>
+        <p class="wl-sub">Send Anita a note and she will be in touch personally when a space opens &mdash; or sooner, if you have questions.</p>
+        <span class="wl-session-label">I&rsquo;m interested in&hellip;</span>
+        <div class="wl-pills" id="wlPillGroup">
+          <button class="wl-pill" onclick="wlSelectPill(this)">The First Step Session</button>
+          <button class="wl-pill" onclick="wlSelectPill(this)">The Rewild Package</button>
+          <button class="wl-pill" onclick="wlSelectPill(this)">Steady Tides</button>
+          <button class="wl-pill" onclick="wlSelectPill(this)">Not sure yet</button>
+        </div>
+        <div class="wl-row">
+          <label for="wlName">Your first name</label>
+          <input type="text" id="wlName" placeholder="First name">
+        </div>
+        <div class="wl-row">
+          <label for="wlEmail">Your email address</label>
+          <input type="email" id="wlEmail" placeholder="Email address">
+        </div>
+        <div class="wl-row">
+          <label for="wlMsg">Where are you right now? <span style="opacity:.4;font-size:9px;letter-spacing:.05em;text-transform:none;">optional</span></label>
+          <textarea id="wlMsg" rows="3" placeholder="A little about what brought you here..."></textarea>
+        </div>
+        <button class="wl-submit" onclick="wlSubmit()">Send my details to Anita</button>
+        <p class="wl-note">No pressure, no obligation. Anita will be in touch personally.</p>
+      </div>
+    </div>
+    <div class="wl-success" id="wlSuccess">
+      <div class="wl-success-ring">&#x2713;</div>
+      <h3 class="wl-success-title">You are on the list.</h3>
+      <p class="wl-success-body">Anita will be in touch personally when a space opens &mdash; or sooner if you have questions. In the meantime, keep exploring.</p>
+      <button class="btn-ghost" onclick="closeWaitlist()">Continue reading</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var wlSession = '';
+function openWaitlist(session) {
+  wlSession = session || '';
+  document.querySelectorAll('.wl-pill').forEach(function(p){
+    p.classList.toggle('active', p.textContent.trim() === wlSession);
+  });
+  document.getElementById('wlBackdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeWaitlist() {
+  document.getElementById('wlBackdrop').classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(function(){
+    var fv = document.getElementById('wlFormView');
+    var sv = document.getElementById('wlSuccess');
+    if(fv) fv.style.display = '';
+    if(sv) sv.classList.remove('show');
+    var n = document.getElementById('wlName');
+    var e = document.getElementById('wlEmail');
+    var m = document.getElementById('wlMsg');
+    if(n){n.value='';n.classList.remove('wl-error');}
+    if(e){e.value='';e.classList.remove('wl-error');}
+    if(m) m.value='';
+    document.querySelectorAll('.wl-pill').forEach(function(p){p.classList.remove('active');});
+  }, 400);
+}
+function wlSelectPill(el) {
+  document.querySelectorAll('.wl-pill').forEach(function(p){p.classList.remove('active');});
+  el.classList.add('active');
+  wlSession = el.textContent.trim();
+}
+function wlSubmit() {
+  var nEl = document.getElementById('wlName');
+  var eEl = document.getElementById('wlEmail');
+  var name = nEl.value.trim();
+  var email = eEl.value.trim();
+  nEl.classList.toggle('wl-error', !name);
+  eEl.classList.toggle('wl-error', !email);
+  if (!name || !email) return;
+  var msg = document.getElementById('wlMsg') ? document.getElementById('wlMsg').value.trim() : '';
+  var payload = new URLSearchParams({
+    'form-name': 'waitlist',
+    'name': name,
+    'email': email,
+    'session': wlSession || 'General',
+    'message': msg
+  }).toString();
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: payload
+  }).catch(function (err) { console.error('Waitlist submit error:', err); });
+  document.getElementById('wlFormView').style.display = 'none';
+  document.getElementById('wlSuccess').classList.add('show');
+}
+document.addEventListener('DOMContentLoaded', function(){
+  var bd = document.getElementById('wlBackdrop');
+  if(bd) bd.addEventListener('click', function(e){ if(e.target===this) closeWaitlist(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeWaitlist(); });
+});
+</script>
+</body>
+</html>

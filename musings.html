@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Musings · Barefoot Kinesiologist</title>
+<meta name="description" content="Slow words from Anita Gibbons on kinesiology, the body, identity, and what it means to come home to yourself.">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Barefoot Kinesiologist">
+<meta property="og:title" content="Musings · Barefoot Kinesiologist">
+<meta property="og:description" content="Slow words from Anita Gibbons on kinesiology, the body, identity, and what it means to come home to yourself.">
+<meta property="og:image" content="/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+:root{
+  --bone:#E8DDD0;--sand:#D4B896;
+  --terra:#B86B4C;--terra-l:#C8856A;
+  --glass:#6BA5A0;--glass-l:#9DCDC8;--glass-d:#4A8580;
+  --weed:#2E5D58;--dark:#1D3B38;--darker:#142C28;
+  --cream:#F2EDE5;--cream2:#EDE7DF;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',sans-serif;
+}
+body{font-family:var(--sans);background:var(--dark);color:var(--bone);overflow-x:hidden;}
+a{cursor:pointer;text-decoration:none;}
+
+/* === NAV === */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:26px 64px;display:flex;justify-content:space-between;align-items:center;
+  transition:background .45s,padding .35s,border-color .4s;
+  border-bottom:0.5px solid transparent;
+}
+nav.scrolled{
+  background:rgba(20,44,40,0.96);backdrop-filter:blur(16px);
+  padding:16px 64px;border-color:rgba(107,165,160,0.14);
+}
+.nav-logo{
+  font-family:var(--serif);font-size:15px;font-weight:300;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--bone);
+}
+.nav-links{display:flex;gap:38px;list-style:none;align-items:center;}
+.nav-links a{
+  font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(157,205,200,.75);transition:color .3s;
+}
+.nav-links a:hover{color:var(--bone);}
+.nav-cta{
+  padding:9px 22px !important;
+  border:0.5px solid rgba(107,165,160,.4) !important;
+  border-radius:2px;color:var(--bone) !important;
+  transition:background .3s,border-color .3s !important;
+}
+.nav-cta:hover{background:rgba(107,165,160,.12) !important;border-color:var(--glass) !important;}
+
+/* === HERO === */
+#hero{
+  min-height:80vh;background:var(--dark);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  position:relative;overflow:hidden;padding:140px 64px 90px;
+}
+.hero-grain{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.011) 0,rgba(255,255,255,.011) 1px,transparent 1px,transparent 9px),
+    repeating-linear-gradient(-45deg,rgba(0,0,0,.03) 0,rgba(0,0,0,.03) 1px,transparent 1px,transparent 14px);
+}
+.hero-rings{position:absolute;right:-80px;top:50%;transform:translateY(-50%);pointer-events:none;}
+.hero-content{max-width:700px;position:relative;z-index:2;}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:16px;margin-bottom:28px;
+  opacity:0;animation:fadeUp .9s .2s forwards;
+}
+.hero-eyebrow-line{width:40px;height:0.5px;background:var(--terra);}
+.hero-eyebrow span{font-size:10px;letter-spacing:.38em;text-transform:uppercase;color:var(--terra);font-weight:300;}
+.hero-headline{
+  font-family:var(--serif);font-size:clamp(48px,6vw,78px);font-weight:300;
+  line-height:1.0;color:var(--bone);margin-bottom:28px;
+  opacity:0;animation:fadeUp .9s .35s forwards;
+}
+.hero-headline em{font-style:italic;color:var(--glass);}
+.hero-sub{
+  font-size:14px;font-weight:300;line-height:2;color:rgba(158,184,181,.8);
+  max-width:520px;letter-spacing:.025em;
+  opacity:0;animation:fadeUp .9s .5s forwards;
+}
+.hero-author{
+  display:flex;align-items:center;gap:14px;margin-top:32px;
+  opacity:0;animation:fadeUp .9s .65s forwards;
+}
+.hero-author-photo{
+  width:52px;height:52px;border-radius:50%;object-fit:cover;
+  object-position:50% 25%;border:0.5px solid rgba(107,165,160,.35);
+}
+.hero-author-name{
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(158,184,181,.6);
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* === SHARED === */
+.btn-primary{
+  display:inline-block;padding:15px 42px;background:var(--glass);
+  color:var(--dark);font-family:var(--sans);font-size:10.5px;
+  letter-spacing:.28em;text-transform:uppercase;font-weight:500;
+  border-radius:2px;transition:background .3s,transform .2s;
+}
+.btn-primary:hover{background:var(--glass-l);transform:translateY(-2px);}
+.btn-ghost{
+  display:inline-block;padding:15px 42px;background:transparent;
+  color:var(--bone);font-family:var(--sans);font-size:10.5px;
+  letter-spacing:.28em;text-transform:uppercase;font-weight:300;
+  border-radius:2px;border:0.5px solid rgba(232,221,208,.28);
+  transition:border-color .3s,background .3s;
+}
+.btn-ghost:hover{border-color:rgba(232,221,208,.55);background:rgba(232,221,208,.04);}
+
+/* === ARTICLE GRID === */
+#articles{
+  background:var(--cream);padding:120px 64px;
+}
+.articles-header{
+  max-width:1060px;margin:0 auto 64px;
+  display:flex;justify-content:space-between;align-items:flex-end;
+}
+.articles-header-left{}
+.articles-tag{
+  font-size:10px;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--terra);margin-bottom:14px;
+  display:flex;align-items:center;gap:14px;
+}
+.articles-tag-line{width:28px;height:0.5px;background:var(--terra);}
+.articles-h2{
+  font-family:var(--serif);font-size:clamp(32px,3.5vw,46px);
+  font-weight:300;color:#1A2D2B;line-height:1.1;
+}
+.articles-h2 em{font-style:italic;color:var(--weed);}
+.articles-count{
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(46,93,88,.45);
+}
+.articles-grid{
+  display:block;max-width:720px;margin:0 auto;
+}
+.article-card{
+  padding:52px 0;
+  border-bottom:0.5px solid rgba(46,93,88,.14);
+}
+.article-card:first-child{padding-top:0;}
+.article-card:hover .article-title{color:var(--weed);}
+
+.article-body{padding:0;}
+.article-meta{
+  display:flex;align-items:center;gap:16px;margin-bottom:18px;
+}
+.article-cat{
+  font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--terra);
+}
+.article-dot{width:3px;height:3px;border-radius:50%;background:rgba(46,93,88,.3);}
+.article-read{
+  font-size:9.5px;letter-spacing:.1em;
+  color:rgba(46,93,88,.4);
+}
+.article-title{
+  font-family:var(--serif);font-size:clamp(20px,2vw,26px);
+  font-weight:300;color:#1A2D2B;line-height:1.2;margin-bottom:16px;
+}
+
+.article-excerpt{
+  font-size:13px;font-weight:300;line-height:1.9;
+  color:#686860;margin-bottom:28px;
+}
+.article-link{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--weed);border-bottom:0.5px solid rgba(46,93,88,.3);
+  padding-bottom:3px;transition:gap .3s,border-color .3s;
+}
+.article-link:hover{gap:14px;border-color:var(--weed);}
+
+/* === ARTICLE FULL TEXT === */
+.article-full{
+  display:none;
+  background:var(--cream2);
+  border-top:0.5px solid rgba(46,93,88,.1);
+}
+.article-full.open{display:block;}
+.article-full-inner{
+  max-width:680px;margin:0 auto;
+  padding:72px 0 80px;
+}
+.article-full-title{
+  font-family:var(--serif);font-size:clamp(32px,4vw,52px);
+  font-weight:300;color:#1A2D2B;line-height:1.1;
+  margin-bottom:12px;
+}
+.article-full-title em{font-style:italic;color:var(--weed);}
+.article-full-byline{
+  font-size:11px;letter-spacing:.15em;color:rgba(46,93,88,.45);
+  margin-bottom:48px;padding-bottom:32px;
+  border-bottom:0.5px solid rgba(46,93,88,.12);
+}
+.article-full p{
+  font-size:16px;font-weight:300;line-height:2;
+  color:#3A3830;margin-bottom:24px;
+}
+.article-full p.drop-cap::first-letter{
+  font-family:var(--serif);font-size:72px;font-weight:300;
+  float:left;line-height:.75;margin-right:12px;margin-top:8px;
+  color:var(--terra);
+}
+.article-full blockquote{
+  margin:40px 0;padding:28px 36px;
+  border-left:3px solid var(--glass);
+  background:rgba(107,165,160,.06);border-radius:0 4px 4px 0;
+}
+.article-full blockquote p{
+  font-family:var(--serif);font-style:italic;font-size:20px;
+  color:#1A2D2B;margin-bottom:0;line-height:1.65;
+}
+.article-full blockquote cite{
+  display:block;margin-top:14px;font-size:11px;
+  font-style:normal;letter-spacing:.12em;color:rgba(46,93,88,.45);
+}
+.article-full h3{
+  font-family:var(--serif);font-size:24px;font-weight:300;
+  color:#1A2D2B;margin:40px 0 16px;font-style:italic;
+}
+.article-full .article-close{
+  display:inline-flex;align-items:center;gap:8px;margin-top:48px;
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--weed);border-bottom:0.5px solid rgba(46,93,88,.3);
+  padding-bottom:3px;cursor:pointer;background:none;border-left:none;
+  border-right:none;border-top:none;font-family:var(--sans);
+  transition:gap .3s;
+}
+.article-full .article-close:hover{gap:14px;}
+
+/* === CTA === */
+#cta{
+  background:var(--darker);padding:120px 64px;
+  text-align:center;position:relative;overflow:hidden;
+}
+.cta-rings{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.cta-inner{position:relative;z-index:1;}
+.cta-tag{font-size:10px;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:24px;}
+.cta-headline{
+  font-family:var(--serif);font-size:clamp(38px,5vw,66px);
+  font-weight:300;color:var(--bone);line-height:1.05;margin-bottom:28px;
+}
+.cta-headline em{font-style:italic;color:var(--glass);}
+.cta-sub{
+  font-size:14px;font-weight:300;line-height:2;
+  color:rgba(157,205,200,.7);max-width:480px;margin:0 auto 48px;
+}
+.cta-buttons{display:flex;align-items:center;justify-content:center;gap:24px;}
+
+/* === FOOTER === */
+footer{background:var(--darker);padding:72px 64px 40px;border-top:0.5px solid rgba(107,165,160,.08);}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:1060px;margin:0 auto 56px;}
+.footer-brand-logo{
+  font-family:var(--serif);font-size:14px;font-weight:300;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--bone);
+  display:block;margin-bottom:16px;
+}
+.footer-tagline{font-size:12px;font-weight:300;line-height:1.85;color:rgba(107,165,160,.5);max-width:260px;}
+.footer-col-head{font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:rgba(107,165,160,.4);margin-bottom:20px;}
+.footer-list{list-style:none;}
+.footer-list li{margin-bottom:10px;}
+.footer-list a{font-size:12px;font-weight:300;color:rgba(232,221,208,.5);transition:color .3s;}
+.footer-list a:hover{color:var(--bone);}
+.footer-newsletter-note{font-size:12px;font-weight:300;line-height:1.85;color:rgba(107,165,160,.45);margin-bottom:16px;}
+.nl-row{display:flex;}
+.nl-row input{
+  flex:1;background:rgba(107,165,160,.08);border:0.5px solid rgba(107,165,160,.2);
+  border-right:none;padding:10px 16px;color:var(--bone);
+  font-family:var(--sans);font-size:12px;outline:none;
+}
+.nl-row input::placeholder{color:rgba(107,165,160,.35);}
+.nl-row button{
+  background:var(--glass);color:var(--dark);border:none;
+  padding:10px 20px;font-family:var(--sans);font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:background .3s;
+}
+.nl-row button:hover{background:var(--glass-l);}
+.footer-bottom{
+  max-width:1060px;margin:0 auto;
+  border-top:0.5px solid rgba(107,165,160,.1);
+  padding-top:28px;display:flex;justify-content:space-between;align-items:center;
+}
+.footer-copy{font-size:11px;font-weight:300;color:rgba(107,165,160,.38);letter-spacing:.04em;}
+.footer-socials{display:flex;gap:22px;}
+.soc-link{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(107,165,160,.42);transition:color .3s;}
+.soc-link:hover{color:var(--glass-l);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .75s ease,transform .75s ease;}
+.reveal.on{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+</style>
+<link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile-menu" id="navMobileMenu" style="display:none;">
+  <button class="nav-mobile-close" id="navMobileClose" aria-label="Close menu">&#x2715;</button>
+  <ul>
+      <li><a href="kinesiology.html">Kinesiology</a></li>
+      <li><a href="sessions.html">Sessions</a></li>
+      <li><a href="about.html">Anita</a></li>
+      <li><a href="musings.html">Musings</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+    <li><a href="sessions.html" class="nav-mobile-cta">Join the Waitlist</a></li>
+  </ul>
+</div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">Barefoot Kinesiologist</a>
+  <ul class="nav-links">
+    <li><a href="kinesiology.html">Kinesiology</a></li>
+    <li><a href="sessions.html">Sessions</a></li>
+    <li><a href="about.html">Anita</a></li>
+    <li><a href="musings.html" style="color:var(--bone);">Musings</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
+    <li><a href="sessions.html" class="nav-cta">Join the Waitlist</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grain"></div>
+  <div class="hero-rings">
+    <svg aria-hidden="true" width="500" height="500" viewBox="0 0 500 500" fill="none">
+      <circle cx="250" cy="250" r="230" stroke="rgba(107,165,160,0.07)" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="170" stroke="rgba(107,165,160,0.1)" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="110" stroke="rgba(107,165,160,0.14)" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="4" fill="rgba(107,165,160,0.3)"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>Olive tree musings</span>
+    </div>
+    <h1 class="hero-headline">
+      Honest words<br>from a woman<br>doing the <em>work</em>
+    </h1>
+    <p class="hero-sub">
+      These are not polished wellness platitudes. They are real reflections from Anita's own unbecoming — on the body, identity, self-worth, and what it actually means to choose yourself.
+    </p>
+    <div class="hero-author">
+      <img class="hero-author-photo" src="images/anita-journaling.jpg" alt="Anita Gibbons writing in her journal outdoors">
+      <span class="hero-author-name">Anita Gibbons</span>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section id="articles">
+  <div class="articles-header reveal">
+    <div class="articles-header-left">
+      <div class="articles-tag"><div class="articles-tag-line"></div>From under the olive tree</div>
+      <h2 class="articles-h2">All <em>musings</em></h2>
+    </div>
+    <div class="articles-count">3 musings</div>
+  </div>
+
+  <div class="articles-grid">
+
+    <!-- ARTICLE 1 - FEATURED -->
+    <div class="article-card reveal d1" id="card-1">
+      <div class="article-body">
+        <div class="article-meta">
+          <span class="article-cat">Body Love</span>
+          <span class="article-dot"></span>
+          <span class="article-read">4 min read</span>
+        </div>
+        <h2 class="article-title">Move. Not Punish.</h2>
+        <p class="article-excerpt">"Thank you for not hating me anymore." A reflection on punishment, movement, CrossFit, and the long road back to loving the body you are in.</p>
+        <button class="article-link" onclick="toggleArticle('article-1', this)">Read more <span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ARTICLE 1 FULL TEXT -->
+    <div class="article-full" id="article-1">
+      <div class="article-full-inner">
+        <h2 class="article-full-title">Move. <em>Not Punish.</em></h2>
+        <div class="article-full-byline">Anita Gibbons · Body Love · 4 min read</div>
+
+        <p class="drop-cap">Like many women, I used to work out to punish myself… for eating too much, or not fitting into an outfit. Looking back now, I cringe at how I treated my body.</p>
+
+        <p>Today, even though I'm not at my "ideal" weight and I have a few more wrinkles, I love my beautiful body. She has taken me on so many adventures.</p>
+
+        <p>My big thighs carried me to the top of a mountain in Scotland. My droopy left eye lets me know when I'm really sick. My flabby arms get to wrap around the love of my life.</p>
+
+        <p>How cool is that? How lucky am I?</p>
+
+        <p>This shift didn't happen overnight. There were moments I slipped back into old patterns… but I always made sure there was a step forward after it.</p>
+
+        <blockquote>
+          <p>The biggest turning point for me was movement. Not punishment. Not control. Movement.</p>
+        </blockquote>
+
+        <p>I'd been in and out of the gym for years, but I wanted something that challenged me… something that pushed me beyond what I thought I was capable of. So I started CrossFit in 2017.</p>
+
+        <p>I thought I was fairly fit… until every workout handed my arse back to me. And I loved it. It never really gets easier — you just get better. I started hitting PBs. Learning new movements. Falling in love with how strong my body actually was.</p>
+
+        <p>And with every small win, I respected her a little more.</p>
+
+        <p>Now, I move not just for how I look… but for how I feel. Because it can be the difference between a good day and a great one.</p>
+
+        <p>You don't have to lift heavy or do CrossFit (although… you might love it too). You just need to find something you enjoy — something your body enjoys. Golf, swimming, a TikTok dance in your living room… whatever it is.</p>
+
+        <p>Move your beautiful body. Feel what she's capable of. Feel the strength, the exhaustion, the accomplishment.</p>
+
+        <p>And maybe, just maybe… you'll hear her say:</p>
+
+        <blockquote>
+          <p>"Thank you for not hating me anymore."</p>
+        </blockquote>
+
+        <button class="article-close" onclick="toggleArticle('article-1', this)">← Close article</button>
+      </div>
+    </div>
+
+    <!-- ARTICLE 2 -->
+    <div class="article-card reveal d2" id="card-2">
+      <div class="article-body">
+        <div class="article-meta">
+          <span class="article-cat">Identity</span>
+          <span class="article-dot"></span>
+          <span class="article-read">6 min read</span>
+        </div>
+        <h2 class="article-title">Losing your identity… and being totally okay with that</h2>
+        <p class="article-excerpt">A trip to Scotland. A cold loch. A deer at the water's edge. And the moment CrossFit stopped being part of who I was — and I let it go.</p>
+        <button class="article-link" onclick="toggleArticle('article-2', this)">Read more <span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ARTICLE 2 FULL TEXT -->
+    <div class="article-full" id="article-2">
+      <div class="article-full-inner">
+        <h2 class="article-full-title">Losing your identity…<br><em>and being totally okay with that</em></h2>
+        <div class="article-full-byline">Anita Gibbons · Identity · 6 min read</div>
+
+        <blockquote>
+          <p>"The more an idea is tied to your identity, the more you will ignore evidence it is false. To continue to grow and learn, you must be willing to update, expand, and edit your identity."</p>
+          <cite>— James Clear</cite>
+        </blockquote>
+
+        <p class="drop-cap">If you Google losing your identity, you'd be forgiven for thinking it's a terrible thing… like you've somehow failed or become "less than."</p>
+
+        <p>But what if it wasn't? What if losing parts of your identity is actually how you find your true self?</p>
+
+        <p>Last year, I travelled to Scotland with my partner and kids. It was their home, but my first time experiencing it. And I wasn't prepared.</p>
+
+        <p>We drove through the Highlands, through snow-covered towns and endless landscapes that didn't even feel real. It was magic. The kind that makes you stop and just… take it all in.</p>
+
+        <p>Before we left Australia, we had seen a TikTok of a couple travelling through Scotland. One place stood out — Glencoe, starting at the Kings House Hotel. It looked fake. Like something out of a movie. But let me tell you… it wasn't.</p>
+
+        <p>We arrived early for lunch, so we decided to go up the mountain — well, the part after the chairlift. I had never really seen snow before, and standing there, looking up at this huge, white, magnificent mountain… I felt like a kid at Christmas.</p>
+
+        <p>After getting over our fear of the chairlift, the boys and I made our way up. And then… something shifted.</p>
+
+        <p>It was so still. So peaceful. Not even as cold as I expected. I could see for miles — across to Ben Nevis and back down to the hotel below.</p>
+
+        <blockquote>
+          <p>I stood there… and something in me softened. I didn't just like it there. I felt like I was home.</p>
+        </blockquote>
+
+        <p>Not in a logical way — in a deep, heart-centred, gut-knowing kind of way.</p>
+
+        <p>We made our way back down, laughing the whole time — including rescuing a shoe stuck in the mud while a teenage boy hopped around on one foot. Claire could hear us laughing from halfway down the mountain.</p>
+
+        <p>We had no idea the day was about to get even better.</p>
+
+        <p>Back at the hotel, we were on the lookout for the famous deer. Nothing. We ordered lunch, slightly disappointed… and then, out of nowhere — he appeared. Walking calmly around the water, eating the grass like he owned the place.</p>
+
+        <p>I scrambled for my phone like the full tourist I was — and didn't care one bit. Birds and ducks gathered around him as a staff member scattered feed. It felt surreal. Like I had stepped into a movie scene. My lunch went cold, and honestly… I didn't care.</p>
+
+        <p>Earlier, we had also seen a place called The Meeting of the Three Waters. I had been so set on swimming there that I had worn my bathers all day, just in case. But when we got there… it was packed. Cars, buses, people everywhere. No chance to stop. So we kept driving.</p>
+
+        <p>On the way back, I asked Claire to pull over at Loch Lubnaig — a place we had stopped at before. It had this calm, grounding energy. By then, it had started to rain. But I wasn't stopping.</p>
+
+        <p>As we drove, I started thinking about how cold the water would be… questioning if I could actually do it. And then — the strangest thing happened. A shift. A knowing. I could do it. And more than that — I needed to.</p>
+
+        <p>I got out, found my spot, and handed my clothes to Claire, who was already laughing. I took a breath… stepped in… paused… and then dove.</p>
+
+        <blockquote>
+          <p>It was freezing. Fresh. Exhilarating. Alive.</p>
+        </blockquote>
+
+        <p>I didn't stay in long, but when I came out, I couldn't stop smiling. My body was shaking, my heart was racing… and I felt incredible. Something had shifted.</p>
+
+        <p>That day sparked something deep inside me. A need to be in nature. To climb. To swim. To explore. I didn't realise it then… but that was the beginning of losing my identity.</p>
+
+        <p>For years, I had identified as "the strong girl." CrossFit. Competitions. Lifting. Training five days a week. It was part of who I was. But after my last powerlifting comp, something changed. The motivation wasn't there. My body felt tired. Everything felt harder. And for once… I listened. I stopped.</p>
+
+        <p>Not long after, while walking the dogs, Scotland came flooding back. The mountains. The water. The feeling. And I knew — that was what I needed.</p>
+
+        <p>I journal every day. I check in honestly. And when I looked back over my entries, there was a pattern. Everything that brought me joy… led back to nature. Climbing. Walking. Swimming.</p>
+
+        <p>If money wasn't an issue — I'd be in Scotland, swimming in a loch after climbing a mountain. If I could do anything for a day — I'd do the same. That told me everything.</p>
+
+        <p>So I made a decision. I let go of part of my identity. I paused the gym. Stepped away from competition. Let go of being "the CrossFit girl." And that wasn't easy. Because CrossFit isn't just a workout — it's a community. A big part of my life. But it was time.</p>
+
+        <p>This doesn't mean I stopped moving my body. It just means I'm choosing differently. I'm walking more. Exploring more. Connecting more. Listening more.</p>
+
+        <p>And maybe this doesn't sound like a big deal to you. But think about it…</p>
+
+        <blockquote>
+          <p>What part of your identity are you holding onto so tightly that it's stopping you from evolving? What if letting it go… is exactly what leads you back to yourself?</p>
+        </blockquote>
+
+        <button class="article-close" onclick="toggleArticle('article-2', this)">← Close article</button>
+      </div>
+    </div>
+
+    <!-- ARTICLE 3 -->
+    <div class="article-card reveal d3" id="card-3">
+      <div class="article-body">
+        <div class="article-meta">
+          <span class="article-cat">Self-Worth</span>
+          <span class="article-dot"></span>
+          <span class="article-read">5 min read</span>
+        </div>
+        <h2 class="article-title">Becoming Your Own Cheerleader</h2>
+        <p class="article-excerpt">Why is it so easy to give kindness to others, but so uncomfortable to offer it to ourselves? A session with my therapist changed how I answer that question.</p>
+        <button class="article-link" onclick="toggleArticle('article-3', this)">Read more <span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ARTICLE 3 FULL TEXT -->
+    <div class="article-full" id="article-3">
+      <div class="article-full-inner">
+        <h2 class="article-full-title">Becoming Your Own <em>Cheerleader</em></h2>
+        <div class="article-full-byline">Anita Gibbons · Self-Worth · 5 min read</div>
+
+        <p class="drop-cap">There's something I've been thinking about a lot lately… self-validation. Not in a big, loud, "look at me" kind of way. But in the everyday moments where you either support yourself… or you don't.</p>
+
+        <p>I had a session with my therapist last week, and she asked me a question that really made me pause: "Is your self-validation constant, or does it ebb and flow?"</p>
+
+        <p>I realised pretty quickly… it ebbs and flows. And if I'm being honest, it tends to show up more when I'm already feeling good. When I'm confident, when things are going well, when life feels a little easier. Those are the moments where I might think to myself, you've got this.</p>
+
+        <p>But it made me wonder… what about the days when I don't feel confident? What about the moments where things feel hard, heavy, or uncertain? Isn't that when I need that voice the most?</p>
+
+        <p>The conversation took a turn I wasn't expecting when she asked me to say something out loud. To myself.</p>
+
+        <blockquote>
+          <p>"Anita, you are amazing. You are powerful. You've got this."</p>
+        </blockquote>
+
+        <p>And instantly, I felt it. A wave of discomfort moved through my body. Tight chest. Nervous energy. A little bit of panic. It caught me completely off guard.</p>
+
+        <p>Because here's the thing… I would say those exact words to a friend without hesitation. I would say them to a stranger if I felt they needed it. But saying them to myself? Out loud? In front of someone else? That felt… hard.</p>
+
+        <p>And it made me ask the question: why is it so easy to give kindness to others, but so uncomfortable to offer it to ourselves?</p>
+
+        <p>Maybe it's how we've been conditioned. Maybe it's Tall Poppy Syndrome doing what it does best — keeping us small. Maybe it's the fear of looking silly, or "too much," or like we're full of ourselves.</p>
+
+        <p>But what if it didn't have to be that way?</p>
+
+        <p>After sitting in that discomfort for a moment, I took a breath and gave it a go. At first, I kept it general. "You are amazing. You are powerful. You can do anything you want." But then my therapist guided me to make it personal. "Say your name. Speak to yourself."</p>
+
+        <p>So I did.</p>
+
+        <blockquote>
+          <p>"Anita… you are strong. You are powerful. And you can do anything you set your mind to."</p>
+        </blockquote>
+
+        <p>And something shifted. It wasn't loud or dramatic. It was soft. Gentle. Real. But it landed.</p>
+
+        <p>In that moment, I wasn't looking outside of myself for reassurance. I wasn't waiting for someone else to tell me I was doing okay. I gave that to myself. And that felt powerful in a completely different way.</p>
+
+        <p>It made me realise that being your own cheerleader doesn't have to look like jumping up and down with pom-poms (although if that's your thing, go for it). Sometimes it looks like words in the mirror. A reminder before you start your day. A voice in the middle of a hard moment saying, you've got this.</p>
+
+        <p>Since that session, I've made a small promise to myself. To make self-validation something that's more consistent. Not just something that shows up when life feels easy, but something I can lean on when it doesn't.</p>
+
+        <p>So now, in the mornings, while I'm getting ready for the day, I take a moment. I look at myself. And I speak kindly. Nothing over the top. Nothing forced. Just honest, supportive words… from me, to me.</p>
+
+        <p>Because at the end of the day, we spend more time with ourselves than anyone else. And maybe it's time that relationship became one of the most supportive ones we have.</p>
+
+        <blockquote>
+          <p>I am becoming my own cheerleader. And maybe… you can become yours too.</p>
+        </blockquote>
+
+        <button class="article-close" onclick="toggleArticle('article-3', this)">← Close article</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-rings">
+    <svg aria-hidden="true" width="700" height="700" viewBox="0 0 700 700" fill="none">
+      <circle cx="350" cy="350" r="320" stroke="rgba(107,165,160,0.06)" stroke-width="0.5"/>
+      <circle cx="350" cy="350" r="240" stroke="rgba(107,165,160,0.09)" stroke-width="0.5"/>
+      <circle cx="350" cy="350" r="160" stroke="rgba(107,165,160,0.12)" stroke-width="0.5"/>
+      <circle cx="350" cy="350" r="80" stroke="rgba(107,165,160,0.09)" stroke-width="0.5"/>
+    </svg>
+  </div>
+  <div class="cta-inner">
+    <div class="cta-tag reveal">The shore</div>
+    <h2 class="cta-headline reveal d1">
+      You have already<br>felt <em>the pull.</em>
+    </h2>
+    <p class="cta-sub reveal d2">
+      If these words landed somewhere true in you — that is not an accident. That is your body recognising something it already knows.
+    </p>
+    <div class="cta-buttons reveal d3">
+      <a href="sessions.html" class="btn-primary">Work with Anita</a>
+      <a href="journal-prompts.html" class="btn-ghost">Explore the journal prompts</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="footer-brand-logo">Barefoot Kinesiologist</a>
+      <p class="footer-tagline">Emotions &amp; Metaphysical Kinesiology for women ready to stop performing and start living. Online &mdash; live or recorded &mdash; available worldwide.</p>
+    </div>
+    <div>
+      <div class="footer-col-head">Navigate</div>
+      <ul class="footer-list">
+        <li><a href="kinesiology.html">What is Kinesiology</a></li>
+        <li><a href="sessions.html">Sessions &amp; Pricing</a></li>
+        <li><a href="about.html">About Anita</a></li>
+        <li><a href="musings.html">Musings</a></li>
+        <li><a href="journal-prompts.html">The Unbecoming Journal</a></li>
+        <li><a href="quiz.html">Take the Quiz</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-head">Connect</div>
+      <ul class="footer-list">
+        <li><a href="sessions.html">Join the Waitlist</a></li>
+        <li><a href="mailto:hello@thebarefootkinesiologist.com">Send an Enquiry</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="booking-terms.html">Booking Terms</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-head">Stay connected</div>
+      <p class="footer-newsletter-note">Slow words on kinesiology, the natural world, authentic living, and what it means to come home to yourself &mdash; sent with intention, never rushed.</p>
+      <form class="nl-row" name="newsletter" method="POST" data-netlify="true" action="thank-you.html">
+        <input type="hidden" name="form-name" value="newsletter">
+        <input type="email" name="email" required placeholder="Your email address" aria-label="Email address">
+        <button type="submit">Join</button>
+      </form>
+    </div>
+  </div>
+
+  <p class="footer-disclaimer" style="max-width:1060px;margin:0 auto 36px;font-size:11.5px;font-weight:300;line-height:1.8;color:rgba(158,184,181,.5);">
+    Kinesiology is a complementary wellbeing practice and is not a substitute for medical or mental-health care. Anita does not diagnose, treat, or cure any physical or psychological condition, and nothing on this site is medical advice. Please continue to work with your GP or a qualified mental-health professional for any health concern. If you need support now, in Australia you can call Lifeline on 13 11 14 &mdash; or 000 in an emergency. <a href="disclaimer.html" style="color:rgba(158,184,181,.75);border-bottom:0.5px solid rgba(158,184,181,.4);">Read the full disclaimer</a>.
+  </p>
+
+  <div class="footer-bottom">
+    <div class="footer-copy">&copy; 2026 Barefoot Kinesiologist &middot; Anita Gibbons &middot; Western Australia</div>
+    <div class="footer-socials"></div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)},{passive:true});
+
+// Reveal
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');observer.unobserve(e.target);}});
+},{threshold:0.1,rootMargin:'0px 0px -48px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Article toggle
+function toggleArticle(id, btn) {
+  const article = document.getElementById(id);
+  const isOpen = article.classList.contains('open');
+
+  // Close all open articles first
+  document.querySelectorAll('.article-full.open').forEach(a => a.classList.remove('open'));
+  document.querySelectorAll('.article-link').forEach(b => {
+    if(b.tagName === 'BUTTON') b.textContent = 'Read more →';
+  });
+
+  if (!isOpen) {
+    article.classList.add('open');
+    btn.textContent = 'Close ↑';
+    setTimeout(()=>{
+      article.scrollIntoView({behavior:'smooth', block:'start'});
+    }, 100);
+  }
+}
+</script>
+<script>
+// === MOBILE NAV ===
+(function(){
+  var hamburger = document.getElementById('navHamburger');
+  var menu      = document.getElementById('navMobileMenu');
+  var closeBtn  = document.getElementById('navMobileClose');
+  if(!hamburger || !menu) return;
+  function openMenu(){
+    menu.style.display = 'flex';
+    setTimeout(function(){ menu.classList.add('open'); }, 10);
+    hamburger.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu(){
+    menu.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(function(){ menu.style.display = 'none'; }, 300);
+  }
+  hamburger.addEventListener('click', function(){
+    menu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  if(closeBtn) closeBtn.addEventListener('click', closeMenu);
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Your Path Quiz · Barefoot Kinesiologist</title>
+<meta name="description" content="A short, gentle quiz to discover which area of your life is asking for attention — and which EMK session with Anita is the right starting point.">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Barefoot Kinesiologist">
+<meta property="og:title" content="Find Your Path Quiz · Barefoot Kinesiologist">
+<meta property="og:description" content="A short, gentle quiz to discover which area of your life is asking for attention — and which EMK session with Anita is the right starting point.">
+<meta property="og:image" content="/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mobile.css">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+:root{
+  --bone:#E8DDD0;--sand:#D4B896;
+  --terra:#B86B4C;--terra-l:#C8856A;
+  --glass:#6BA5A0;--glass-l:#9DCDC8;--glass-d:#4A8580;
+  --weed:#2E5D58;--dark:#1D3B38;--darker:#142C28;
+  --cream:#F2EDE5;--cream2:#EDE7DF;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',sans-serif;
+}
+body{font-family:var(--sans);background:var(--dark);color:var(--bone);overflow-x:hidden;min-height:100vh;}
+a{text-decoration:none;cursor:pointer;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:26px 64px;display:flex;justify-content:space-between;align-items:center;transition:background .45s,padding .35s,border-color .4s;border-bottom:0.5px solid transparent;}
+nav.scrolled{background:rgba(20,44,40,0.96);backdrop-filter:blur(16px);padding:16px 64px;border-color:rgba(107,165,160,0.14);}
+.nav-logo{font-family:var(--serif);font-size:15px;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--bone);}
+.nav-links{display:flex;gap:38px;list-style:none;align-items:center;}
+.nav-links a{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(157,205,200,.75);transition:color .3s;}
+.nav-links a:hover{color:var(--bone);}
+.nav-cta{padding:9px 22px !important;border:0.5px solid rgba(107,165,160,.4) !important;border-radius:2px;color:var(--bone) !important;transition:background .3s,border-color .3s !important;}
+.nav-cta:hover{background:rgba(107,165,160,.12) !important;border-color:var(--glass) !important;}
+
+/* SHARED */
+.btn-primary{display:inline-block;padding:15px 42px;background:var(--glass);color:var(--darker);font-family:var(--sans);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;font-weight:500;border-radius:2px;border:none;cursor:pointer;transition:background .3s,transform .2s;}
+.btn-primary:hover{background:var(--glass-l);transform:translateY(-2px);}
+.btn-ghost{display:inline-block;padding:15px 42px;background:transparent;color:var(--bone);font-family:var(--sans);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;font-weight:300;border-radius:2px;border:0.5px solid rgba(232,221,208,.28);cursor:pointer;transition:border-color .3s,background .3s;}
+.btn-ghost:hover{border-color:rgba(232,221,208,.55);background:rgba(232,221,208,.04);}
+
+/* HERO */
+#hero{min-height:60vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;padding:0 64px 80px;}
+.hero-grain{position:absolute;inset:0;pointer-events:none;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.011) 0,rgba(255,255,255,.011) 1px,transparent 1px,transparent 9px);}
+.hero-rings{position:absolute;right:-80px;top:50%;transform:translateY(-50%);pointer-events:none;}
+.hero-content{max-width:640px;position:relative;z-index:2;}
+.hero-eyebrow{display:flex;align-items:center;gap:16px;margin-bottom:28px;opacity:0;animation:fadeUp .9s .2s forwards;}
+.hero-eyebrow-line{width:40px;height:0.5px;background:var(--terra);}
+.hero-eyebrow span{font-size:10px;letter-spacing:.38em;text-transform:uppercase;color:var(--terra);font-weight:300;}
+.hero-headline{font-family:var(--serif);font-size:clamp(42px,5.5vw,68px);font-weight:300;line-height:1.0;color:var(--bone);margin-bottom:24px;opacity:0;animation:fadeUp .9s .35s forwards;}
+.hero-headline em{font-style:italic;color:var(--glass);}
+.hero-sub{font-size:14px;font-weight:300;line-height:2;color:rgba(158,184,181,.8);max-width:480px;opacity:0;animation:fadeUp .9s .5s forwards;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* QUIZ SECTION */
+#quiz{padding:80px 64px 120px;position:relative;}
+.quiz-inner{max-width:720px;margin:0 auto;}
+
+/* PROGRESS */
+.quiz-progress{margin-bottom:56px;}
+.quiz-progress-label{font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:rgba(107,165,160,.5);margin-bottom:12px;}
+.quiz-progress-track{height:0.5px;background:rgba(107,165,160,.15);border-radius:1px;position:relative;}
+.quiz-progress-fill{height:0.5px;background:var(--glass);border-radius:1px;transition:width .5s ease;position:absolute;top:0;left:0;}
+
+/* QUESTION */
+.quiz-question{display:none;}
+.quiz-question.active{display:block;animation:fadeUp .5s forwards;}
+.quiz-q-eyebrow{font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--terra);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.quiz-q-line{width:24px;height:0.5px;background:var(--terra);}
+.quiz-q-text{font-family:var(--serif);font-size:clamp(26px,3.5vw,38px);font-weight:300;color:var(--bone);line-height:1.3;margin-bottom:40px;}
+.quiz-q-text em{font-style:italic;color:var(--glass-l);}
+
+/* OPTIONS */
+.quiz-options{display:flex;flex-direction:column;gap:12px;}
+.quiz-option{
+  padding:22px 28px;border-radius:2px;cursor:pointer;
+  border:0.5px solid rgba(107,165,160,.2);
+  background:rgba(255,255,255,.025);
+  transition:all .25s;text-align:left;width:100%;
+  font-family:var(--sans);
+}
+.quiz-option:hover{border-color:rgba(107,165,160,.5);background:rgba(107,165,160,.07);transform:translateX(4px);}
+.quiz-option.selected{border-color:var(--glass);background:rgba(107,165,160,.12);}
+.quiz-option-letter{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--terra);display:block;margin-bottom:6px;}
+.quiz-option-text{font-size:14px;font-weight:300;color:var(--bone);line-height:1.6;}
+
+/* NAV BUTTONS */
+.quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:40px;}
+.quiz-back{background:none;border:none;font-family:var(--sans);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(107,165,160,.5);cursor:pointer;transition:color .2s;padding:0;}
+.quiz-back:hover{color:var(--glass);}
+.quiz-back:disabled{opacity:0;pointer-events:none;}
+
+/* RESULT */
+#quiz-result{display:none;animation:fadeUp .6s forwards;}
+.result-eyebrow{font-size:9.5px;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.result-eyebrow-line{width:24px;height:0.5px;background:var(--terra);}
+.result-tag{display:inline-block;padding:5px 16px;border-radius:40px;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:24px;}
+.result-tag.first-steps{background:rgba(107,165,160,.15);color:var(--glass-l);}
+.result-tag.rewild{background:rgba(184,107,76,.15);color:var(--terra-l);}
+.result-tag.steady{background:rgba(46,93,88,.2);color:#7DBDB8;}
+.result-headline{font-family:var(--serif);font-size:clamp(34px,4.5vw,54px);font-weight:300;color:var(--bone);line-height:1.1;margin-bottom:20px;}
+.result-headline em{font-style:italic;color:var(--glass);}
+.result-body{font-size:14px;font-weight:300;line-height:2;color:rgba(158,184,181,.8);margin-bottom:16px;max-width:580px;}
+.result-rule{width:40px;height:0.5px;background:rgba(107,165,160,.3);margin:32px 0;}
+.result-session-label{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(107,165,160,.5);margin-bottom:16px;}
+.result-session-name{font-family:var(--serif);font-size:28px;font-weight:300;font-style:italic;color:var(--bone);margin-bottom:8px;}
+.result-session-price{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:rgba(107,165,160,.6);margin-bottom:32px;}
+.result-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:32px;}
+.result-retake{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(107,165,160,.45);cursor:pointer;border:none;background:none;font-family:var(--sans);transition:color .2s;padding:0;}
+.result-retake:hover{color:var(--glass);}
+
+/* FOOTER */
+footer{background:var(--darker);padding:72px 64px 40px;border-top:0.5px solid rgba(107,165,160,.08);}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:1060px;margin:0 auto 56px;}
+.footer-brand-logo{font-family:var(--serif);font-size:14px;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--bone);display:block;margin-bottom:16px;}
+.footer-tagline{font-size:12px;font-weight:300;line-height:1.85;color:rgba(107,165,160,.5);max-width:260px;}
+.footer-col-head{font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:rgba(107,165,160,.4);margin-bottom:20px;}
+.footer-list{list-style:none;}
+.footer-list li{margin-bottom:10px;}
+.footer-list a{font-size:12px;font-weight:300;color:rgba(232,221,208,.5);transition:color .3s;}
+.footer-list a:hover{color:var(--bone);}
+.footer-newsletter-note{font-size:12px;font-weight:300;line-height:1.85;color:rgba(107,165,160,.45);margin-bottom:16px;}
+.nl-row{display:flex;gap:0;}
+.nl-row input{flex:1;background:rgba(107,165,160,.08);border:0.5px solid rgba(107,165,160,.2);border-right:none;padding:10px 16px;color:var(--bone);font-family:var(--sans);font-size:12px;outline:none;}
+.nl-row input::placeholder{color:rgba(107,165,160,.35);}
+.nl-row button{background:var(--glass);color:var(--dark);border:none;padding:10px 20px;font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:background .3s;}
+.nl-row button:hover{background:var(--glass-l);}
+.footer-bottom{max-width:1060px;margin:0 auto;border-top:0.5px solid rgba(107,165,160,.1);padding-top:28px;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:11px;font-weight:300;color:rgba(107,165,160,.38);letter-spacing:.04em;}
+.footer-socials{display:flex;gap:22px;}
+.soc-link{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(107,165,160,.42);transition:color .3s;}
+.soc-link:hover{color:var(--glass-l);}
+
+/* WAITLIST MODAL */
+.wl-backdrop{position:fixed;inset:0;z-index:9000;background:rgba(14,28,26,0.85);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .35s;}
+.wl-backdrop.open{opacity:1;pointer-events:all;}
+.wl-modal{background:var(--dark);width:100%;max-width:520px;border-radius:4px;border:0.5px solid rgba(107,165,160,.22);position:relative;overflow:hidden;transform:translateY(32px) scale(0.97);transition:transform .42s cubic-bezier(.22,1,.36,1);}
+.wl-backdrop.open .wl-modal{transform:translateY(0) scale(1);}
+.wl-accent{height:2px;background:linear-gradient(90deg,var(--terra) 0%,var(--glass) 100%);}
+.wl-close{position:absolute;top:16px;right:18px;background:none;border:none;cursor:pointer;color:rgba(107,165,160,.38);font-size:18px;line-height:1;transition:color .2s;padding:6px;}
+.wl-close:hover{color:rgba(107,165,160,.75);}
+.wl-body{padding:42px 46px 46px;}
+.wl-eyebrow{font-size:9.5px;letter-spacing:.38em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:14px;}
+.wl-eyebrow-line{width:28px;height:0.5px;background:var(--terra);}
+.wl-title{font-family:var(--serif);font-size:38px;font-weight:300;font-style:italic;color:var(--bone);line-height:1.08;margin-bottom:10px;}
+.wl-sub{font-size:13px;font-weight:300;line-height:1.85;color:rgba(157,205,200,.6);margin-bottom:30px;}
+.wl-session-label{display:block;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(157,205,200,.45);margin-bottom:10px;}
+.wl-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+.wl-pill{padding:9px 16px;border-radius:2px;cursor:pointer;font-family:var(--sans);font-size:10.5px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;border:0.5px solid rgba(107,165,160,.26);color:rgba(157,205,200,.6);background:transparent;transition:all .2s;}
+.wl-pill:hover{border-color:var(--glass);color:var(--glass-l);}
+.wl-pill.active{background:rgba(107,165,160,.13);border-color:var(--glass);color:var(--glass-l);}
+.wl-row{margin-bottom:15px;}
+.wl-row label{display:block;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(157,205,200,.45);margin-bottom:8px;}
+.wl-row input,.wl-row textarea{width:100%;padding:13px 16px;background:rgba(255,255,255,.04);border:0.5px solid rgba(107,165,160,.24);border-radius:2px;color:var(--bone);font-family:var(--sans);font-size:13px;font-weight:300;outline:none;transition:border-color .25s;resize:none;}
+.wl-row input::placeholder,.wl-row textarea::placeholder{color:rgba(107,165,160,.28);}
+.wl-row input:focus,.wl-row textarea:focus{border-color:rgba(107,165,160,.55);}
+.wl-row input.wl-error{border-color:rgba(184,107,76,.65);}
+.wl-submit{width:100%;margin-top:10px;padding:16px;background:var(--terra);border:none;border-radius:2px;color:var(--cream);font-family:var(--sans);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:background .3s,transform .2s;}
+.wl-submit:hover{background:var(--terra-l);transform:translateY(-2px);}
+.wl-note{font-size:11px;font-weight:300;color:rgba(107,165,160,.35);margin-top:14px;text-align:center;line-height:1.65;}
+.wl-success{display:none;text-align:center;padding:64px 46px;}
+.wl-success.show{display:block;}
+.wl-success-ring{width:52px;height:52px;border-radius:50%;border:0.5px solid rgba(107,165,160,.38);display:flex;align-items:center;justify-content:center;margin:0 auto 26px;color:var(--glass);font-size:22px;}
+.wl-success-title{font-family:var(--serif);font-size:34px;font-weight:300;font-style:italic;color:var(--bone);margin-bottom:12px;}
+.wl-success-body{font-size:13px;font-weight:300;line-height:1.85;color:rgba(157,205,200,.6);max-width:320px;margin:0 auto 34px;}
+</style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile-menu" id="navMobileMenu" style="display:none;">
+  <button class="nav-mobile-close" id="navMobileClose" aria-label="Close menu">&#x2715;</button>
+  <ul>
+      <li><a href="kinesiology.html">Kinesiology</a></li>
+      <li><a href="sessions.html">Sessions</a></li>
+      <li><a href="about.html">Anita</a></li>
+      <li><a href="musings.html">Musings</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+    <li><a href="#" onclick="openWaitlist('');return false;" class="nav-mobile-cta">Join the Waitlist</a></li>
+  </ul>
+</div>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">Barefoot Kinesiologist</a>
+  <ul class="nav-links">
+    <li><a href="kinesiology.html">Kinesiology</a></li>
+    <li><a href="sessions.html">Sessions</a></li>
+    <li><a href="about.html">Anita</a></li>
+    <li><a href="musings.html">Musings</a></li>
+    <li><a href="quiz.html" style="color:var(--bone);">Quiz</a></li>
+    <li><a href="#" class="nav-cta" onclick="openWaitlist('');return false;">Join the Waitlist</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<section id="hero">
+  <div class="hero-grain"></div>
+  <div class="hero-rings">
+    <svg aria-hidden="true" width="500" height="500" viewBox="0 0 500 500" fill="none">
+      <circle cx="250" cy="250" r="230" stroke="rgba(107,165,160,0.07)" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="170" stroke="rgba(107,165,160,0.1)" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="110" stroke="rgba(107,165,160,0.14)" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="50" stroke="rgba(107,165,160,0.12)" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="4" fill="rgba(107,165,160,0.3)"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>Find your path &middot; 5 questions</span>
+    </div>
+    <h1 class="hero-headline">
+      Which path is<br><em>right for you?</em>
+    </h1>
+    <p class="hero-sub">
+      Five gentle questions. No right answers. Just a way of listening to where you actually are — and finding the best place to begin.
+    </p>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-inner">
+
+    <div class="quiz-progress">
+      <div class="quiz-progress-label" id="progressLabel">Question 1 of 5</div>
+      <div class="quiz-progress-track">
+        <div class="quiz-progress-fill" id="progressFill" style="width:20%"></div>
+      </div>
+    </div>
+
+    <!-- Q1 -->
+    <div class="quiz-question active" data-q="0">
+      <div class="quiz-q-eyebrow"><div class="quiz-q-line"></div>Where you are</div>
+      <p class="quiz-q-text">When you think about your life right now, what feels most <em>true?</em></p>
+      <div class="quiz-options">
+        <button class="quiz-option" data-value="first" onclick="selectOption(this)">
+          <span class="quiz-option-letter">A</span>
+          <span class="quiz-option-text">Something is calling me but I can't name it yet. I feel a pull toward something different, I'm just not sure what.</span>
+        </button>
+        <button class="quiz-option" data-value="rewild" onclick="selectOption(this)">
+          <span class="quiz-option-letter">B</span>
+          <span class="quiz-option-text">I know exactly what needs to change. I've known for a while. I'm ready — actually ready — to do the work.</span>
+        </button>
+        <button class="quiz-option" data-value="steady" onclick="selectOption(this)">
+          <span class="quiz-option-letter">C</span>
+          <span class="quiz-option-text">I've done some work on myself already and I want to keep going. I just need a steady space to continue.</span>
+        </button>
+        <button class="quiz-option" data-value="first" onclick="selectOption(this)">
+          <span class="quiz-option-letter">D</span>
+          <span class="quiz-option-text">I'm curious but sceptical. I want to understand what this actually is before committing to anything.</span>
+        </button>
+      </div>
+      <div class="quiz-nav">
+        <button class="quiz-back" disabled>&#8592; Back</button>
+        <button class="btn-primary" onclick="nextQuestion()" id="nextBtn0" disabled>Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="quiz-question" data-q="1">
+      <div class="quiz-q-eyebrow"><div class="quiz-q-line"></div>The patterns</div>
+      <p class="quiz-q-text">How long have you been <em>circling</em> the same feelings or patterns?</p>
+      <div class="quiz-options">
+        <button class="quiz-option" data-value="first" onclick="selectOption(this)">
+          <span class="quiz-option-letter">A</span>
+          <span class="quiz-option-text">I'm not sure I have patterns yet — I'm just starting to pay attention to this kind of thing.</span>
+        </button>
+        <button class="quiz-option" data-value="rewild" onclick="selectOption(this)">
+          <span class="quiz-option-letter">B</span>
+          <span class="quiz-option-text">Years. These patterns have been with me a long time and I am done letting them run my life.</span>
+        </button>
+        <button class="quiz-option" data-value="steady" onclick="selectOption(this)">
+          <span class="quiz-option-letter">C</span>
+          <span class="quiz-option-text">I've shifted some of them. Others keep resurfacing. I want to keep working through them as life unfolds.</span>
+        </button>
+        <button class="quiz-option" data-value="rewild" onclick="selectOption(this)">
+          <span class="quiz-option-letter">D</span>
+          <span class="quiz-option-text">Long enough that I know something needs to shift. I just haven't found the right container yet.</span>
+        </button>
+      </div>
+      <div class="quiz-nav">
+        <button class="quiz-back" onclick="prevQuestion()">&#8592; Back</button>
+        <button class="btn-primary" onclick="nextQuestion()" id="nextBtn1" disabled>Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="quiz-question" data-q="2">
+      <div class="quiz-q-eyebrow"><div class="quiz-q-line"></div>The commitment</div>
+      <p class="quiz-q-text">When it comes to doing this work, what feels <em>right</em> for you?</p>
+      <div class="quiz-options">
+        <button class="quiz-option" data-value="first" onclick="selectOption(this)">
+          <span class="quiz-option-letter">A</span>
+          <span class="quiz-option-text">I want to dip my toe in first. One session to feel it out before I decide anything.</span>
+        </button>
+        <button class="quiz-option" data-value="rewild" onclick="selectOption(this)">
+          <span class="quiz-option-letter">B</span>
+          <span class="quiz-option-text">I'm ready to commit to a real container. I know that sustained change takes sustained support.</span>
+        </button>
+        <button class="quiz-option" data-value="steady" onclick="selectOption(this)">
+          <span class="quiz-option-letter">C</span>
+          <span class="quiz-option-text">Monthly feels right — a steady rhythm rather than intensive work. I want it woven into my life.</span>
+        </button>
+        <button class="quiz-option" data-value="first" onclick="selectOption(this)">
+          <span class="quiz-option-letter">D</span>
+          <span class="quiz-option-text">I honestly don't know yet. I need to experience it once before I can say.</span>
+        </button>
+      </div>
+      <div class="quiz-nav">
+        <button class="quiz-back" onclick="prevQuestion()">&#8592; Back</button>
+        <button class="btn-primary" onclick="nextQuestion()" id="nextBtn2" disabled>Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="quiz-question" data-q="3">
+      <div class="quiz-q-eyebrow"><div class="quiz-q-line"></div>The feeling</div>
+      <p class="quiz-q-text">Which of these feels most like <em>you</em> right now?</p>
+      <div class="quiz-options">
+        <button class="quiz-option" data-value="first" onclick="selectOption(this)">
+          <span class="quiz-option-letter">A</span>
+          <span class="quiz-option-text">I feel a pull toward something, but I'm standing at the edge, not quite ready to step in.</span>
+        </button>
+        <button class="quiz-option" data-value="rewild" onclick="selectOption(this)">
+          <span class="quiz-option-letter">B</span>
+          <span class="quiz-option-text">I'm at a turning point. Something has to change and I can feel it in my whole body.</span>
+        </button>
+        <button class="quiz-option" data-value="steady" onclick="selectOption(this)">
+          <span class="quiz-option-letter">C</span>
+          <span class="quiz-option-text">I'm in a good place but I don't want to lose the thread. I want to keep choosing myself.</span>
+        </button>
+        <button class="quiz-option" data-value="rewild" onclick="selectOption(this)">
+          <span class="quiz-option-letter">D</span>
+          <span class="quiz-option-text">Exhausted from carrying things alone. I want to be properly held while I work through this.</span>
+        </button>
+      </div>
+      <div class="quiz-nav">
+        <button class="quiz-back" onclick="prevQuestion()">&#8592; Back</button>
+        <button class="btn-primary" onclick="nextQuestion()" id="nextBtn3" disabled>Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="quiz-question" data-q="4">
+      <div class="quiz-q-eyebrow"><div class="quiz-q-line"></div>The beginning</div>
+      <p class="quiz-q-text">What do you most want to <em>walk away with</em> from your first session?</p>
+      <div class="quiz-options">
+        <button class="quiz-option" data-value="first" onclick="selectOption(this)">
+          <span class="quiz-option-letter">A</span>
+          <span class="quiz-option-text">A felt sense of what EMK actually is. I want to experience it in my body before deciding more.</span>
+        </button>
+        <button class="quiz-option" data-value="rewild" onclick="selectOption(this)">
+          <span class="quiz-option-letter">B</span>
+          <span class="quiz-option-text">The beginning of real change. I want to leave knowing something has shifted and that there is a path forward.</span>
+        </button>
+        <button class="quiz-option" data-value="steady" onclick="selectOption(this)">
+          <span class="quiz-option-letter">C</span>
+          <span class="quiz-option-text">A monthly anchor. A space that is mine, every month, to recalibrate and keep deepening.</span>
+        </button>
+        <button class="quiz-option" data-value="rewild" onclick="selectOption(this)">
+          <span class="quiz-option-letter">D</span>
+          <span class="quiz-option-text">Clarity. I want to understand what I'm carrying and know that someone is going to help me through it.</span>
+        </button>
+      </div>
+      <div class="quiz-nav">
+        <button class="quiz-back" onclick="prevQuestion()">&#8592; Back</button>
+        <button class="btn-primary" onclick="showResult()" id="nextBtn4" disabled>See my result &rarr;</button>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div id="quiz-result"></div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="footer-brand-logo">Barefoot Kinesiologist</a>
+      <p class="footer-tagline">Emotions &amp; Metaphysical Kinesiology for women ready to stop performing and start living. Online &mdash; live or recorded &mdash; available worldwide.</p>
+    </div>
+    <div>
+      <div class="footer-col-head">Navigate</div>
+      <ul class="footer-list">
+        <li><a href="kinesiology.html">What is Kinesiology</a></li>
+        <li><a href="sessions.html">Sessions &amp; Pricing</a></li>
+        <li><a href="about.html">About Anita</a></li>
+        <li><a href="musings.html">Musings</a></li>
+        <li><a href="journal-prompts.html">The Unbecoming Journal</a></li>
+        <li><a href="quiz.html">Take the Quiz</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-head">Connect</div>
+      <ul class="footer-list">
+        <li><a href="#" onclick="openWaitlist('');return false;">Join the Waitlist</a></li>
+        <li><a href="mailto:hello@thebarefootkinesiologist.com">Send an Enquiry</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="booking-terms.html">Booking Terms</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-head">Stay connected</div>
+      <p class="footer-newsletter-note">Slow words on kinesiology, the natural world, authentic living, and what it means to come home to yourself &mdash; sent with intention, never rushed.</p>
+      <form class="nl-row" name="newsletter" method="POST" data-netlify="true" action="thank-you.html">
+        <input type="hidden" name="form-name" value="newsletter">
+        <input type="email" name="email" required placeholder="Your email address" aria-label="Email address">
+        <button type="submit">Join</button>
+      </form>
+    </div>
+  </div>
+
+  <p class="footer-disclaimer" style="max-width:1060px;margin:0 auto 36px;font-size:11.5px;font-weight:300;line-height:1.8;color:rgba(158,184,181,.5);">
+    Kinesiology is a complementary wellbeing practice and is not a substitute for medical or mental-health care. Anita does not diagnose, treat, or cure any physical or psychological condition, and nothing on this site is medical advice. Please continue to work with your GP or a qualified mental-health professional for any health concern. If you need support now, in Australia you can call Lifeline on 13 11 14 &mdash; or 000 in an emergency. <a href="disclaimer.html" style="color:rgba(158,184,181,.75);border-bottom:0.5px solid rgba(158,184,181,.4);">Read the full disclaimer</a>.
+  </p>
+
+  <div class="footer-bottom">
+    <div class="footer-copy">&copy; 2026 Barefoot Kinesiologist &middot; Anita Gibbons &middot; Western Australia</div>
+    <div class="footer-socials"></div>
+  </div>
+</footer>
+
+<!-- WAITLIST MODAL -->
+<!-- Netlify form detection (hidden) -->
+<form name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name"><input type="email" name="email">
+  <input type="text" name="session"><textarea name="message"></textarea>
+  <input type="text" name="bot-field">
+</form>
+<div class="wl-backdrop" id="wlBackdrop">
+  <div class="wl-modal">
+    <div class="wl-accent"></div>
+    <button class="wl-close" onclick="closeWaitlist()" aria-label="Close">&#x2715;</button>
+    <div id="wlFormView">
+      <div class="wl-body">
+        <div class="wl-eyebrow"><div class="wl-eyebrow-line"></div>Reserve your place</div>
+        <h2 class="wl-title">Join the waitlist</h2>
+        <p class="wl-sub">Send Anita a note and she will be in touch personally when a space opens &mdash; or sooner, if you have questions.</p>
+        <span class="wl-session-label">I&rsquo;m interested in&hellip;</span>
+        <div class="wl-pills" id="wlPillGroup">
+          <button class="wl-pill" onclick="wlSelectPill(this)">The First Step Session</button>
+          <button class="wl-pill" onclick="wlSelectPill(this)">The Rewild Package</button>
+          <button class="wl-pill" onclick="wlSelectPill(this)">Steady Tides</button>
+          <button class="wl-pill" onclick="wlSelectPill(this)">Not sure yet</button>
+        </div>
+        <div class="wl-row"><label for="wlName">Your first name</label><input type="text" id="wlName" placeholder="First name"></div>
+        <div class="wl-row"><label for="wlEmail">Your email address</label><input type="email" id="wlEmail" placeholder="Email address"></div>
+        <div class="wl-row"><label for="wlMsg">Where are you right now? <span style="opacity:.4;font-size:9px;letter-spacing:.05em;text-transform:none;">optional</span></label><textarea id="wlMsg" rows="3" placeholder="A little about what brought you here..."></textarea></div>
+        <button class="wl-submit" onclick="wlSubmit()">Send my details to Anita</button>
+        <p class="wl-note">No pressure, no obligation. Anita will be in touch personally.</p>
+      </div>
+    </div>
+    <div class="wl-success" id="wlSuccess">
+      <div class="wl-success-ring">&#x2713;</div>
+      <h3 class="wl-success-title">You are on the list.</h3>
+      <p class="wl-success-body">Anita will be in touch personally when a space opens. In the meantime, keep exploring.</p>
+      <button class="btn-ghost" onclick="closeWaitlist()">Continue reading</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// === QUIZ ===
+var answers = [];
+var currentQ = 0;
+var totalQ = 5;
+
+var results = {
+  first: {
+    tag: 'First Steps',
+    tagClass: 'first-steps',
+    headline: 'Your path begins with <em>First Steps</em>',
+    body1: 'You are in The Pull — that persistent feeling that something is calling, even if you can\'t name it yet. You don\'t need to have it figured out. You don\'t need to arrive with a tidy story. First Steps is designed exactly for this moment: the beginning of the conversation.',
+    body2: 'A 75-minute session to feel EMK in your body, set an intention, and let Anita\'s work guide you from there. No commitment, no pressure — just an honest beginning.',
+    session: 'First Steps',
+    price: '$150 · 75 minutes · live or recorded · online',
+    pillValue: 'The First Step Session'
+  },
+  rewild: {
+    tag: 'The Rewild Package',
+    tagClass: 'rewild',
+    headline: 'You are ready for <em>The Rewild Package</em>',
+    body1: 'You are at The Turning — the point where you know something has to change and you are done circling it. You have probably known for a while. The Rewild Package is a three-month container for women who are ready to commit to real, sustained transformation.',
+    body2: 'Six sessions that build on each other, personalised integration practices between them, and Anita holding the thread throughout. This is the heart of the work.',
+    session: 'The Rewild Package',
+    price: '$699 · 1 × 75 min + 5 × 60 min · 3 months · online',
+    pillValue: 'The Rewild Package'
+  },
+  steady: {
+    tag: 'Steady Tides',
+    tagClass: 'steady',
+    headline: 'Your path is <em>Steady Tides</em>',
+    body1: 'You are living from The Shore — you have done some of the work, you know what this kind of space offers, and you want to keep choosing yourself season after season. Steady Tides is a monthly anchor for women ready to keep deepening.',
+    body2: 'One 60-minute session per month, seasonal check-ins, and the flexibility to pause and restart as life unfolds. A steady, held rhythm that keeps the thread alive.',
+    session: 'Steady Tides',
+    price: '$130 per month · 60 minutes · ongoing · online',
+    pillValue: 'Steady Tides'
+  }
+};
+
+function selectOption(btn) {
+  var q = btn.closest('.quiz-question');
+  q.querySelectorAll('.quiz-option').forEach(function(o){ o.classList.remove('selected'); });
+  btn.classList.add('selected');
+  answers[currentQ] = btn.getAttribute('data-value');
+  var nextBtn = document.getElementById('nextBtn' + currentQ);
+  if(nextBtn) nextBtn.disabled = false;
+}
+
+function nextQuestion() {
+  if(currentQ >= totalQ - 1) return;
+  var qs = document.querySelectorAll('.quiz-question');
+  qs[currentQ].classList.remove('active');
+  currentQ++;
+  qs[currentQ].classList.add('active');
+  updateProgress();
+}
+
+function prevQuestion() {
+  if(currentQ <= 0) return;
+  var qs = document.querySelectorAll('.quiz-question');
+  qs[currentQ].classList.remove('active');
+  currentQ--;
+  qs[currentQ].classList.add('active');
+  updateProgress();
+}
+
+function updateProgress() {
+  var pct = ((currentQ + 1) / totalQ * 100) + '%';
+  document.getElementById('progressFill').style.width = pct;
+  document.getElementById('progressLabel').textContent = 'Question ' + (currentQ + 1) + ' of ' + totalQ;
+}
+
+function showResult() {
+  // Tally answers
+  var tally = { first: 0, rewild: 0, steady: 0 };
+  answers.forEach(function(a){ if(tally[a] !== undefined) tally[a]++; });
+
+  // Ties err on the side of the gentler recommendation:
+  // First Steps beats Steady Tides beats Rewild unless strictly outscored.
+  var winner = 'first';
+  if(tally.steady > tally.first) winner = 'steady';
+  if(tally.rewild > tally[winner]) winner = 'rewild';
+
+  var r = results[winner];
+  var resultEl = document.getElementById('quiz-result');
+  resultEl.innerHTML =
+    '<div class="result-eyebrow"><div class="result-eyebrow-line"></div>Your result</div>' +
+    '<span class="result-tag ' + r.tagClass + '">' + r.tag + '</span>' +
+    '<h2 class="result-headline">' + r.headline + '</h2>' +
+    '<p class="result-body">' + r.body1 + '</p>' +
+    '<p class="result-body">' + r.body2 + '</p>' +
+    '<div class="result-rule"></div>' +
+    '<div class="result-session-label">Recommended session</div>' +
+    '<div class="result-session-name">' + r.session + '</div>' +
+    '<div class="result-session-price">' + r.price + '</div>' +
+    '<div class="result-actions">' +
+    '<button class="btn-primary" onclick="openWaitlist(\'' + r.pillValue + '\')">Join the waitlist</button>' +
+    '<a href="sessions.html" class="btn-ghost">See all sessions</a>' +
+    '</div>' +
+    '<button class="result-retake" onclick="retakeQuiz()">&#8592; Retake the quiz</button>';
+
+  // Hide questions, show result
+  document.querySelectorAll('.quiz-question').forEach(function(q){ q.classList.remove('active'); });
+  document.querySelector('.quiz-progress').style.display = 'none';
+  resultEl.style.display = 'block';
+  window.scrollTo({ top: document.getElementById('quiz').offsetTop - 80, behavior: 'smooth' });
+}
+
+function retakeQuiz() {
+  answers = [];
+  currentQ = 0;
+  document.querySelectorAll('.quiz-question').forEach(function(q){
+    q.classList.remove('active');
+    q.querySelectorAll('.quiz-option').forEach(function(o){ o.classList.remove('selected'); });
+    var nb = q.querySelector('.btn-primary');
+    if(nb) nb.disabled = true;
+  });
+  document.querySelectorAll('.quiz-question')[0].classList.add('active');
+  document.getElementById('quiz-result').style.display = 'none';
+  document.getElementById('quiz-result').innerHTML = '';
+  document.querySelector('.quiz-progress').style.display = 'block';
+  updateProgress();
+  window.scrollTo({ top: document.getElementById('quiz').offsetTop - 80, behavior: 'smooth' });
+}
+
+// === NAV ===
+var nav = document.getElementById('main-nav');
+window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+
+// === MOBILE NAV ===
+(function(){
+  var hamburger = document.getElementById('navHamburger');
+  var menu = document.getElementById('navMobileMenu');
+  var closeBtn = document.getElementById('navMobileClose');
+  if(!hamburger || !menu) return;
+  function openMenu(){ menu.style.display='flex'; setTimeout(function(){ menu.classList.add('open'); },10); hamburger.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeMenu(){ menu.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow=''; setTimeout(function(){ menu.style.display='none'; },300); }
+  hamburger.addEventListener('click', function(){ menu.classList.contains('open') ? closeMenu() : openMenu(); });
+  if(closeBtn) closeBtn.addEventListener('click', closeMenu);
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+})();
+
+// === WAITLIST MODAL ===
+var wlSession = '';
+function openWaitlist(session) {
+  wlSession = session || '';
+  document.querySelectorAll('.wl-pill').forEach(function(p){ p.classList.toggle('active', p.textContent.trim() === wlSession); });
+  document.getElementById('wlBackdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeWaitlist() {
+  document.getElementById('wlBackdrop').classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(function(){
+    var fv=document.getElementById('wlFormView'); var sv=document.getElementById('wlSuccess');
+    if(fv) fv.style.display=''; if(sv) sv.classList.remove('show');
+    var n=document.getElementById('wlName'); var e=document.getElementById('wlEmail'); var m=document.getElementById('wlMsg');
+    if(n){n.value='';n.classList.remove('wl-error');} if(e){e.value='';e.classList.remove('wl-error');} if(m) m.value='';
+    document.querySelectorAll('.wl-pill').forEach(function(p){ p.classList.remove('active'); });
+  }, 400);
+}
+function wlSelectPill(el) { document.querySelectorAll('.wl-pill').forEach(function(p){ p.classList.remove('active'); }); el.classList.add('active'); wlSession = el.textContent.trim(); }
+function wlSubmit() {
+  var nEl = document.getElementById('wlName');
+  var eEl = document.getElementById('wlEmail');
+  var name = nEl.value.trim();
+  var email = eEl.value.trim();
+  nEl.classList.toggle('wl-error', !name);
+  eEl.classList.toggle('wl-error', !email);
+  if (!name || !email) return;
+  var msg = document.getElementById('wlMsg') ? document.getElementById('wlMsg').value.trim() : '';
+  var payload = new URLSearchParams({
+    'form-name': 'waitlist',
+    'name': name,
+    'email': email,
+    'session': wlSession || 'General',
+    'message': msg
+  }).toString();
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: payload
+  }).catch(function (err) { console.error('Waitlist submit error:', err); });
+  document.getElementById('wlFormView').style.display = 'none';
+  document.getElementById('wlSuccess').classList.add('show');
+}
+document.addEventListener('DOMContentLoaded', function(){
+  var bd=document.getElementById('wlBackdrop');
+  if(bd) bd.addEventListener('click', function(e){ if(e.target===this) closeWaitlist(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeWaitlist(); });
+});
+</script>
+</body>
+</html>
