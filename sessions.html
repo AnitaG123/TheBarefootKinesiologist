@@ -62,9 +62,24 @@ nav.scrolled{
 /* === HERO === */
 #hero{
   min-height:75vh;background:var(--dark);
-  display:flex;flex-direction:column;justify-content:flex-end;
-  position:relative;overflow:hidden;padding:0 64px 90px;
+  position:relative;padding:200px 64px 0;
 }
+.page-hero-inner{
+  max-width:1120px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:1.1fr 0.9fr;
+  gap:56px;align-items:end;position:relative;z-index:2;
+  padding-bottom:80px;
+}
+.page-hero-photo-wrap{
+  position:relative;align-self:end;
+  display:flex;justify-content:center;
+}
+.page-hero-photo{
+  width:100%;max-width:400px;aspect-ratio:4/3;
+  border-radius:6px 6px 0 0;overflow:hidden;
+  box-shadow:0 40px 90px rgba(20,44,40,.55);
+}
+.page-hero-photo img{width:100%;height:100%;object-fit:cover;object-position:42% 30%;}
 .hero-grain{
   position:absolute;inset:0;pointer-events:none;
   background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.011) 0,rgba(255,255,255,.011) 1px,transparent 1px,transparent 9px),
@@ -375,6 +390,15 @@ nav.scrolled{
 .faq-intro{
   font-size:14px;font-weight:300;line-height:1.9;color:#686860;
 }
+.faq-photo{
+  margin:32px 0 8px;border-radius:4px;overflow:hidden;
+  max-width:320px;box-shadow:0 24px 60px rgba(29,59,56,.14);
+}
+.faq-photo img{width:100%;display:block;}
+.faq-photo-caption{
+  font-size:11px;letter-spacing:.06em;color:rgba(46,93,88,.5);
+  margin-top:10px;font-style:italic;
+}
 .faq-item{
   border-bottom:0.5px solid rgba(46,93,88,.15);
   overflow:hidden;
@@ -585,17 +609,24 @@ footer{background:var(--darker);padding:72px 64px 40px;border-top:0.5px solid rg
       <circle cx="250" cy="250" r="4" fill="rgba(107,165,160,0.3)"/>
     </svg>
   </div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">
-      <div class="hero-eyebrow-line"></div>
-      <span>Sessions · Choose your path</span>
+  <div class="page-hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <span>Sessions · Choose your path</span>
+      </div>
+      <h1 class="hero-headline">
+        The work of coming<br>home to <em>yourself</em>
+      </h1>
+      <p class="hero-sub">
+        All sessions are offered online — live or recorded — wherever you are in the world. You don't need to arrive prepared, rehearsed, or knowing where to start. The body does the navigating.
+      </p>
     </div>
-    <h1 class="hero-headline">
-      The work of coming<br>home to <em>yourself</em>
-    </h1>
-    <p class="hero-sub">
-      All sessions are offered online — live or recorded — wherever you are in the world. You don't need to arrive prepared, rehearsed, or knowing where to start. The body does the navigating.
-    </p>
+    <div class="page-hero-photo-wrap">
+      <div class="page-hero-photo">
+        <img src="images/anita-session-desk.jpg" alt="Anita Gibbons smiling during an online session, with a singing bowl and crystals on her desk">
+      </div>
+    </div>
   </div>
 </section>
 
@@ -787,6 +818,10 @@ footer{background:var(--darker);padding:72px 64px 40px;border-top:0.5px solid rg
       </div>
       <h2 class="faq-h2">Everything you want<br>to know before <em>beginning</em></h2>
       <p class="faq-intro">Honest answers to the questions Anita gets asked most often — including the ones women are sometimes too nervous to ask out loud.</p>
+      <div class="faq-photo">
+        <img src="images/anita-session-thoughtful.jpg" alt="Anita Gibbons listening thoughtfully during an online session at her desk">
+      </div>
+      <p class="faq-photo-caption">Anita, mid-session — listening for what the body is ready to share.</p>
     </div>
 
     <div class="faq-item reveal d1">
