@@ -62,9 +62,24 @@ nav.scrolled{
 /* === HERO === */
 #hero{
   min-height:80vh;background:var(--dark);
-  display:flex;flex-direction:column;justify-content:flex-end;
-  position:relative;overflow:hidden;padding:140px 64px 90px;
+  position:relative;padding:220px 64px 0;
 }
+.page-hero-inner{
+  max-width:1120px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:1.1fr 0.9fr;
+  gap:56px;align-items:end;position:relative;z-index:2;
+  padding-bottom:80px;
+}
+.page-hero-photo-wrap{
+  position:relative;align-self:end;
+  display:flex;justify-content:center;
+}
+.page-hero-photo{
+  width:100%;max-width:400px;aspect-ratio:4/3;
+  border-radius:6px 6px 0 0;overflow:hidden;
+  box-shadow:0 40px 90px rgba(20,44,40,.55);
+}
+.page-hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;}
 .hero-grain{
   position:absolute;inset:0;pointer-events:none;
   background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.011) 0,rgba(255,255,255,.011) 1px,transparent 1px,transparent 9px),
@@ -88,14 +103,6 @@ nav.scrolled{
   font-size:14px;font-weight:300;line-height:2;color:rgba(158,184,181,.8);
   max-width:520px;letter-spacing:.025em;
   opacity:0;animation:fadeUp .9s .5s forwards;
-}
-.hero-author{
-  display:flex;align-items:center;gap:14px;margin-top:32px;
-  opacity:0;animation:fadeUp .9s .65s forwards;
-}
-.hero-author-photo{
-  width:52px;height:52px;border-radius:50%;object-fit:cover;
-  object-position:50% 25%;border:0.5px solid rgba(107,165,160,.35);
 }
 .hero-author-name{
   font-size:11px;letter-spacing:.18em;text-transform:uppercase;
@@ -346,20 +353,24 @@ footer{background:var(--darker);padding:72px 64px 40px;border-top:0.5px solid rg
       <circle cx="250" cy="250" r="4" fill="rgba(107,165,160,0.3)"/>
     </svg>
   </div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">
-      <div class="hero-eyebrow-line"></div>
-      <span>Olive tree musings</span>
+  <div class="page-hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <span>Olive tree musings</span>
+      </div>
+      <h1 class="hero-headline">
+        Honest words<br>from a woman<br>doing the <em>work</em>
+      </h1>
+      <p class="hero-sub">
+        These are not polished wellness platitudes. They are real reflections from Anita's own unbecoming — on the body, identity, self-worth, and what it actually means to choose yourself.
+      </p>
+      <p class="hero-author-name" style="margin-top:28px;">Anita Gibbons</p>
     </div>
-    <h1 class="hero-headline">
-      Honest words<br>from a woman<br>doing the <em>work</em>
-    </h1>
-    <p class="hero-sub">
-      These are not polished wellness platitudes. They are real reflections from Anita's own unbecoming — on the body, identity, self-worth, and what it actually means to choose yourself.
-    </p>
-    <div class="hero-author">
-      <img class="hero-author-photo" src="images/anita-journaling.jpg" alt="Anita Gibbons writing in her journal outdoors">
-      <span class="hero-author-name">Anita Gibbons</span>
+    <div class="page-hero-photo-wrap">
+      <div class="page-hero-photo">
+        <img src="images/anita-journaling.jpg" alt="Anita Gibbons writing in her journal outdoors">
+      </div>
     </div>
   </div>
 </section>
