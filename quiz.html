@@ -725,7 +725,7 @@ function submitEmail() {
   const WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/27806145/4dztk6m/';
   fetch(WEBHOOK_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'text/plain' },
     body: JSON.stringify({
       first_name: name,
       email: email,
