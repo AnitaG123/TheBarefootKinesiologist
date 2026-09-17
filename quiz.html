@@ -721,6 +721,23 @@ function submitEmail() {
 
   fetch(ML_URL, { method: 'POST', body: fd }).catch(() => {}); // silent fail — never block the user
 
+  // ── Zapier webhook (so Anita can see every quiz result) ───────────────
+  const WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/27806145/4dztk6m/';
+  fetch(WEBHOOK_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      first_name: name,
+      email: email,
+      top_focus_area: topLabel,
+      score_nervous_system: norm.nervous,
+      score_self_worth: norm.selfworth,
+      score_patterns_identity: norm.patterns,
+      score_body_connection: norm.body,
+      score_grounding_clarity: norm.grounding,
+    }),
+  }).catch(() => {}); // silent fail — never block the user
+
   showResults(norm, top);
 }
 
