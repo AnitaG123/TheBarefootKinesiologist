@@ -667,7 +667,7 @@ footer{background:var(--darker);padding:72px 64px 40px;border-top:0.5px solid rg
       <div class="footer-col-head">Connect</div>
       <ul class="footer-list">
         <li><a href="sessions.html">Join the Waitlist</a></li>
-        <li><a href="mailto:hello@thebarefootkinesiologist.com">Send an Enquiry</a></li>
+        <li><a href="mailto:hello@thebarefootkinesiologist.com" onclick="openEnquiry('');return false;">Send an Enquiry</a></li>
         <li><a href="privacy-policy.html">Privacy Policy</a></li>
         <li><a href="disclaimer.html">Disclaimer</a></li>
         <li><a href="booking-terms.html">Booking Terms</a></li>
@@ -751,5 +751,166 @@ function toggleArticle(id, btn) {
   menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
 })();
 </script>
+
+<style>
+/* Enquiry pop-up — complete styles (so it works on pages without the waitlist pop-up) */
+#enqBackdrop{position:fixed;inset:0;z-index:9000;background:rgba(14,28,26,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .35s;font-family:'Jost',sans-serif;}
+#enqBackdrop.open{opacity:1;pointer-events:all;}
+#enqBackdrop *,#enqBackdrop *::before,#enqBackdrop *::after{box-sizing:border-box;margin:0;padding:0;}
+#enqBackdrop .wl-modal{background:#1D3B38;width:100%;max-width:520px;max-height:calc(100vh - 32px);overflow-y:auto;border-radius:4px;border:0.5px solid rgba(107,165,160,.22);position:relative;transform:translateY(32px) scale(0.97);transition:transform .42s cubic-bezier(.22,1,.36,1);}
+#enqBackdrop.open .wl-modal{transform:translateY(0) scale(1);}
+#enqBackdrop .wl-accent{height:2px;background:linear-gradient(90deg,#B86B4C 0%,#6BA5A0 100%);}
+#enqBackdrop .wl-close{position:absolute;top:16px;right:18px;background:none;border:none;cursor:pointer;color:rgba(107,165,160,.38);font-size:18px;line-height:1;transition:color .2s;padding:6px;}
+#enqBackdrop .wl-close:hover{color:rgba(107,165,160,.75);}
+#enqBackdrop .wl-body{padding:42px 46px 46px;}
+#enqBackdrop .wl-eyebrow{font-size:9.5px;letter-spacing:.38em;text-transform:uppercase;color:#B86B4C;margin-bottom:14px;display:flex;align-items:center;gap:14px;}
+#enqBackdrop .wl-eyebrow-line{width:28px;height:0.5px;background:#B86B4C;}
+#enqBackdrop .wl-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:38px;font-weight:300;font-style:italic;color:#E8DDD0;line-height:1.08;margin-bottom:10px;}
+#enqBackdrop .wl-sub{font-size:13px;font-weight:300;line-height:1.85;color:rgba(157,205,200,.6);margin-bottom:30px;}
+#enqBackdrop .wl-session-label{display:block;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(157,205,200,.45);margin-bottom:10px;}
+#enqBackdrop .wl-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+#enqBackdrop .enq-pill{padding:9px 16px;border-radius:2px;cursor:pointer;font-family:'Jost',sans-serif;font-size:10.5px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;border:0.5px solid rgba(107,165,160,.26);color:rgba(157,205,200,.6);background:transparent;transition:all .2s;}
+#enqBackdrop .enq-pill:hover{border-color:#6BA5A0;color:#9DCDC8;}
+#enqBackdrop .enq-pill.active{background:rgba(107,165,160,.13);border-color:#6BA5A0;color:#9DCDC8;}
+#enqBackdrop .wl-row{margin-bottom:15px;}
+#enqBackdrop .wl-row label{display:block;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(157,205,200,.45);margin-bottom:8px;}
+#enqBackdrop .wl-row input,#enqBackdrop .wl-row textarea{width:100%;padding:13px 16px;background:rgba(255,255,255,.04);border:0.5px solid rgba(107,165,160,.24);border-radius:2px;color:#E8DDD0;font-family:'Jost',sans-serif;font-size:13px;font-weight:300;outline:none;transition:border-color .25s;resize:none;}
+#enqBackdrop .wl-row input::placeholder,#enqBackdrop .wl-row textarea::placeholder{color:rgba(107,165,160,.28);}
+#enqBackdrop .wl-row input:focus,#enqBackdrop .wl-row textarea:focus{border-color:rgba(107,165,160,.55);}
+#enqBackdrop .wl-row .wl-error{border-color:rgba(184,107,76,.65);}
+#enqBackdrop .wl-submit{width:100%;margin-top:10px;padding:16px;background:#B86B4C;border:none;border-radius:2px;color:#F2EDE5;font-family:'Jost',sans-serif;font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:background .3s,transform .2s;}
+#enqBackdrop .wl-submit:hover{background:#C8856A;transform:translateY(-2px);}
+#enqBackdrop .wl-note{font-size:11px;font-weight:300;color:rgba(107,165,160,.35);margin-top:14px;text-align:center;line-height:1.65;}
+#enqBackdrop .enq-alt{font-size:11px;font-weight:300;color:rgba(107,165,160,.45);margin-top:6px;text-align:center;line-height:1.65;}
+#enqBackdrop .enq-alt a{color:rgba(157,205,200,.7);border-bottom:0.5px solid rgba(157,205,200,.35);text-decoration:none;}
+#enqBackdrop .wl-success{display:none;text-align:center;padding:64px 46px;}
+#enqBackdrop .wl-success.show{display:block;}
+#enqBackdrop .wl-success-ring{width:52px;height:52px;border-radius:50%;border:0.5px solid rgba(107,165,160,.38);display:flex;align-items:center;justify-content:center;margin:0 auto 26px;color:#6BA5A0;font-size:22px;}
+#enqBackdrop .wl-success-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:34px;font-weight:300;font-style:italic;color:#E8DDD0;margin-bottom:12px;}
+#enqBackdrop .wl-success-body{font-size:13px;font-weight:300;line-height:1.85;color:rgba(157,205,200,.6);max-width:320px;margin:0 auto 34px;}
+#enqBackdrop .enq-ghost{display:inline-block;padding:15px 42px;background:transparent;color:#E8DDD0;font-family:'Jost',sans-serif;font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;font-weight:300;border-radius:2px;border:0.5px solid rgba(232,221,208,.28);cursor:pointer;transition:border-color .3s,background .3s;}
+#enqBackdrop .enq-ghost:hover{border-color:rgba(232,221,208,.55);background:rgba(232,221,208,.04);}
+@media (max-width:480px){
+  #enqBackdrop .wl-body{padding:28px 20px 32px;}
+  #enqBackdrop .wl-title{font-size:30px;}
+  #enqBackdrop .wl-success{padding:48px 28px;}
+  #enqBackdrop .wl-pills{gap:6px;}
+  #enqBackdrop .enq-pill{font-size:9.5px;padding:8px 12px;}
+}
+</style>
+
+<!-- Netlify form detection (hidden) -->
+<form name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name"><input type="email" name="email">
+  <input type="text" name="topic"><textarea name="message"></textarea>
+  <input type="text" name="bot-field">
+</form>
+
+<div id="enqBackdrop" role="dialog" aria-modal="true" aria-labelledby="enqTitle">
+  <div class="wl-modal">
+    <div class="wl-accent"></div>
+    <button class="wl-close" onclick="closeEnquiry()" aria-label="Close">&#x2715;</button>
+    <div id="enqFormView">
+      <div class="wl-body">
+        <div class="wl-eyebrow"><div class="wl-eyebrow-line"></div>Get in touch</div>
+        <h2 class="wl-title" id="enqTitle">Send an enquiry</h2>
+        <p class="wl-sub">A question about kinesiology, sessions, or whether this is right for you &mdash; ask Anita anything. She reads every message herself and will reply personally.</p>
+        <span class="wl-session-label">What&rsquo;s it about?</span>
+        <div class="wl-pills" id="enqPillGroup">
+          <button type="button" class="enq-pill" onclick="enqSelectPill(this)">Sessions &amp; pricing</button>
+          <button type="button" class="enq-pill" onclick="enqSelectPill(this)">Is this right for me?</button>
+          <button type="button" class="enq-pill" onclick="enqSelectPill(this)">Kinesiology questions</button>
+          <button type="button" class="enq-pill" onclick="enqSelectPill(this)">Something else</button>
+        </div>
+        <div class="wl-row">
+          <label for="enqName">Your first name</label>
+          <input type="text" id="enqName" placeholder="First name" autocomplete="given-name">
+        </div>
+        <div class="wl-row">
+          <label for="enqEmail">Your email address</label>
+          <input type="email" id="enqEmail" placeholder="Email address" autocomplete="email">
+        </div>
+        <div class="wl-row">
+          <label for="enqMsg">Your message</label>
+          <textarea id="enqMsg" rows="4" placeholder="What would you like to ask?"></textarea>
+        </div>
+        <button type="button" class="wl-submit" onclick="enqSubmit()">Send to Anita</button>
+        <p class="wl-note">No pressure, no obligation. Anita will be in touch personally.</p>
+        <p class="enq-alt">Prefer email? <a href="mailto:hello@thebarefootkinesiologist.com">hello@thebarefootkinesiologist.com</a></p>
+      </div>
+    </div>
+    <div class="wl-success" id="enqSuccess">
+      <div class="wl-success-ring">&#x2713;</div>
+      <h3 class="wl-success-title">Your message is on its way.</h3>
+      <p class="wl-success-body">Thank you for reaching out. Anita will reply personally, usually within a few days. In the meantime, keep exploring.</p>
+      <button type="button" class="enq-ghost" onclick="closeEnquiry()">Continue reading</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var enqTopic = '';
+function openEnquiry(topic) {
+  enqTopic = topic || '';
+  document.querySelectorAll('.enq-pill').forEach(function(p){
+    p.classList.toggle('active', p.textContent.trim() === enqTopic);
+  });
+  document.getElementById('enqBackdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(function(){ var n = document.getElementById('enqName'); if (n) n.focus(); }, 350);
+}
+function closeEnquiry() {
+  var bd = document.getElementById('enqBackdrop');
+  if (!bd || !bd.classList.contains('open')) return;
+  bd.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(function(){
+    document.getElementById('enqFormView').style.display = '';
+    document.getElementById('enqSuccess').classList.remove('show');
+    ['enqName','enqEmail','enqMsg'].forEach(function(id){
+      var el = document.getElementById(id); el.value = ''; el.classList.remove('wl-error');
+    });
+    document.querySelectorAll('.enq-pill').forEach(function(p){ p.classList.remove('active'); });
+    enqTopic = '';
+  }, 400);
+}
+function enqSelectPill(el) {
+  document.querySelectorAll('.enq-pill').forEach(function(p){ p.classList.remove('active'); });
+  el.classList.add('active');
+  enqTopic = el.textContent.trim();
+}
+function enqSubmit() {
+  var nEl = document.getElementById('enqName');
+  var eEl = document.getElementById('enqEmail');
+  var mEl = document.getElementById('enqMsg');
+  var name = nEl.value.trim(), email = eEl.value.trim(), msg = mEl.value.trim();
+  var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  nEl.classList.toggle('wl-error', !name);
+  eEl.classList.toggle('wl-error', !emailOk);
+  mEl.classList.toggle('wl-error', !msg);
+  if (!name || !emailOk || !msg) return;
+  var payload = new URLSearchParams({
+    'form-name': 'enquiry',
+    'name': name,
+    'email': email,
+    'topic': enqTopic || 'General',
+    'message': msg
+  }).toString();
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: payload
+  }).catch(function (err) { console.error('Enquiry submit error:', err); });
+  document.getElementById('enqFormView').style.display = 'none';
+  document.getElementById('enqSuccess').classList.add('show');
+}
+(function(){
+  var bd = document.getElementById('enqBackdrop');
+  if (bd) bd.addEventListener('click', function(e){ if (e.target === this) closeEnquiry(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeEnquiry(); });
+})();
+</script>
+<!-- ===================== END ENQUIRY POP-UP ===================== -->
+
 </body>
 </html>

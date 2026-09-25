@@ -762,6 +762,9 @@ footer{
 .wl-success-body{font-size:13px;font-weight:300;line-height:1.85;color:rgba(157,205,200,.6);max-width:320px;margin:0 auto 34px;}
 </style>
 <link rel="stylesheet" href="mobile.css">
+<!-- Energy quiz: DM Sans font + Chart.js -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -988,6 +991,558 @@ footer{
   </div>
 </section>
 
+<!-- ENERGY QUIZ -->
+<section id="energy-quiz">
+<style>
+#energy-quiz, #energy-quiz *, #energy-quiz *::before, #energy-quiz *::after { box-sizing: border-box; margin: 0; padding: 0; }
+#energy-quiz {
+  --sand:      #F7F0E6;
+  --linen:     #EDE3D4;
+  --linen-mid: #E0CEB8;
+  --tan:       #C4A882;
+  --tan-dark:  #8C7355;
+  --tan-pale:  #F0E6D6;
+  --sage:      #7BA99B;
+  --sage-pale: #D4E6E1;
+  --espresso:  #2C2520;
+  --mid:       #6B5E54;
+  --muted:     #9C8E85;
+  --white:     #FFFFFF;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --shadow:    0 2px 24px rgba(44,37,32,0.08);
+  font-family: 'DM Sans', sans-serif;
+  background: #F7F0E6;
+  color: #2C2520;
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: 70px;
+}
+
+/* Screens */
+#energy-quiz .eq-page { display: none; }
+#energy-quiz .eq-page.active { display: block; }
+
+/* Hero / cover */
+#energy-quiz .eq-hero {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 120px 24px 150px;
+  position: relative;
+  background: linear-gradient(170deg, #EDE3D4 0%, #F7F0E6 55%, #E8F0EE 100%);
+  overflow: hidden;
+}
+#energy-quiz .eq-tide { position: absolute; bottom: 0; left: 0; right: 0; height: 90px; overflow: hidden; }
+#energy-quiz .eq-tide svg { width: 100%; height: 100%; display: block; }
+#energy-quiz .eq-tide-path { animation: eqTidePulse 6s ease-in-out infinite; transform-origin: center bottom; }
+@keyframes eqTidePulse {
+  0%, 100% { d: path("M0,40 C180,10 360,70 540,40 C720,10 900,70 1080,40 C1260,10 1440,70 1440,40 L1440,90 L0,90 Z"); }
+  50%      { d: path("M0,55 C180,80 360,20 540,55 C720,80 900,20 1080,55 C1260,80 1440,20 1440,55 L1440,90 L0,90 Z"); }
+}
+@supports not (d: path("")) { #energy-quiz .eq-tide-path { animation: none; } }
+
+#energy-quiz .eq-hero-eyebrow {
+  font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--tan-dark); margin-bottom: 20px;
+}
+#energy-quiz .eq-hero-title {
+  font-family: 'Cormorant Garamond', serif; font-size: clamp(44px, 7vw, 76px); font-weight: 500;
+  line-height: 1.1; color: var(--espresso); max-width: 700px; margin-bottom: 22px;
+}
+#energy-quiz .eq-hero-title em { font-style: italic; color: var(--tan-dark); }
+#energy-quiz .eq-hero-sub {
+  font-size: 16px; font-weight: 300; color: var(--mid); line-height: 1.7; max-width: 440px; margin-bottom: 12px;
+}
+#energy-quiz .eq-hero-meta { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; margin-bottom: 36px; }
+#energy-quiz .eq-btn-start {
+  display: inline-block; background: var(--tan); color: var(--white);
+  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.04em;
+  padding: 15px 38px; border-radius: 50px; border: none; cursor: pointer;
+  transition: background 0.25s, transform 0.15s; text-decoration: none;
+  width: auto; max-width: none; text-transform: none;
+}
+#energy-quiz .eq-btn-start:hover { background: var(--tan-dark); transform: translateY(-1px); }
+#energy-quiz .eq-btn-start:active { transform: translateY(0); }
+
+/* Quiz card */
+#energy-quiz .eq-quiz-section { padding: 60px 24px 100px; display: flex; justify-content: center; }
+#energy-quiz .eq-card {
+  background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow);
+  width: 100%; max-width: 600px; padding: 48px 44px; position: relative;
+}
+@media (max-width: 520px) { #energy-quiz .eq-card { padding: 36px 24px; } }
+
+#energy-quiz .eq-progress-wrap { margin-bottom: 32px; }
+#energy-quiz .eq-progress-label {
+  display: flex; justify-content: space-between; font-size: 11px; color: var(--muted);
+  letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;
+}
+#energy-quiz .eq-progress-track { height: 2px; background: var(--linen); border-radius: 2px; overflow: hidden; }
+#energy-quiz .eq-progress-fill { height: 100%; background: var(--tan); border-radius: 2px; transition: width 0.5s cubic-bezier(.4,0,.2,1); }
+
+#energy-quiz .eq-q-text {
+  font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500;
+  line-height: 1.4; color: var(--espresso); margin-bottom: 28px;
+}
+#energy-quiz .eq-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+#energy-quiz .eq-opt {
+  background: var(--sand); border: 1.5px solid transparent; border-radius: var(--radius-md);
+  padding: 14px 18px; font-size: 14px; font-weight: 400; color: var(--espresso);
+  cursor: pointer; text-align: left; line-height: 1.5;
+  transition: border-color 0.2s, background 0.2s; width: 100%;
+}
+#energy-quiz .eq-opt:hover { border-color: var(--tan); background: var(--tan-pale); }
+#energy-quiz .eq-opt.selected { border-color: var(--tan); background: var(--tan-pale); }
+
+#energy-quiz .eq-nav-row { display: flex; justify-content: space-between; align-items: center; }
+#energy-quiz .eq-btn-back {
+  background: none; border: none; font-size: 13px; color: var(--muted);
+  cursor: pointer; padding: 8px 0; transition: color 0.2s;
+}
+#energy-quiz .eq-btn-back:hover { color: var(--mid); }
+#energy-quiz .eq-btn-back.invisible { visibility: hidden; pointer-events: none; }
+#energy-quiz .eq-btn-next {
+  background: var(--tan); color: var(--white); border: none; border-radius: 50px;
+  padding: 13px 32px; font-size: 14px; font-weight: 500; cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+#energy-quiz .eq-btn-next:hover:not(:disabled) { background: var(--tan-dark); }
+#energy-quiz .eq-btn-next:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* Email capture */
+#energy-quiz .eq-email-wrap { text-align: center; }
+#energy-quiz .eq-email-icon {
+  width: 52px; height: 52px; background: var(--tan-pale); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+}
+#energy-quiz .eq-email-icon svg { width: 24px; height: 24px; stroke: var(--tan-dark); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+#energy-quiz .eq-email-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 500;
+  color: var(--espresso); margin-bottom: 10px; line-height: 1.25;
+}
+#energy-quiz .eq-email-sub {
+  font-size: 14px; color: var(--mid); line-height: 1.7; margin-bottom: 6px;
+  max-width: 380px; margin-left: auto; margin-right: auto;
+}
+#energy-quiz .eq-email-note { font-size: 12px; color: var(--muted); font-style: italic; margin-bottom: 28px; }
+#energy-quiz .eq-field-group { display: flex; flex-direction: column; gap: 12px; text-align: left; margin-bottom: 16px; }
+#energy-quiz .eq-field-label { font-size: 12px; font-weight: 500; color: var(--mid); letter-spacing: 0.04em; margin-bottom: 4px; display: block; }
+#energy-quiz .eq-field-input {
+  width: 100%; padding: 12px 16px; border: 1.5px solid var(--linen-mid); border-radius: var(--radius-sm);
+  font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--espresso); background: var(--sand);
+  transition: border-color 0.2s; outline: none;
+}
+#energy-quiz .eq-field-input:focus { border-color: var(--tan); }
+#energy-quiz .eq-btn-reveal {
+  width: 100%; background: var(--tan); color: var(--white); border: none; border-radius: 50px;
+  padding: 15px; font-size: 15px; font-weight: 500; cursor: pointer;
+  transition: background 0.2s, opacity 0.2s; margin-bottom: 12px;
+}
+#energy-quiz .eq-btn-reveal:hover:not(:disabled) { background: var(--tan-dark); }
+#energy-quiz .eq-btn-reveal:disabled { opacity: 0.35; cursor: not-allowed; }
+#energy-quiz .eq-btn-skip {
+  background: none; border: none; font-size: 12px; color: var(--muted); cursor: pointer;
+  text-decoration: underline; display: block; margin: 0 auto 20px;
+}
+#energy-quiz .eq-privacy-note { font-size: 11px; color: var(--muted); line-height: 1.6; margin-top: 16px; }
+#energy-quiz .eq-privacy-note a { color: var(--muted); text-decoration: underline; }
+
+/* Results */
+#energy-quiz .eq-results-section { padding: 60px 24px 100px; display: flex; flex-direction: column; align-items: center; }
+#energy-quiz .eq-results-header { text-align: center; max-width: 560px; margin-bottom: 48px; }
+#energy-quiz .eq-results-eyebrow {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--tan-dark); margin-bottom: 10px;
+}
+#energy-quiz .eq-results-title {
+  font-family: 'Cormorant Garamond', serif; font-size: clamp(30px, 5vw, 46px); font-weight: 500;
+  line-height: 1.2; color: var(--espresso); margin-bottom: 12px;
+}
+#energy-quiz .eq-results-title .name-accent { color: var(--tan-dark); font-style: italic; }
+#energy-quiz .eq-results-sub { font-size: 14px; color: var(--mid); line-height: 1.7; }
+#energy-quiz .eq-results-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 28px; width: 100%; max-width: 900px; margin-bottom: 32px;
+}
+@media (max-width: 680px) { #energy-quiz .eq-results-grid { grid-template-columns: 1fr; } }
+#energy-quiz .eq-chart-card {
+  background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow);
+  padding: 32px 24px; display: flex; align-items: center; justify-content: center;
+}
+#energy-quiz .eq-chart-canvas-wrap { position: relative; width: 100%; max-width: 300px; aspect-ratio: 1; }
+#energy-quiz .eq-insight-card {
+  background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow);
+  padding: 32px 28px; display: flex; flex-direction: column; gap: 20px;
+}
+#energy-quiz .eq-insight-top-label {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--tan); margin-bottom: 4px;
+}
+#energy-quiz .eq-insight-top-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500;
+  color: var(--espresso); line-height: 1.3; margin-bottom: 6px;
+}
+#energy-quiz .eq-insight-top-body { font-size: 13px; color: var(--mid); line-height: 1.7; }
+#energy-quiz .eq-score-bars { display: flex; flex-direction: column; gap: 10px; }
+#energy-quiz .eq-score-row { display: flex; flex-direction: column; gap: 4px; }
+#energy-quiz .eq-score-row-top { display: flex; justify-content: space-between; align-items: baseline; }
+#energy-quiz .eq-score-name { font-size: 12px; font-weight: 500; color: var(--mid); }
+#energy-quiz .eq-score-num { font-size: 12px; color: var(--espresso); font-weight: 500; }
+#energy-quiz .eq-score-track { height: 4px; background: var(--linen); border-radius: 2px; overflow: hidden; }
+#energy-quiz .eq-score-fill { height: 100%; border-radius: 2px; transition: width 1s cubic-bezier(.4,0,.2,1); }
+
+#energy-quiz .eq-cta-block {
+  background: var(--espresso); border-radius: var(--radius-lg); padding: 44px 40px;
+  text-align: center; max-width: 560px; width: 100%;
+}
+@media (max-width: 520px) { #energy-quiz .eq-cta-block { padding: 36px 24px; } }
+#energy-quiz .eq-cta-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500;
+  color: var(--white); line-height: 1.3; margin-bottom: 12px;
+}
+#energy-quiz .eq-cta-body { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 28px; }
+#energy-quiz .eq-btn-cta {
+  display: inline-block; background: var(--tan); color: var(--white);
+  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+  padding: 14px 34px; border-radius: 50px; border: none; cursor: pointer;
+  text-decoration: none; transition: background 0.2s; margin-bottom: 14px;
+}
+#energy-quiz .eq-btn-cta:hover { background: #D4B892; }
+#energy-quiz .eq-btn-retake {
+  display: block; font-size: 12px; color: rgba(255,255,255,0.4); background: none; border: none;
+  cursor: pointer; text-decoration: underline; margin: 0 auto;
+}
+#energy-quiz .eq-btn-retake:hover { color: rgba(255,255,255,0.7); }
+
+@media (prefers-reduced-motion: reduce) {
+  #energy-quiz .eq-tide-path { animation: none; }
+  #energy-quiz .eq-progress-fill, #energy-quiz .eq-score-fill { transition: none; }
+}
+</style>
+
+  <!-- COVER -->
+  <div class="eq-page active" id="eq-page-hero">
+    <div class="eq-hero">
+      <p class="eq-hero-eyebrow">The Barefoot Kinesiologist · Free Quiz</p>
+      <h2 class="eq-hero-title">Where is your energy<br><em>being pulled</em><br>right now?</h2>
+      <p class="eq-hero-sub">A short self-awareness quiz to help you see which areas of your emotional and energetic world are asking for the most attention.</p>
+      <p class="eq-hero-meta">7 questions &nbsp;·&nbsp; 2 minutes &nbsp;·&nbsp; A personalised energy map</p>
+      <button type="button" class="eq-btn-start" onclick="EnergyQuiz.goTo('eq-page-quiz')">Begin the quiz</button>
+      <div class="eq-tide" aria-hidden="true">
+        <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="eq-tide-path" d="M0,40 C180,10 360,70 540,40 C720,10 900,70 1080,40 C1260,10 1440,70 1440,40 L1440,90 L0,90 Z" fill="#F7F0E6"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUESTIONS -->
+  <div class="eq-page" id="eq-page-quiz">
+    <div class="eq-quiz-section">
+      <div class="eq-card">
+        <div class="eq-progress-wrap">
+          <div class="eq-progress-label">
+            <span id="eq-q-label">Question 1 of 7</span>
+            <span id="eq-q-pct">0%</span>
+          </div>
+          <div class="eq-progress-track"><div class="eq-progress-fill" id="eq-prog-fill" style="width:0%"></div></div>
+        </div>
+        <p class="eq-q-text" id="eq-q-text"></p>
+        <div class="eq-options" id="eq-options-list"></div>
+        <div class="eq-nav-row">
+          <button type="button" class="eq-btn-back invisible" id="eq-btn-back" onclick="EnergyQuiz.prevQ()">← Back</button>
+          <button type="button" class="eq-btn-next" id="eq-btn-next" onclick="EnergyQuiz.nextQ()" disabled>Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EMAIL CAPTURE -->
+  <div class="eq-page" id="eq-page-email">
+    <div class="eq-quiz-section">
+      <div class="eq-card">
+        <div class="eq-email-wrap">
+          <div class="eq-email-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h3 class="eq-email-title">Your energy map<br>is ready</h3>
+          <p class="eq-email-sub">Enter your name and email to see your personalised results — including which area is asking for the most support right now.</p>
+          <p class="eq-email-note">I'll also send you a free grounding tool matched to your results.</p>
+          <div class="eq-field-group">
+            <div>
+              <label class="eq-field-label" for="eq-f-name">First name</label>
+              <input class="eq-field-input" type="text" id="eq-f-name" placeholder="Your first name" oninput="EnergyQuiz.validateForm()">
+            </div>
+            <div>
+              <label class="eq-field-label" for="eq-f-email">Email address</label>
+              <input class="eq-field-input" type="email" id="eq-f-email" placeholder="you@email.com" oninput="EnergyQuiz.validateForm()">
+            </div>
+          </div>
+          <button type="button" class="eq-btn-reveal" id="eq-btn-reveal" onclick="EnergyQuiz.submitEmail()" disabled>Show my results</button>
+          <button type="button" class="eq-btn-skip" onclick="EnergyQuiz.skipEmail()">Skip — just show my results</button>
+          <p class="eq-privacy-note">Your details are safe with me. I don't share your information with anyone, and you can unsubscribe any time. No spam, ever — just gentle support. See my <a href="privacy-policy.html">privacy policy</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="eq-page" id="eq-page-results">
+    <div class="eq-results-section">
+      <div class="eq-results-header">
+        <p class="eq-results-eyebrow">Your energy map</p>
+        <h3 class="eq-results-title" id="eq-res-title">Here is where your energy is being pulled</h3>
+        <p class="eq-results-sub">Higher scores show where your energy is flowing most right now — not what is wrong with you, just where your system is asking for a little more support.</p>
+      </div>
+      <div class="eq-results-grid">
+        <div class="eq-chart-card">
+          <div class="eq-chart-canvas-wrap">
+            <canvas id="eq-radar-chart" aria-label="Personalised emotional energy radar chart"></canvas>
+          </div>
+        </div>
+        <div class="eq-insight-card">
+          <div>
+            <p class="eq-insight-top-label">Your main focus area</p>
+            <p class="eq-insight-top-title" id="eq-ins-title"></p>
+            <p class="eq-insight-top-body" id="eq-ins-body"></p>
+          </div>
+          <div class="eq-score-bars" id="eq-score-bars"></div>
+        </div>
+      </div>
+      <div class="eq-cta-block">
+        <p class="eq-cta-title">Ready to go a little deeper?</p>
+        <p class="eq-cta-body">Kinesiology sessions with Anita gently explore what is underneath these patterns — in a space that feels calm, safe, and completely judgment-free.</p>
+        <a class="eq-btn-cta" href="sessions.html">Learn about sessions</a>
+        <button type="button" class="eq-btn-retake" onclick="EnergyQuiz.retake()">Retake the quiz</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+var EnergyQuiz = (function () {
+  var AREAS = [
+    { key:'nervous',   label:'Nervous system',      color:'#7BA99B' },
+    { key:'selfworth', label:'Self-worth',          color:'#C4A882' },
+    { key:'patterns',  label:'Patterns & identity', color:'#A08BBF' },
+    { key:'body',      label:'Body connection',     color:'#C4897A' },
+    { key:'grounding', label:'Grounding & clarity', color:'#7FA4B8' }
+  ];
+
+  var INSIGHTS = {
+    nervous:   { title:'Your nervous system is asking for rest', body:'You may be running on a baseline of low-level tension — the kind that feels normal because it has been there so long. Your body is not broken. It has learned to survive on high alert. Gently slowing down and learning to signal safety to your nervous system can change a lot.' },
+    selfworth: { title:'Your sense of self is doing a lot of quiet work', body:'There may be an inner voice that is harder on you than it would ever be on a friend. Rebuilding trust in yourself — your instincts, your worth, your right to take up space — is not about confidence tricks. It is a slow, honest return to yourself.' },
+    patterns:  { title:'You may be ready to un-choose something', body:'You can see the pattern clearly. You know it is there. But stopping it feels harder than it should. That is not a character flaw — it is your system protecting you in the only way it knows how. Understanding why the pattern exists is what starts to shift it.' },
+    body:      { title:'Your body has been speaking — and waiting to be heard', body:'The exhaustion that sleep does not fix. The tension that comes from nowhere. The physical responses you have learned to push through. These are not separate from your emotional world — they are part of it, and there is a lot of wisdom in them.' },
+    grounding: { title:'You are craving stillness and a sense of direction', body:'It may feel like your energy is scattered — pulled in too many directions at once, or like you are going through the motions without knowing what you actually want. Coming back to yourself often starts with small, consistent moments of grounding.' }
+  };
+
+  var QUESTIONS = [
+    { text:'How does your body feel at the end of a typical day?', area:'nervous',
+      opts:[{t:'Tense and wired — hard to wind down',s:3},{t:'Tired but okay, mostly',s:1},{t:'Exhausted in a way that sleep does not fix',s:3},{t:'Generally settled and at ease',s:0}] },
+    { text:'When something goes wrong, what is your most common first reaction?', area:'selfworth',
+      opts:[{t:'I wonder what I did to cause it',s:3},{t:'I feel frustrated, then move on',s:1},{t:'I go quiet and take it on internally',s:3},{t:'I deal with it and let it go fairly easily',s:0}] },
+    { text:'Have you noticed yourself repeating the same situation — in relationships, work, or how you respond under pressure?', area:'patterns',
+      opts:[{t:'Yes — I can see the pattern clearly but cannot seem to stop it',s:3},{t:'Sometimes — I notice it but do not always understand it',s:2},{t:'Occasionally, but it does not feel stuck',s:1},{t:'Not really — things feel fairly fresh',s:0}] },
+    { text:'How connected do you feel to what your body is trying to tell you?', area:'body',
+      opts:[{t:'I mostly push through physical signals and keep going',s:3},{t:'I notice them but am not sure what they mean',s:2},{t:'I am starting to listen more',s:1},{t:'I feel fairly in tune with my body',s:0}] },
+    { text:'How often do you feel scattered, overwhelmed, or like your mind will not slow down?', area:'grounding',
+      opts:[{t:'Most days — it is hard to feel settled',s:3},{t:'Often, especially when things are busy',s:2},{t:'Occasionally',s:1},{t:'Rarely — I feel reasonably grounded',s:0}] },
+    { text:'How do you speak to yourself when you make a mistake or fall short?', area:'selfworth',
+      opts:[{t:'Harshly — I hold myself to very high standards',s:3},{t:'I am a bit tough on myself, then let it go',s:2},{t:'I try to be kind but it is not always easy',s:1},{t:'With fairly consistent compassion',s:0}] },
+    { text:'When you imagine feeling truly like yourself again, what feels most missing right now?', area:'grounding',
+      opts:[{t:'A sense of calm and clarity — I just want to feel settled',s:3},{t:'Trust in myself and my decisions',s:2},{t:'Understanding why I keep arriving at the same place',s:2},{t:'A deeper connection to my body and what it is telling me',s:2}] }
+  ];
+
+  var MAX = { nervous:6, selfworth:6, patterns:3, body:3, grounding:6 };
+  var WEBHOOK = 'https://hooks.zapier.com/hooks/catch/27806145/4dztk6m/';
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  var cur = 0, answers = {}, radarInst = null, capturedName = '';
+
+  function $(id) { return document.getElementById(id); }
+
+  function goTo(id, noScroll) {
+    var section = $('energy-quiz');
+    section.querySelectorAll('.eq-page').forEach(function (p) { p.classList.remove('active'); });
+    $(id).classList.add('active');
+    if (!noScroll) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function renderQ() {
+    var q = QUESTIONS[cur];
+    var pct = Math.round((cur / QUESTIONS.length) * 100);
+    $('eq-q-label').textContent = 'Question ' + (cur + 1) + ' of ' + QUESTIONS.length;
+    $('eq-q-pct').textContent = pct + '%';
+    $('eq-prog-fill').style.width = pct + '%';
+    $('eq-q-text').textContent = q.text;
+
+    var list = $('eq-options-list');
+    list.innerHTML = '';
+    q.opts.forEach(function (o, i) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'eq-opt' + (answers[cur] === i ? ' selected' : '');
+      btn.textContent = o.t;
+      btn.onclick = function () { answers[cur] = i; renderQ(); };
+      list.appendChild(btn);
+    });
+
+    $('eq-btn-back').classList.toggle('invisible', cur === 0);
+    var nxt = $('eq-btn-next');
+    nxt.disabled = answers[cur] === undefined;
+    nxt.textContent = cur === QUESTIONS.length - 1 ? 'See my results' : 'Next';
+  }
+
+  function nextQ() {
+    if (answers[cur] === undefined) return;
+    cur++;
+    if (cur >= QUESTIONS.length) { goTo('eq-page-email'); }
+    else renderQ();
+  }
+
+  function prevQ() { if (cur > 0) { cur--; renderQ(); } }
+
+  function validateForm() {
+    var name = $('eq-f-name').value.trim();
+    var email = $('eq-f-email').value.trim();
+    $('eq-btn-reveal').disabled = !(name.length > 0 && EMAIL_RE.test(email));
+  }
+
+  function calcScores() {
+    var s = { nervous:0, selfworth:0, patterns:0, body:0, grounding:0 };
+    QUESTIONS.forEach(function (q, i) { if (answers[i] !== undefined) s[q.area] += q.opts[answers[i]].s; });
+    return s;
+  }
+
+  function normalise(scores) {
+    var n = {};
+    AREAS.forEach(function (a) { n[a.key] = Math.round((scores[a.key] / MAX[a.key]) * 10); });
+    return n;
+  }
+
+  function topArea(norm) {
+    return AREAS.reduce(function (best, a) { return norm[a.key] > norm[best.key] ? a : best; }, AREAS[0]).key;
+  }
+
+  function submitEmail() {
+    var name = $('eq-f-name').value.trim();
+    var email = $('eq-f-email').value.trim();
+    if (!name || !EMAIL_RE.test(email)) { validateForm(); return; }
+    capturedName = name;
+    var norm = normalise(calcScores());
+    var top = topArea(norm);
+    fetch(WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        first_name: name,
+        email: email,
+        top_focus_area: AREAS.filter(function (a) { return a.key === top; })[0].label,
+        score_nervous_system: norm.nervous,
+        score_self_worth: norm.selfworth,
+        score_patterns_identity: norm.patterns,
+        score_body_connection: norm.body,
+        score_grounding_clarity: norm.grounding
+      })
+    }).catch(function () {});
+    showResults(norm, top);
+  }
+
+  function skipEmail() {
+    capturedName = '';
+    var norm = normalise(calcScores());
+    showResults(norm, topArea(norm));
+  }
+
+  function escapeHtml(s) {
+    return s.replace(/[&<>"']/g, function (c) { return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]; });
+  }
+
+  function showResults(norm, top) {
+    goTo('eq-page-results');
+
+    var nameStr = capturedName ? ', <span class="name-accent">' + escapeHtml(capturedName) + '</span>' : '';
+    $('eq-res-title').innerHTML = 'Here is where your energy is being pulled' + nameStr;
+
+    var ins = INSIGHTS[top];
+    $('eq-ins-title').textContent = ins.title;
+    $('eq-ins-body').textContent = ins.body;
+
+    var bars = $('eq-score-bars');
+    var html = '';
+    AREAS.forEach(function (a) {
+      var score = norm[a.key];
+      html +=
+        '<div class="eq-score-row">' +
+          '<div class="eq-score-row-top">' +
+            '<span class="eq-score-name">' + a.label + '</span>' +
+            '<span class="eq-score-num">' + score + '/10</span>' +
+          '</div>' +
+          '<div class="eq-score-track">' +
+            '<div class="eq-score-fill" style="width:0%;background:' + a.color + '" data-target="' + (score * 10) + '"></div>' +
+          '</div>' +
+        '</div>';
+    });
+    bars.innerHTML = html;
+    setTimeout(function () {
+      bars.querySelectorAll('.eq-score-fill').forEach(function (el) { el.style.width = el.dataset.target + '%'; });
+    }, 100);
+
+    if (radarInst) { radarInst.destroy(); radarInst = null; }
+    if (typeof Chart === 'undefined') return;
+    var ctx = $('eq-radar-chart').getContext('2d');
+    radarInst = new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: AREAS.map(function (a) { return a.label; }),
+        datasets: [{
+          data: AREAS.map(function (a) { return norm[a.key]; }),
+          backgroundColor: 'rgba(196,168,130,0.18)',
+          borderColor: '#C4A882',
+          borderWidth: 2,
+          pointBackgroundColor: AREAS.map(function (a) { return a.color; }),
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2,
+          pointRadius: 5,
+          pointHoverRadius: 7
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function (c) { return ' ' + c.raw + '/10'; } } }
+        },
+        scales: { r: {
+          min: 0, max: 10,
+          ticks: { stepSize: 2, display: false },
+          grid: { color: 'rgba(44,37,32,0.07)' },
+          angleLines: { color: 'rgba(44,37,32,0.07)' },
+          pointLabels: { color: '#6B5E54', font: { family: "'DM Sans'", size: 11 } }
+        } }
+      }
+    });
+  }
+
+  function retake() {
+    cur = 0; answers = {}; capturedName = '';
+    $('eq-f-name').value = '';
+    $('eq-f-email').value = '';
+    $('eq-btn-reveal').disabled = true;
+    renderQ();
+    goTo('eq-page-hero');
+  }
+
+  renderQ();
+
+  return { goTo: goTo, nextQ: nextQ, prevQ: prevQ, validateForm: validateForm,
+           submitEmail: submitEmail, skipEmail: skipEmail, retake: retake };
+})();
+</script>
+<!-- ===================== END ENERGY QUIZ ===================== -->
+
+
 <!-- SESSIONS -->
 <section id="sessions">
   <div class="section-header">
@@ -1212,7 +1767,7 @@ footer{
     </p>
     <div class="booking-ctas reveal d3">
       <a href="#" class="btn-primary" onclick="openWaitlist('');return false;">Join the waitlist</a>
-      <a href="mailto:hello@thebarefootkinesiologist.com" class="btn-ghost">Send an enquiry</a>
+      <a href="mailto:hello@thebarefootkinesiologist.com" class="btn-ghost" onclick="openEnquiry('');return false;">Send an enquiry</a>
     </div>
   </div>
 </section>
@@ -1239,7 +1794,7 @@ footer{
       <div class="footer-col-head">Connect</div>
       <ul class="footer-list">
         <li><a href="#" onclick="openWaitlist('');return false;">Join the Waitlist</a></li>
-        <li><a href="mailto:hello@thebarefootkinesiologist.com">Send an Enquiry</a></li>
+        <li><a href="mailto:hello@thebarefootkinesiologist.com" onclick="openEnquiry('');return false;">Send an Enquiry</a></li>
         <li><a href="privacy-policy.html">Privacy Policy</a></li>
         <li><a href="disclaimer.html">Disclaimer</a></li>
         <li><a href="booking-terms.html">Booking Terms</a></li>
@@ -1427,5 +1982,166 @@ document.addEventListener('DOMContentLoaded', function(){
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeWaitlist(); });
 });
 </script>
+
+<style>
+/* Enquiry pop-up — complete styles (so it works on pages without the waitlist pop-up) */
+#enqBackdrop{position:fixed;inset:0;z-index:9000;background:rgba(14,28,26,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .35s;font-family:'Jost',sans-serif;}
+#enqBackdrop.open{opacity:1;pointer-events:all;}
+#enqBackdrop *,#enqBackdrop *::before,#enqBackdrop *::after{box-sizing:border-box;margin:0;padding:0;}
+#enqBackdrop .wl-modal{background:#1D3B38;width:100%;max-width:520px;max-height:calc(100vh - 32px);overflow-y:auto;border-radius:4px;border:0.5px solid rgba(107,165,160,.22);position:relative;transform:translateY(32px) scale(0.97);transition:transform .42s cubic-bezier(.22,1,.36,1);}
+#enqBackdrop.open .wl-modal{transform:translateY(0) scale(1);}
+#enqBackdrop .wl-accent{height:2px;background:linear-gradient(90deg,#B86B4C 0%,#6BA5A0 100%);}
+#enqBackdrop .wl-close{position:absolute;top:16px;right:18px;background:none;border:none;cursor:pointer;color:rgba(107,165,160,.38);font-size:18px;line-height:1;transition:color .2s;padding:6px;}
+#enqBackdrop .wl-close:hover{color:rgba(107,165,160,.75);}
+#enqBackdrop .wl-body{padding:42px 46px 46px;}
+#enqBackdrop .wl-eyebrow{font-size:9.5px;letter-spacing:.38em;text-transform:uppercase;color:#B86B4C;margin-bottom:14px;display:flex;align-items:center;gap:14px;}
+#enqBackdrop .wl-eyebrow-line{width:28px;height:0.5px;background:#B86B4C;}
+#enqBackdrop .wl-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:38px;font-weight:300;font-style:italic;color:#E8DDD0;line-height:1.08;margin-bottom:10px;}
+#enqBackdrop .wl-sub{font-size:13px;font-weight:300;line-height:1.85;color:rgba(157,205,200,.6);margin-bottom:30px;}
+#enqBackdrop .wl-session-label{display:block;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(157,205,200,.45);margin-bottom:10px;}
+#enqBackdrop .wl-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+#enqBackdrop .enq-pill{padding:9px 16px;border-radius:2px;cursor:pointer;font-family:'Jost',sans-serif;font-size:10.5px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;border:0.5px solid rgba(107,165,160,.26);color:rgba(157,205,200,.6);background:transparent;transition:all .2s;}
+#enqBackdrop .enq-pill:hover{border-color:#6BA5A0;color:#9DCDC8;}
+#enqBackdrop .enq-pill.active{background:rgba(107,165,160,.13);border-color:#6BA5A0;color:#9DCDC8;}
+#enqBackdrop .wl-row{margin-bottom:15px;}
+#enqBackdrop .wl-row label{display:block;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(157,205,200,.45);margin-bottom:8px;}
+#enqBackdrop .wl-row input,#enqBackdrop .wl-row textarea{width:100%;padding:13px 16px;background:rgba(255,255,255,.04);border:0.5px solid rgba(107,165,160,.24);border-radius:2px;color:#E8DDD0;font-family:'Jost',sans-serif;font-size:13px;font-weight:300;outline:none;transition:border-color .25s;resize:none;}
+#enqBackdrop .wl-row input::placeholder,#enqBackdrop .wl-row textarea::placeholder{color:rgba(107,165,160,.28);}
+#enqBackdrop .wl-row input:focus,#enqBackdrop .wl-row textarea:focus{border-color:rgba(107,165,160,.55);}
+#enqBackdrop .wl-row .wl-error{border-color:rgba(184,107,76,.65);}
+#enqBackdrop .wl-submit{width:100%;margin-top:10px;padding:16px;background:#B86B4C;border:none;border-radius:2px;color:#F2EDE5;font-family:'Jost',sans-serif;font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:background .3s,transform .2s;}
+#enqBackdrop .wl-submit:hover{background:#C8856A;transform:translateY(-2px);}
+#enqBackdrop .wl-note{font-size:11px;font-weight:300;color:rgba(107,165,160,.35);margin-top:14px;text-align:center;line-height:1.65;}
+#enqBackdrop .enq-alt{font-size:11px;font-weight:300;color:rgba(107,165,160,.45);margin-top:6px;text-align:center;line-height:1.65;}
+#enqBackdrop .enq-alt a{color:rgba(157,205,200,.7);border-bottom:0.5px solid rgba(157,205,200,.35);text-decoration:none;}
+#enqBackdrop .wl-success{display:none;text-align:center;padding:64px 46px;}
+#enqBackdrop .wl-success.show{display:block;}
+#enqBackdrop .wl-success-ring{width:52px;height:52px;border-radius:50%;border:0.5px solid rgba(107,165,160,.38);display:flex;align-items:center;justify-content:center;margin:0 auto 26px;color:#6BA5A0;font-size:22px;}
+#enqBackdrop .wl-success-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:34px;font-weight:300;font-style:italic;color:#E8DDD0;margin-bottom:12px;}
+#enqBackdrop .wl-success-body{font-size:13px;font-weight:300;line-height:1.85;color:rgba(157,205,200,.6);max-width:320px;margin:0 auto 34px;}
+#enqBackdrop .enq-ghost{display:inline-block;padding:15px 42px;background:transparent;color:#E8DDD0;font-family:'Jost',sans-serif;font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;font-weight:300;border-radius:2px;border:0.5px solid rgba(232,221,208,.28);cursor:pointer;transition:border-color .3s,background .3s;}
+#enqBackdrop .enq-ghost:hover{border-color:rgba(232,221,208,.55);background:rgba(232,221,208,.04);}
+@media (max-width:480px){
+  #enqBackdrop .wl-body{padding:28px 20px 32px;}
+  #enqBackdrop .wl-title{font-size:30px;}
+  #enqBackdrop .wl-success{padding:48px 28px;}
+  #enqBackdrop .wl-pills{gap:6px;}
+  #enqBackdrop .enq-pill{font-size:9.5px;padding:8px 12px;}
+}
+</style>
+
+<!-- Netlify form detection (hidden) -->
+<form name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name"><input type="email" name="email">
+  <input type="text" name="topic"><textarea name="message"></textarea>
+  <input type="text" name="bot-field">
+</form>
+
+<div id="enqBackdrop" role="dialog" aria-modal="true" aria-labelledby="enqTitle">
+  <div class="wl-modal">
+    <div class="wl-accent"></div>
+    <button class="wl-close" onclick="closeEnquiry()" aria-label="Close">&#x2715;</button>
+    <div id="enqFormView">
+      <div class="wl-body">
+        <div class="wl-eyebrow"><div class="wl-eyebrow-line"></div>Get in touch</div>
+        <h2 class="wl-title" id="enqTitle">Send an enquiry</h2>
+        <p class="wl-sub">A question about kinesiology, sessions, or whether this is right for you &mdash; ask Anita anything. She reads every message herself and will reply personally.</p>
+        <span class="wl-session-label">What&rsquo;s it about?</span>
+        <div class="wl-pills" id="enqPillGroup">
+          <button type="button" class="enq-pill" onclick="enqSelectPill(this)">Sessions &amp; pricing</button>
+          <button type="button" class="enq-pill" onclick="enqSelectPill(this)">Is this right for me?</button>
+          <button type="button" class="enq-pill" onclick="enqSelectPill(this)">Kinesiology questions</button>
+          <button type="button" class="enq-pill" onclick="enqSelectPill(this)">Something else</button>
+        </div>
+        <div class="wl-row">
+          <label for="enqName">Your first name</label>
+          <input type="text" id="enqName" placeholder="First name" autocomplete="given-name">
+        </div>
+        <div class="wl-row">
+          <label for="enqEmail">Your email address</label>
+          <input type="email" id="enqEmail" placeholder="Email address" autocomplete="email">
+        </div>
+        <div class="wl-row">
+          <label for="enqMsg">Your message</label>
+          <textarea id="enqMsg" rows="4" placeholder="What would you like to ask?"></textarea>
+        </div>
+        <button type="button" class="wl-submit" onclick="enqSubmit()">Send to Anita</button>
+        <p class="wl-note">No pressure, no obligation. Anita will be in touch personally.</p>
+        <p class="enq-alt">Prefer email? <a href="mailto:hello@thebarefootkinesiologist.com">hello@thebarefootkinesiologist.com</a></p>
+      </div>
+    </div>
+    <div class="wl-success" id="enqSuccess">
+      <div class="wl-success-ring">&#x2713;</div>
+      <h3 class="wl-success-title">Your message is on its way.</h3>
+      <p class="wl-success-body">Thank you for reaching out. Anita will reply personally, usually within a few days. In the meantime, keep exploring.</p>
+      <button type="button" class="enq-ghost" onclick="closeEnquiry()">Continue reading</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var enqTopic = '';
+function openEnquiry(topic) {
+  enqTopic = topic || '';
+  document.querySelectorAll('.enq-pill').forEach(function(p){
+    p.classList.toggle('active', p.textContent.trim() === enqTopic);
+  });
+  document.getElementById('enqBackdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(function(){ var n = document.getElementById('enqName'); if (n) n.focus(); }, 350);
+}
+function closeEnquiry() {
+  var bd = document.getElementById('enqBackdrop');
+  if (!bd || !bd.classList.contains('open')) return;
+  bd.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(function(){
+    document.getElementById('enqFormView').style.display = '';
+    document.getElementById('enqSuccess').classList.remove('show');
+    ['enqName','enqEmail','enqMsg'].forEach(function(id){
+      var el = document.getElementById(id); el.value = ''; el.classList.remove('wl-error');
+    });
+    document.querySelectorAll('.enq-pill').forEach(function(p){ p.classList.remove('active'); });
+    enqTopic = '';
+  }, 400);
+}
+function enqSelectPill(el) {
+  document.querySelectorAll('.enq-pill').forEach(function(p){ p.classList.remove('active'); });
+  el.classList.add('active');
+  enqTopic = el.textContent.trim();
+}
+function enqSubmit() {
+  var nEl = document.getElementById('enqName');
+  var eEl = document.getElementById('enqEmail');
+  var mEl = document.getElementById('enqMsg');
+  var name = nEl.value.trim(), email = eEl.value.trim(), msg = mEl.value.trim();
+  var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  nEl.classList.toggle('wl-error', !name);
+  eEl.classList.toggle('wl-error', !emailOk);
+  mEl.classList.toggle('wl-error', !msg);
+  if (!name || !emailOk || !msg) return;
+  var payload = new URLSearchParams({
+    'form-name': 'enquiry',
+    'name': name,
+    'email': email,
+    'topic': enqTopic || 'General',
+    'message': msg
+  }).toString();
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: payload
+  }).catch(function (err) { console.error('Enquiry submit error:', err); });
+  document.getElementById('enqFormView').style.display = 'none';
+  document.getElementById('enqSuccess').classList.add('show');
+}
+(function(){
+  var bd = document.getElementById('enqBackdrop');
+  if (bd) bd.addEventListener('click', function(e){ if (e.target === this) closeEnquiry(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeEnquiry(); });
+})();
+</script>
+<!-- ===================== END ENQUIRY POP-UP ===================== -->
+
 </body>
 </html>
