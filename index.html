@@ -224,10 +224,22 @@ nav.scrolled{
   position:relative;display:flex;align-items:flex-end;justify-content:center;
   padding-bottom:44px;
   box-shadow:0 32px 80px rgba(29,59,56,.25);
+  overflow:hidden;
+}
+/* Photo inside the egg: swap the src in the HTML to change it */
+.kinesio-photo{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:50% 45%;
+}
+/* Soft dark fade at the bottom so the words stay readable over any photo */
+.kinesio-blob::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(29,59,56,0) 50%,rgba(29,59,56,.55) 78%,rgba(20,44,40,.85) 100%);
 }
 .kinesio-blob-text{
   font-family:var(--serif);font-style:italic;font-size:16px;
-  color:rgba(232,221,208,.45);text-align:center;line-height:1.6;
+  color:rgba(232,221,208,.85);text-align:center;line-height:1.6;
+  position:relative;z-index:1;
 }
 .kinesio-ring{
   position:absolute;width:360px;height:460px;
@@ -760,6 +772,17 @@ footer{
 .wl-success-ring{width:52px;height:52px;border-radius:50%;border:0.5px solid rgba(107,165,160,.38);display:flex;align-items:center;justify-content:center;margin:0 auto 26px;color:var(--glass);font-size:22px;}
 .wl-success-title{font-family:var(--serif);font-size:34px;font-weight:300;font-style:italic;color:var(--bone);margin-bottom:12px;}
 .wl-success-body{font-size:13px;font-weight:300;line-height:1.85;color:rgba(157,205,200,.6);max-width:320px;margin:0 auto 34px;}
+/* Phones & tablets: stack the kinesiology section and shrink the egg */
+@media (max-width:768px){
+  #kinesiology{grid-template-columns:1fr;gap:48px;padding:80px 24px;}
+  .kinesio-right{height:auto;padding:40px 0;}
+  .kinesio-blob{width:260px;height:340px;}
+  .kinesio-ring{width:296px;height:380px;}
+  .kinesio-ring-2{width:330px;height:416px;}
+  .kinesio-badge{top:10px;right:0;padding:14px 18px;}
+  .kinesio-badge-num{font-size:30px;}
+  .kinesio-tag-pill{bottom:20px;left:0;}
+}
 </style>
 <link rel="stylesheet" href="mobile.css">
 <!-- Energy quiz: DM Sans font + Chart.js -->
@@ -872,124 +895,6 @@ footer{
     <span class="marquee-item">Return to Yourself <span class="marquee-dot">✦</span></span>
   </div>
 </div>
-
-<!-- STATEMENT -->
-<section id="statement">
-  <div class="statement-inner reveal">
-    <p class="statement-quote">
-      "Your body has never once forgotten who you are. Beneath the performance, beneath the pattern, beneath everything you were told to be — <em>she is still there.</em> Waiting."
-    </p>
-    <p class="statement-attr">— The philosophy behind unbecoming</p>
-  </div>
-</section>
-
-<!-- WHAT IS KINESIOLOGY -->
-<section id="kinesiology">
-  <div class="kinesio-left reveal-l">
-    <div class="section-eyebrow">
-      <div class="eyebrow-line"></div>
-      What is Kinesiology
-    </div>
-    <h2 class="section-h2">Your body<br>holds the <em>answers</em></h2>
-    <p class="body-text">
-      Kinesiology is a gentle, non-invasive therapy that uses muscle monitoring as a biofeedback tool — a way of asking your body directly what it needs. It bridges the gap between what the mind believes and what the body actually holds.
-    </p>
-    <p class="body-text">
-      Emotions, beliefs, past experiences and energetic blocks all live in the body long after the mind has tried to move on. Kinesiology gives these a voice, allowing them to be acknowledged, processed and released — at the pace that feels right for you.
-    </p>
-    <p class="body-text">
-      Anita's approach weaves emotions kinesiology with metaphysical principles, creating a deeply holistic container for women ready to reconnect with their essence and redesign the shape of their lives.
-    </p>
-    <a href="sessions.html" class="text-link">Explore sessions <span class="text-link-arrow">→</span></a>
-  </div>
-
-  <div class="kinesio-right reveal-r">
-    <div class="kinesio-ring-2"></div>
-    <div class="kinesio-ring"></div>
-    <div class="kinesio-blob">
-      <!-- Botanical line art inside blob -->
-      <svg aria-hidden="true" style="position:absolute;top:30px;left:50%;transform:translateX(-50%);opacity:.18;" width="120" height="180" viewBox="0 0 120 180" fill="none">
-        <path d="M60 20 Q60 60 60 90" stroke="#9DCDC8" stroke-width="0.8"/>
-        <path d="M60 40 Q40 30 25 42" stroke="#9DCDC8" stroke-width="0.6"/>
-        <path d="M60 40 Q80 30 95 42" stroke="#9DCDC8" stroke-width="0.6"/>
-        <path d="M60 58 Q36 46 18 60" stroke="#9DCDC8" stroke-width="0.6"/>
-        <path d="M60 58 Q84 46 102 60" stroke="#9DCDC8" stroke-width="0.6"/>
-        <path d="M60 76 Q32 62 12 78" stroke="#9DCDC8" stroke-width="0.6"/>
-        <path d="M60 76 Q88 62 108 78" stroke="#9DCDC8" stroke-width="0.6"/>
-        <ellipse cx="60" cy="16" rx="6" ry="9" fill="#6BA5A0" opacity="0.6"/>
-      </svg>
-      <div class="kinesio-blob-text">the ocean<br>knows its depths</div>
-    </div>
-    <div class="kinesio-badge">
-      <span class="kinesio-badge-num">EMK</span>
-      <span class="kinesio-badge-label">Certified Practitioner</span>
-    </div>
-    <div class="kinesio-tag-pill">100% women-centred</div>
-  </div>
-</section>
-
-<!-- THE PATH / PROCESS -->
-<section id="process">
-  <div class="section-header">
-    <div class="section-tag reveal">The turning</div>
-    <h2 class="section-title reveal d1">How the <em>unbecoming</em> unfolds</h2>
-    <p class="section-subtitle reveal d2">This is not something that happens to you. It is something you choose — and then choose again, session by session, as more of you comes home.</p>
-  </div>
-
-  <div class="process-row">
-    <div class="step reveal d1">
-      <span class="step-num-bg">01</span>
-      <div class="step-num-label">The Still Water</div>
-      <div class="step-ring"><div class="step-ring-dot"></div></div>
-      <h3 class="step-title">You arrive as you are</h3>
-      <p class="step-body">Your first session is a conversation — spacious, unhurried, and entirely non-judgmental. We explore what brought you here, what your body is carrying, and what you are longing to move toward. No performance required.</p>
-    </div>
-    <div class="step reveal d2">
-      <span class="step-num-bg">02</span>
-      <div class="step-num-label">The Unbecoming</div>
-      <div class="step-ring" style="border-color:rgba(184,107,76,.4);"><div class="step-ring-dot" style="background:var(--terra);"></div></div>
-      <h3 class="step-title">The body speaks</h3>
-      <p class="step-body">Using muscle monitoring as biofeedback, we listen to the body's intelligence. Blocked emotions, outdated beliefs and patterns that were never yours to carry rise to the surface — ready to be released.</p>
-    </div>
-    <div class="step reveal d3">
-      <span class="step-num-bg">03</span>
-      <div class="step-num-label">The Shore</div>
-      <div class="step-ring"><div class="step-ring-dot"></div></div>
-      <h3 class="step-title">You come home</h3>
-      <p class="step-body">As the weight lifts, space opens. Clarity arrives. You begin to recognise the woman you always were beneath the conditioning — and you start building your life from that place. Not a new you. The real one.</p>
-    </div>
-  </div>
-</section>
-
-<!-- FOR THE WOMAN WHO -->
-<section id="forwho">
-  <div class="forwho-inner">
-    <div class="forwho-sticky">
-      <div class="section-eyebrow reveal" style="color:var(--terra);">
-        <div class="eyebrow-line"></div>
-        Is this for me?
-      </div>
-      <h2 class="section-h2 reveal d1">For the<br><em>woman</em><br>who feels<br>the pull…</h2>
-      <p class="body-text reveal d2" style="color:#4A4840;font-size:14px;line-height:1.9;margin-top:8px;">
-        That persistent sense that there is more — that the life you are living is not quite the life you were made for. If any of these land somewhere true in you, you are already in the right place.
-      </p>
-      <div class="forwho-note reveal d3">
-        <p>"You don't need to have it figured out to begin. You just need the brave desire to stop living on autopilot and start choosing yourself."</p>
-      </div>
-    </div>
-
-    <ul class="forwho-list">
-      <li class="forwho-item reveal d1"><span class="forwho-dash">—</span>Feels like she's been living someone else's version of her life</li>
-      <li class="forwho-item reveal d2"><span class="forwho-dash">—</span>Has been told she's too sensitive, too much, or not enough</li>
-      <li class="forwho-item reveal d2"><span class="forwho-dash">—</span>Is exhausted from performing a version of herself that no longer fits</li>
-      <li class="forwho-item reveal d3"><span class="forwho-dash">—</span>Knows something needs to shift but can't find the words for it yet</li>
-      <li class="forwho-item reveal d3"><span class="forwho-dash">—</span>Longs to slow down and live with more intention and authenticity</li>
-      <li class="forwho-item reveal d4"><span class="forwho-dash">—</span>Carries emotions that feel stuck, heavy or endlessly circling</li>
-      <li class="forwho-item reveal d4"><span class="forwho-dash">—</span>Is ready to stop shrinking and start redesigning her life</li>
-      <li class="forwho-item reveal d5"><span class="forwho-dash">—</span>Craves a deeper connection with her body, nature, and true self</li>
-    </ul>
-  </div>
-</section>
 
 <!-- ENERGY QUIZ -->
 <section id="energy-quiz">
@@ -1542,6 +1447,115 @@ var EnergyQuiz = (function () {
 </script>
 <!-- ===================== END ENERGY QUIZ ===================== -->
 
+<!-- STATEMENT -->
+<section id="statement">
+  <div class="statement-inner reveal">
+    <p class="statement-quote">
+      "Your body has never once forgotten who you are. Beneath the performance, beneath the pattern, beneath everything you were told to be — <em>she is still there.</em> Waiting."
+    </p>
+    <p class="statement-attr">— The philosophy behind unbecoming</p>
+  </div>
+</section>
+
+<!-- WHAT IS KINESIOLOGY -->
+<section id="kinesiology">
+  <div class="kinesio-left reveal-l">
+    <div class="section-eyebrow">
+      <div class="eyebrow-line"></div>
+      What is Kinesiology
+    </div>
+    <h2 class="section-h2">Your body<br>holds the <em>answers</em></h2>
+    <p class="body-text">
+      Kinesiology is a gentle, non-invasive therapy that uses muscle monitoring as a biofeedback tool — a way of asking your body directly what it needs. It bridges the gap between what the mind believes and what the body actually holds.
+    </p>
+    <p class="body-text">
+      Emotions, beliefs, past experiences and energetic blocks all live in the body long after the mind has tried to move on. Kinesiology gives these a voice, allowing them to be acknowledged, processed and released — at the pace that feels right for you.
+    </p>
+    <p class="body-text">
+      Anita's approach weaves emotions kinesiology with metaphysical principles, creating a deeply holistic container for women ready to reconnect with their essence and redesign the shape of their lives.
+    </p>
+    <a href="sessions.html" class="text-link">Explore sessions <span class="text-link-arrow">→</span></a>
+  </div>
+
+  <div class="kinesio-right reveal-r">
+    <div class="kinesio-ring-2"></div>
+    <div class="kinesio-ring"></div>
+    <div class="kinesio-blob">
+      <!-- PHOTO: to change it, put a new photo in the images folder and change the file name below.
+           Portrait (tall) photos suit this shape best. -->
+      <img class="kinesio-photo" src="images/anita-singing-bowl.jpg" alt="Anita sitting barefoot on the grass, holding a singing bowl" loading="lazy">
+      <div class="kinesio-blob-text">the ocean<br>knows its depths</div>
+    </div>
+    <div class="kinesio-badge">
+      <span class="kinesio-badge-num">EMK</span>
+      <span class="kinesio-badge-label">Certified Practitioner</span>
+    </div>
+    <div class="kinesio-tag-pill">100% women-centred</div>
+  </div>
+</section>
+
+<!-- THE PATH / PROCESS -->
+<section id="process">
+  <div class="section-header">
+    <div class="section-tag reveal">The turning</div>
+    <h2 class="section-title reveal d1">How the <em>unbecoming</em> unfolds</h2>
+    <p class="section-subtitle reveal d2">This is not something that happens to you. It is something you choose — and then choose again, session by session, as more of you comes home.</p>
+  </div>
+
+  <div class="process-row">
+    <div class="step reveal d1">
+      <span class="step-num-bg">01</span>
+      <div class="step-num-label">The Still Water</div>
+      <div class="step-ring"><div class="step-ring-dot"></div></div>
+      <h3 class="step-title">You arrive as you are</h3>
+      <p class="step-body">Your first session is a conversation — spacious, unhurried, and entirely non-judgmental. We explore what brought you here, what your body is carrying, and what you are longing to move toward. No performance required.</p>
+    </div>
+    <div class="step reveal d2">
+      <span class="step-num-bg">02</span>
+      <div class="step-num-label">The Unbecoming</div>
+      <div class="step-ring" style="border-color:rgba(184,107,76,.4);"><div class="step-ring-dot" style="background:var(--terra);"></div></div>
+      <h3 class="step-title">The body speaks</h3>
+      <p class="step-body">Using muscle monitoring as biofeedback, we listen to the body's intelligence. Blocked emotions, outdated beliefs and patterns that were never yours to carry rise to the surface — ready to be released.</p>
+    </div>
+    <div class="step reveal d3">
+      <span class="step-num-bg">03</span>
+      <div class="step-num-label">The Shore</div>
+      <div class="step-ring"><div class="step-ring-dot"></div></div>
+      <h3 class="step-title">You come home</h3>
+      <p class="step-body">As the weight lifts, space opens. Clarity arrives. You begin to recognise the woman you always were beneath the conditioning — and you start building your life from that place. Not a new you. The real one.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOR THE WOMAN WHO -->
+<section id="forwho">
+  <div class="forwho-inner">
+    <div class="forwho-sticky">
+      <div class="section-eyebrow reveal" style="color:var(--terra);">
+        <div class="eyebrow-line"></div>
+        Is this for me?
+      </div>
+      <h2 class="section-h2 reveal d1">For the<br><em>woman</em><br>who feels<br>the pull…</h2>
+      <p class="body-text reveal d2" style="color:#4A4840;font-size:14px;line-height:1.9;margin-top:8px;">
+        That persistent sense that there is more — that the life you are living is not quite the life you were made for. If any of these land somewhere true in you, you are already in the right place.
+      </p>
+      <div class="forwho-note reveal d3">
+        <p>"You don't need to have it figured out to begin. You just need the brave desire to stop living on autopilot and start choosing yourself."</p>
+      </div>
+    </div>
+
+    <ul class="forwho-list">
+      <li class="forwho-item reveal d1"><span class="forwho-dash">—</span>Feels like she's been living someone else's version of her life</li>
+      <li class="forwho-item reveal d2"><span class="forwho-dash">—</span>Has been told she's too sensitive, too much, or not enough</li>
+      <li class="forwho-item reveal d2"><span class="forwho-dash">—</span>Is exhausted from performing a version of herself that no longer fits</li>
+      <li class="forwho-item reveal d3"><span class="forwho-dash">—</span>Knows something needs to shift but can't find the words for it yet</li>
+      <li class="forwho-item reveal d3"><span class="forwho-dash">—</span>Longs to slow down and live with more intention and authenticity</li>
+      <li class="forwho-item reveal d4"><span class="forwho-dash">—</span>Carries emotions that feel stuck, heavy or endlessly circling</li>
+      <li class="forwho-item reveal d4"><span class="forwho-dash">—</span>Is ready to stop shrinking and start redesigning her life</li>
+      <li class="forwho-item reveal d5"><span class="forwho-dash">—</span>Craves a deeper connection with her body, nature, and true self</li>
+    </ul>
+  </div>
+</section>
 
 <!-- SESSIONS -->
 <section id="sessions">
